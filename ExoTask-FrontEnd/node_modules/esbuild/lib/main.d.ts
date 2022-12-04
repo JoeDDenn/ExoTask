@@ -98,6 +98,8 @@ export interface BuildOptions extends CommonOptions {
   outbase?: string;
   /** Documentation: https://esbuild.github.io/api/#external */
   external?: string[];
+  /** Documentation: https://esbuild.github.io/api/#alias */
+  alias?: Record<string, string>;
   /** Documentation: https://esbuild.github.io/api/#loader */
   loader?: { [ext: string]: Loader };
   /** Documentation: https://esbuild.github.io/api/#resolve-extensions */
@@ -586,7 +588,7 @@ export interface InitializeOptions {
    * The URL of the "esbuild.wasm" file. This must be provided when running
    * esbuild in the browser.
    */
-  wasmURL?: string
+  wasmURL?: string | URL
 
   /**
    * The result of calling "new WebAssembly.Module(buffer)" where "buffer"
