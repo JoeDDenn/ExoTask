@@ -1,30 +1,39 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import './Login.css'; 
 const Login = () => {
   return (
     <>
-    
-    <div className='h-screen bg-no-repeat bg-cover bg-center bg-[url("https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg?auto=compress&cs=tinysrgb&w=1000")]'>
-        
-    <div className='h-screen space-y-3 w-[400px] flex flex-col justify-center items-center mx-auto'>
-    
-    <form className='bg-black/70 h-96 justify-center space-y-3 w-[300px] flex flex-col rounded-lg' action="">
-        <center className="text-white text-3xl font-semibold">LOGIN</center>
-        <center>
-            <input className='w-3/4 outline-none rounded-lg px-3 bg-transparent border border-white h-8 text-white' type="text" placeholder='Enter Your Username'/>
-        </center>
-        <center>
-          <input className='w-3/4 outline-none rounded-lg px-3 bg-transparent border border-white h-8 text-white' type="password" placeholder="Enter Your Password"/>  
-        </center>
-        <center>
-            <Link className='w-full text-white text-lg font-normal hover:border-b border-white' to="">Forgotten Password</Link>
-        </center>
-        <center>
-           <button className='w-3/4 text-black bg-slate-300 h-8 rounded-lg text-lg font-normal '>Login</button>
-        </center>
-    </form>
+      <div className='cover'>
+      <div className='loginLayer'>
+        <div className='container container-login'>
+          <div className='row'>
+            <div className='col-md-10 col-sm-5'>
+              <form className='box-login' >
+                <h1 className='text-center box-header-login'>Login</h1>
+                <div className='form-group form-group-login'>
+                  <label for='email' className='label-login'>Email address</label>
+                  <input type='email' className='form-control form-control-login' id='email' placeholder='Enter email' />
+                </div>
+                <div className='form-group form-group-login'>
+                  <label for='password' className='label-login'>Password</label>
+                  <input type='password' className='form-control form-control-login' id='password' placeholder='Password' />
+                </div>
+                <button type='submit' className=' btn btn-login btn-primary text-black'>Submit</button>
+                  
+                  <div className='box-footer-login'> 
+                    <p className='text-center'>Don't have an account? <a href='/signup'>Signup</a></p>
+                  </div>
+                  
+  
+              </form>
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
     </div>
-    </div>
+      
     </>
   )
 }

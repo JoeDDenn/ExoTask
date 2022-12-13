@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+        /* add oswald font from google */
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+.container-signup{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.cover-signup{
+    width: 100%;
+    height: 100%;
+     background-image: url('../../assets/BackGround.png');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+   
+}
+.layer-signup{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+.container .box{
+    margin: 2rem 3rem 0 3rem !important;
+    width: 20rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    position: relative;
+}
+.container .box .box-header{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-group-signup{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.lab-signup,.box-header{
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d1e5a;
+}
+.form-control-signup{
+    width: 100%;
+    height: 80%;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    outline: none;
+}
+.box-footer-signup{
+    margin-bottom: 2.8rem !important;
+    padding-bottom: 1.5rem;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-signup{
+    margin: 1.9rem 0 0.9rem 0;
+    width: 100%;
+    height: 50px;
+    background-color: #442959;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-signup:hover{
+    background-color: #5d4074;
+    transition: 0.5s;
+}
+
+ 
