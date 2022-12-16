@@ -1,0 +1,109 @@
+/* import oswald font */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+*{
+    /* add oswald font from google */
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+.container-login{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cover{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/BackGround.png');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.loginLayer{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+.container .box-login{
+    margin: 2rem 3rem 0 3rem !important;
+    width: 20rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    position: relative;
+    /* text-align: center; */
+}
+.container .box .box-header-login{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-group-login{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 50px;
+}
+.label-login,.box-header-login{
+    margin: 0.7rem;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d1e5a;
+}
+.form-control-login{
+
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    outline: none;
+}
+.form-control-login:focus{
+    border: 1px solid #361f47;
+}
+.btn-login{
+    margin: 1.9rem 0 0.9rem 0;
+    width: 100%;
+    height: 50px;
+    background-color: #442959;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-login:hover{
+    background-color: #5d4074;
+    transition: 0.5s;
+}
+.box-footer-login{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.box-footer-login a{
+    text-decoration: none;
+    color: rgb(110, 42, 141) !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+.box-footer-login a:hover{
+    color: rgb(217, 118, 226);
+}
+
+
