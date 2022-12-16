@@ -1,9 +1,10 @@
 import React from 'react'
 import  './Signup.css'
+import { Nav } from "../index";
 const signup = () => {
   return (
     <>
-  
+          <Nav/>
     <div className='cover-signup'>
         <div className='layer-signup'>
     <div className='container container-signup'>

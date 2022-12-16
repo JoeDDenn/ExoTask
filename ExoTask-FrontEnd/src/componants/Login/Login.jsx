@@ -1,8 +1,10 @@
 import React from 'react'
 import './Login.css'; 
+import { Nav } from "../index";
 const Login = () => {
   return (
     <>
+      <Nav/>
       <div className='cover'>
       <div className='loginLayer'>
         <div className='container container-login'>
