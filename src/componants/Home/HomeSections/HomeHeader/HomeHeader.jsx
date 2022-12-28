@@ -5,6 +5,9 @@ import './HomeHeader.css'
 const HomeHeader = () => {
   return (
     <>
+
+
+
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
             <NavLink className="navbar-brand font" to="/">ExoTask</NavLink>
@@ -12,14 +15,18 @@ const HomeHeader = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse collapseanim navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                         <NavLink className="nav-link active font" aria-current="page" to="/">Home</NavLink>
                         </li>
-                        <li className="nav-item">
-                        <NavLink className="nav-link font" to="/signup">Signup</NavLink>
-                        </li>
+            
                     </ul>
+                   
+        <div className='d-flex'>
+                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Get Started!</NavLink>
+        </div>
+                        
+                    
                 </div>
         </div>
     </nav>
