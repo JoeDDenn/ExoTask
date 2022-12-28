@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
+*{
+    font:'Neuton', sans-serif;
+}
 
 .home{
     background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);

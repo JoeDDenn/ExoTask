@@ -8,19 +8,15 @@ const Hero = () => {
           <div className='row herorow'>
             <div className='col-lg-6 col-md-6 col-sm-12'>
               <div className='hero-text'>
-                <h1>Get your <span>dream</span> job</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-                <NavLink className='btn nav-item herobtn' to='/signup' >Signup Now</NavLink>
+                <h1>Start Working <span>Smart</span> Now</h1>
+                <p>A new and Innovative way to Work, Collaborate, and learn!</p>
+                <NavLink className='btn nav-item herobtn' to='/signup' >Get Started Now</NavLink>
               </div>
               </div>
               <div className='col-lg-6 col-md-6 col-sm-12'>
                 <img src={heroimg} alt='heroimg' className='heroimg'/>
-
               </div>
-            
-
           </div>
-
         </div>
     </>
   )
