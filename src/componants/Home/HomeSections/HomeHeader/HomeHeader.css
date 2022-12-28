@@ -19,3 +19,15 @@
 .font{
     font: 1.3em 'Neuton', sans-serif;
 }
+.getStarted{
+    font-weight: 700;
+    font: 'Neuton', sans-serif;
+    border: 1px solid #724e95;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;  
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #9165bd;
+    color: #000;
+}
