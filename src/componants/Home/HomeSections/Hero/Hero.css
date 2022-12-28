@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700&display=swap');
+
+.heroContainer{
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    box-shadow:0 0 10px 0 rgba(0,0,0,0.2);
+    display: flex;
+    margin-top: 1.5rem;
+    /* max-height: fit-content; */    
+    max-height: 50%;
+}
+
+
+
+.heroText{
+    border-radius: 1rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+.heroTextHeader{
+    font: 1em 'Neuton', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgb(65, 39, 112) !important;
+    text-align: left;
+    margin-top: 5rem;
+    padding: 2rem 2rem;
+}
+.heroTextPara{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: rgb(97, 64, 126) !important;
+    text-align: center;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    font: 1.5em 'Neuton', sans-serif;
+}
+
+.heroImgcard{
+    border-radius: 1rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+    max-height: 50%;
+    display: flexbox;
+    justify-content: center;
+
+}
+
+.heroImg{
+    max-width: 100%;
+    object-fit: fill;
+}
+
+
+
+@media only screen and (max-width: 1200px){
+    .heroContainer{
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 100%;
+        box-shadow:0 0 10px 0 rgba(0,0,0,0.2);
+        display: flex;
+        justify-items: left;
+        margin-top: 1.5rem;
+        max-width: max-content;
+    }
+    .heroBox{
+        max-width: max-content;
+    }
+}
+@media only screen and (max-width: 600px){
+	.heroContainer{
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin-top: 1.5rem;
+        /* max-height: fit-content; */    
+        max-height: 50%;
+    }
+}
+@media only screen and (max-width: 425px){
+    .heroContainer{
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin-top: 1.5rem;
+        /* max-height: fit-content; */    
+        max-height: 50%;
+    }
+}
