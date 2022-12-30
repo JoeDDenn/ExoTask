@@ -8,7 +8,7 @@ const HomeHeader = () => {
 
 
 
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg homenavbar">
         <div className="container-fluid">
             <NavLink className="navbar-brand font" to="/">ExoTask</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
