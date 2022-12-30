@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700;800&display=swap');
+
  *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-        /* add oswald font from google */
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Neuton', serif;
     font-weight: 400;
 }
 
