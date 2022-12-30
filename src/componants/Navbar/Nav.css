@@ -6,9 +6,9 @@
     font-weight: 400;
 }
 .navbar{
-    background-color: rgba(218, 138, 204, 0.2);
-    border: rgba(36, 21, 70, 0.2);
-    box-shadow: inset 0 0 2px 0 rgba(39, 5, 100, 0.2);
+    background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);
+    border-radius: 0 !important;
+    
     }
 .collapseanim{
     transition: 0.5s;

@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './Nav.css'
 const Nav = () => {
+ 
   return (
     <>
-    <nav className="navbar navbar-expand-lg">
+
+    <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">ExoTask</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
