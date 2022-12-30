@@ -1,0 +1,3 @@
+exotask.localhost {
+    reverse_proxy localhost:5173
+}
