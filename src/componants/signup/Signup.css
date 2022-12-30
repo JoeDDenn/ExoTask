@@ -8,6 +8,7 @@
     font-weight: 400;
 }
 
+
 .container-signup{
     width: 100%;
     height: 100vh;
@@ -19,7 +20,7 @@
 .cover-signup{
     width: 100%;
     height: 100%;
-     background-image: url('../../assets/BackGround.png');
+    background-image: url('../../assets/BackGround.png');
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -94,4 +95,5 @@
     transition: 0.5s;
 }
 
- 
+
+
