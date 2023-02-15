@@ -2,12 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './HomeHeader.css'
+import {HashLink as Link} from 'react-router-hash-link';
 const HomeHeader = () => {
   return (
     <>
-
-
-
     <nav className="navbar navbar-expand-lg homenavbar">
         <div className="container-fluid">
             <NavLink className="navbar-brand font" to="/">ExoTask</NavLink>
@@ -17,13 +15,21 @@ const HomeHeader = () => {
                 <div className="collapse collapseanim navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                        <NavLink className="nav-link active font" aria-current="page" to="/">Home</NavLink>
+                        <NavLink className="nav-link active font" aria-current="page" to="#hero">Home</NavLink>
                         </li>
-            
+                        <li className="nav-item">
+                        <Link className="nav-link active font" aria-current="page" to="#Services">Services</Link>
+                        </li>
+                        <li className="nav-item">
+                        <Link className="nav-link active font" aria-current="page" to="#contactus">Contact</Link>
+                        </li>
+                        <li className="nav-item">
+                        <Link className="nav-link active font" aria-current="page" to="#aboutus">About Us</Link>
+                        </li>
                     </ul>
                    
         <div className='d-flex'>
-                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Get Started!</NavLink>
+                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Sign In</NavLink>
         </div>
                         
                     
