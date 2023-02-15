@@ -23,10 +23,7 @@
     max-height: 75%;
     display: flex;
     flex-direction: row;
-   align-items: center;
-   
-    
-    
+   align-items: center;    
 }
 .heroimg{
     width: 100%;
@@ -55,49 +52,7 @@
     cursor: pointer;
 }
 
-.aboutContainer{
-    background-color: rgba(82, 40, 75, 0.2);
-    border-radius: 5px;
-    padding: 10px;
-}
 
-
-.accordion{
-    margin: 1.1em;
-    --bs-accordion-active-bg : #e887d9;
-}
-
-.accordion-item{
-    background-color: #e887d9;
-    color: #000;
-    border: 0px solid #52284b;
-    box-shadow:0 0 2px 0 rgba(0,0,0,0.2);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 1rem;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.accordion-header{
-    background-color: #e887d9;
-    cursor: pointer;
-}
-
-.accordion-button{
-    background-color: #e887d9;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.collapsed{
-    background-color: #e887d9;
-}
 
 /* @media (min-width: 1400px){
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
