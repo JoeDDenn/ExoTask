@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Neuton', serif;
     font-weight: 400;
+    overflow: hidden;
 }
 
 
@@ -20,7 +21,7 @@
 .cover-signup{
     width: 100%;
     height: 100%;
-    background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);
+    /* background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%); */
     background-size: cover;
     background-position: center;
     /* position: absolute; */
@@ -31,7 +32,7 @@
 }
 .layer-signup{
     /* position: relative; */
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 255, 0.3); */
 
 }
 .container .box{

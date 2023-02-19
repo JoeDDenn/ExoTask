@@ -1,3 +1,13 @@
 .main-sidebar{
-  background:   linear-gradient(250deg, #6f5594 20%, #90197e 80%);
+    background-color: rgba(125, 45, 84, 0.2) !important;
+    background: rgb(255, 255, 255);
+}
+
+.brand-image{
+  margin-left: 2px !important;
+  padding-left: 2px;
+
+}
+.brand-link{
+  background-color: rgb(226, 124, 204) !important;
 }

@@ -1,22 +1,19 @@
 import { Gradient } from 'whatamesh'
 import './bg.css'
-import React from 'react'
+import React, { useRef } from 'react'
 
-const gradient = new Gradient();
 
 const Bg = () => {
-    const [gradient, setGradient] = React.useState(()=>new Gradient())
-    
-    React.useEffect(() => {
-        gradient.initGradient("#gradient-canvas");
-    }, [gradient])
+  const gradient = useRef(new Gradient)
+  React.useEffect(() => {
+    gradient.current.initGradient("#gradient-canvas");
+  }, [gradient])
 
   return (
-    <canvas id="gradient-canvas"/>
+    <div id='#gradient-canvas'>
+      <canvas  />
+    </div>
   )
 }
 
 export default Bg
-
-
-        

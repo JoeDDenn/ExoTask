@@ -67,7 +67,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className="Page container ">
+      <div className="Page mainws container ">
         {this.state.blocks.map((block, key) => {
           return (
             <EditableBlock
