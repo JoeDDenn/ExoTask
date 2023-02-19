@@ -7,7 +7,7 @@ import Bg from './Main-workspace/bg/bg'
 const HomeWorkSpace = () => {
   return (
     <div className='wrapper'>
-      <Bg/>
+
      <NavWorkSpcae/>
       <SideBar/>
      <Main/> 
