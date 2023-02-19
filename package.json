@@ -10,11 +10,12 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-contenteditable": "^3.3.6",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-preloader-icon": "^1.0.0",
     "react-router-dom": "^6.4.5",
-    "react-router-hash-link": "^2.4.3"
+    "react-router-hash-link": "^2.4.3",
+    "whatamesh": "^0.0.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",

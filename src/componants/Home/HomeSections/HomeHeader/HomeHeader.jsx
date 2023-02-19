@@ -29,7 +29,7 @@ const HomeHeader = () => {
                     </ul>
                    
         <div className='d-flex'>
-                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Sign In</NavLink>
+                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Sign Up</NavLink>
         </div>
                         
                     
