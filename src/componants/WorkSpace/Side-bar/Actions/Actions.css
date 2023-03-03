@@ -1,0 +1,21 @@
+
+
+.newProj-btn{
+    align-items: center;
+    border-radius: 5px !important;
+    margin-top: 2px;
+    width: 100%;
+}
+
+.newProj-btn-text{
+    padding: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #939ba2 !important;
+    padding: 5px;
+}
+
+.newProj-btn-icon{
+    align-self: center;
+
+}

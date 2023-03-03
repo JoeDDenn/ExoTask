@@ -1,6 +1,9 @@
 .wrapper{
-    /* background-image: url(../../assets/bg1.png);
+    background-image: url(../../assets/bg1.png);
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
 
 }

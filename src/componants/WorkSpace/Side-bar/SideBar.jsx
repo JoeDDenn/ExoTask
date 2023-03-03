@@ -1,6 +1,8 @@
 import React from 'react'
 import './SideBar.css'
 import { Link } from 'react-router-dom'
+import NewProject from './Actions/NewProject'
+
 const SideBar = () => {
   return (
     <>
@@ -12,13 +14,13 @@ const SideBar = () => {
         </Link>
         
         {/* Sidebar */}
-          <div class="sidebar">
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-              <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"/>
+          <div className="sidebar">
+            <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+              <div className="image">
+                <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
               </div>
-              <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+              <div className="info">
+                <a href="#" className="d-block">Alexander Pierce</a>
               </div>
             </div>
         {/* Sidebar */}
@@ -37,6 +39,13 @@ const SideBar = () => {
               </div>
             </div>
           </div>
+           {/* /SidebarSearch Form */}
+
+          {/* new project button*/}
+          <NewProject />
+          {/* /new project button*/}
+
+
           {/* Sidebar Menu */}
           <nav className="mt-2">
           </nav>
