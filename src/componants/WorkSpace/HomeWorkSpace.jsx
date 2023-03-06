@@ -4,17 +4,19 @@ import Main from './Main-workspace/Main'
 import NavWorkSpcae from './Nav/NavWorkSpcae'
 import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
+import Chatbot from '../Chat/ChatBot'
 
 const HomeWorkSpace = () => {
-
-
-  return (
-    <AnimatedBackground>
-     <NavWorkSpcae/>
-      <SideBar/>
-     <Main/> 
-    </AnimatedBackground>
+  if(localStorage.getItem('token') === null) window.location.replace('/login')
+  else{
+    return (
+      <AnimatedBackground>
+      <NavWorkSpcae/>
+        <SideBar/>
+        <Main/> 
+      </AnimatedBackground>
   )
+}
 }
 
 export default HomeWorkSpace

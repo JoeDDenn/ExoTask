@@ -11,7 +11,7 @@
 
 .container-signup{
     width: 100%;
-    height: 100vh;
+    height: 94.2vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,5 +95,11 @@
     transition: 0.5s;
 }
 
+.light-text{
+    color:rgb(123, 116, 119) !important;
+}
 
-
+.NGroup{
+    display: flex;
+    flex-direction: column;
+}
