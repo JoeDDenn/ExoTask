@@ -1,11 +1,18 @@
 import ContentEditable from "react-contenteditable";
 import React from "react";
 import "./editableBlock.css";
+import SelectMenu from "../selectMenu/SelectMenu";
+import { getOffset } from 'caret-pos';
 
 class EditableBlock extends React.Component {
   constructor(props) {
     super(props);
     // ...
+    this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
+    console.log("onKeyUpHandler bound to component instance");
+    this.openSelectMenuHandler = this.openSelectMenuHandler.bind(this);
+    this.closeSelectMenuHandler = this.closeSelectMenuHandler.bind(this);
+    this.tagSelectionHandler = this.tagSelectionHandler.bind(this);
     this.onKeyDownHandler = this.onKeyDownHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.contentEditable = React.createRef();
@@ -13,32 +20,61 @@ class EditableBlock extends React.Component {
       htmlBackup: null,
       html: "",
       tag: "p",
-      previousKey: ""
+      previousKey: "",
+      selectMenuIsOpen: false,
+      selectMenuPosition: {
+        x: 0,
+        y: 0
+      }
     };
   }
   
-  // ...
-
-  
-
-      // componentDidMount() {
-      //   this.setState({ html: this.props.html, tag: this.props.tag });
-      // }
-    
-      // componentDidUpdate(prevProps, prevState) {
-      //   const htmlChanged = prevState.html !== this.state.html;
-      //   const tagChanged = prevState.tag !== this.state.tag;
-      //   if (htmlChanged || tagChanged) {
-      //     this.props.updatePage({
-      //       id: this.props.id,
-      //       html: this.state.html,
-      //       tag: this.state.tag
-      //     });
-      //   }
-      // }
+      
     
       onChangeHandler(e) {
         this.setState({ html: e.target.value });
+      }
+
+      onKeyUpHandler(e) {
+        // console.log("onKeyUpHandler called with event", e);
+        if (e.key === "/") {
+          console.log("You pressed the '/' key!");
+          this.setState({ selectMenuIsOpen: true, x, y });
+        }
+      }
+      openSelectMenuHandler() {
+        const el = this.contentEditable.current;
+        const { top, left } = getOffset(el);
+        if (isNaN(top)) {
+          return;
+        }
+        this.setState({
+          selectMenuIsOpen: true,
+          selectMenuPosition: { x: left, y: top },
+        });
+        document.addEventListener('click', this.closeSelectMenuHandler);
+      }
+      closeSelectMenuHandler() {
+        console.log("closeSelectMenuHandler called");
+        this.setState({
+          htmlBackup: null,
+          selectMenuIsOpen: false,
+          selectMenuPosition: { x: null, y: null }
+        });
+        document.removeEventListener("click", this.closeSelectMenuHandler);
+      }
+
+      tagSelectionHandler(tag) {
+        this.setState({ tag: tag, html: this.state.htmlBackup }, () => {
+          const el = this.contentEditable.current;
+          const { top, left } = getOffset(el);
+          this.setState({
+            selectMenuIsOpen: true,
+            selectMenuPosition: { x: left, y: top },
+          });
+          document.addEventListener('click', this.closeSelectMenuHandler);
+          setCaretToEnd(this.contentEditable.current);
+        });
       }
   
   
@@ -46,6 +82,9 @@ class EditableBlock extends React.Component {
       onKeyDownHandler(e) {
       if (e.key === "/") {
         this.setState({ htmlBackup: this.state.html });
+        this.openSelectMenuHandler();
+    //     console.log("You pressed the '/' key!");
+    // this.openSelectMenuHandler();
       }
       if (e.key === "Enter") {
         if (this.state.previousKey === "Shift") {
@@ -70,6 +109,13 @@ class EditableBlock extends React.Component {
   
     render() {
       return (
+        <>
+        {this.state.selectMenuIsOpen && (
+          <SelectMenu
+            position={this.state.selectMenuPosition}
+            onSelect={this.tagSelectionHandler}
+            close={this.closeSelectMenuHandler}
+          />)}
         <ContentEditable
           className="Block"
           innerRef={this.contentEditable}
@@ -78,6 +124,12 @@ class EditableBlock extends React.Component {
           onChange={this.onChangeHandler}
           onKeyDown={this.onKeyDownHandler}
         />
+        
+        
+        </>
+        
+
+      
       );
     }
   }

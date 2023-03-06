@@ -6,15 +6,19 @@ import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
 
+
 const HomeWorkSpace = () => {
   if(localStorage.getItem('token') === null) window.location.replace('/login')
   else{
-    return (
-      <AnimatedBackground>
-      <NavWorkSpcae/>
-        <SideBar/>
-        <Main/> 
-      </AnimatedBackground>
+  return (
+    <div className='wrapper'>
+    <AnimatedBackground>
+     <NavWorkSpcae/>
+      <SideBar/>
+     <Main/> 
+    </AnimatedBackground>
+    </div>
+
   )
 }
 }
