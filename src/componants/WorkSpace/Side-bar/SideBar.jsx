@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import NewProject from './Actions/NewProject'
 
 const SideBar = () => {
+
+  const Username = localStorage.getItem('userName')? localStorage.getItem('userName') : 'Guest'
+
   return (
     <>
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -17,10 +20,10 @@ const SideBar = () => {
           <div className="sidebar">
             <div className="user-panel mt-3 pb-3 mb-3 d-flex">
               <div className="image">
-                <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
+                <img src="/Assets/man.png" className="img-circle elevation-2" alt="User Image"/>
               </div>
               <div className="info">
-                <a href="#" className="d-block">Alexander Pierce</a>
+                <a href="#" className="d-block">{Username }</a>
               </div>
             </div>
         {/* Sidebar */}

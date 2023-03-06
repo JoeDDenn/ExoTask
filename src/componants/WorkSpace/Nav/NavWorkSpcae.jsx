@@ -2,7 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './NavWorkSpcae.css'
 
+
+
 const NavWorkSpcae = () => {
+
+
   return (
     <>
        <nav className="main-header nav-workspace navbar navbar-expand navbar-white navbar-light">
@@ -128,8 +132,8 @@ const NavWorkSpcae = () => {
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-          <i className="fas fa-th-large"></i>
+        <a onClick={LogOut} className="nav-link" data-widget="control-sidebar" data-slide="true" type="button"> 
+          <i className="fa fa-sign-out-alt"></i>
         </a>
       </li>
     </ul>
@@ -139,3 +143,15 @@ const NavWorkSpcae = () => {
 }
 
 export default NavWorkSpcae
+
+
+
+const LogOut = () => {
+  if(localStorage.getItem('token') != null){
+    localStorage.removeItem('token')
+    localStorage.removeItem('userName')
+    window.location.href = '/'
+
+  }
+  else{return}
+}
