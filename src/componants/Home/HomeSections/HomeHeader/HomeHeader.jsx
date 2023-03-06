@@ -3,6 +3,18 @@ import { NavLink } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './HomeHeader.css'
 import {HashLink as Link} from 'react-router-hash-link';
+
+const signorname = () => {
+  if(localStorage.getItem('token') === null){
+    return (<NavLink className="btn me-2 getStarted" type="submit" to="/signup">Sign Up</NavLink>)
+    }else{
+      
+      return (
+      <NavLink className="btn me-2 getStarted" type="submit" to="/Workspace"> Workspace </NavLink>
+      )
+}
+}
+
 const HomeHeader = () => {
   return (
     <>
@@ -29,11 +41,10 @@ const HomeHeader = () => {
                     </ul>
                    
         <div className='d-flex'>
-                <NavLink className="btn me-2 getStarted" type="submit" to="/signup">Sign Up</NavLink>
+
         </div>
-                        
-                    
-                </div>
+        {signorname()}
+            </div>
         </div>
     </nav>
       {/* <nav ClassName="navbar navbar-expand-lg bg-light">

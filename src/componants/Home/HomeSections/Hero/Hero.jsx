@@ -11,7 +11,7 @@ const Hero = () => {
               <div className='hero-text'>
                 <h1>Start Working <span>Smart</span> Now</h1>
                 <p>A new and Innovative way to Work, Collaborate, and learn!</p>
-                <NavLink className='btn nav-item herobtn' to='/WorkSpace' >Get Started Now</NavLink>
+                <NavLink className='btn nav-item herobtn' to='/signup' >Get Started Now</NavLink>
               </div>
               </div>
               <div className='col-lg-6 col-md-6 col-sm-12'>

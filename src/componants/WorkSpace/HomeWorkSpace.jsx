@@ -4,8 +4,12 @@ import Main from './Main-workspace/Main'
 import NavWorkSpcae from './Nav/NavWorkSpcae'
 import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
-const HomeWorkSpace = () => {
+import Chatbot from '../Chat/ChatBot'
 
+
+const HomeWorkSpace = () => {
+  if(localStorage.getItem('token') === null) window.location.replace('/login')
+  else{
   return (
     <div className='wrapper'>
     <AnimatedBackground>
@@ -14,7 +18,9 @@ const HomeWorkSpace = () => {
      <Main/> 
     </AnimatedBackground>
     </div>
+
   )
+}
 }
 
 export default HomeWorkSpace
