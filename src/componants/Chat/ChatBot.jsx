@@ -13,7 +13,7 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <button className="chat-icon" onClick={handleChatClick}></button>
+      <button className="chat-icon" onClick={handleChatClick}><i class="fa fa-robot"></i></button>
       {showChat && <ChatWindow />}
     </div>
   );

@@ -16,11 +16,13 @@
     z-index: 9999;
     width: 300px;
     height: 400px;
-    background-color: #fff;
+    background-color: #ddcccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    transition: all 1s ease;
+    overflow-y: scroll;
   }
   
   .chat-header {
@@ -60,12 +62,13 @@
   
   .chat-input input[type="text"] {
     flex-grow: 1;
-    border: none;
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
     background-color: #f9f9f9;
     margin-right: 10px;
+    
+    border: 1px solid;
   }
   
   .chat-input button {
@@ -80,5 +83,9 @@
   
 
   .chat-icon{
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #839183;
+    transition: all 1s ease;
   }
