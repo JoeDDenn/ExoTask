@@ -69,7 +69,7 @@ class ChatWindow extends React.Component {
                 </div>
               ))}
             </div>
-            <div className="user-input">
+            <div className="chat-input">
               <input type="text" value={userInput} onChange={this.handleInputChange} />
               <button onClick={this.handleMessageSend}>Send</button>
             </div>
