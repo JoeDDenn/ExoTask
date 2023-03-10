@@ -6,6 +6,11 @@ import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
 import AddComp from '../AddComp/AddComp'
+import TaskList from '../TaskList/TaskList'
+import KanBanBoard from '../KanBanBoard/KanBanBoard'
+
+
+
 
 
 const HomeWorkSpace = () => {
@@ -17,13 +22,16 @@ const HomeWorkSpace = () => {
      <NavWorkSpcae/>
       <SideBar/>
      {/* <Main/>  */}
+
+    <div className='container'>
+     <AddComp/>
      <div className='workspace container' id='workspace'>
         <div className='Block' id="1">
-          <p className='paragraph' contentEditable='true'>Type here...</p>
+          <KanBanBoard/>
         </div>
      </div>
+    </div>
      <Chatbot/>
-      <AddComp/>
     </AnimatedBackground>
     </div>
 

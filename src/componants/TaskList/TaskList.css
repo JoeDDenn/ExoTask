@@ -1,4 +1,4 @@
 .TaskList{
-    overflow-x: scroll;
+    overflow-x: auto;
     background-color: aliceblue;
 }

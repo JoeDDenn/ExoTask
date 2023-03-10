@@ -7,9 +7,27 @@
     padding: 5px;
 }
 
+.workspace img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .Block{
+    display: flex;
     z-index: 1;
     margin: 2px;
     margin-top: 5px;
     color: #ffdaff !important;
-    }
+}
+
+.WSParagraph{
+    min-width: 90%;
+}
+
+.del-but{
+    background-color: rgba(220, 185, 233, 0);
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #caa5d1cd;
+    width: 40px;
+}

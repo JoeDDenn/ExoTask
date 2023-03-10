@@ -1,17 +1,21 @@
 import React from 'react'
 
 class AddParagraph extends React.Component {
- 
+
     addNewBlock = (className) => {
         const newBlockId = uid();
         AddBlock(className, newBlockId);
     }
+
+
     render() {
         return (
             <div className="ComponentList-item-title">
-            <button className="ComponentList-item-title-button" onClick={() => this.addNewBlock("paragraph")}>
+            <div className="ComponentList-item-title">
+            <button className="ComponentList-item-title-button" onClick={() => this.addNewBlock("WSParagraph")}>
                 Paragraph
             </button>
+            </div>
             </div>
         )
     }
@@ -38,8 +42,23 @@ function AddBlock(className, id) {
     //add new block to workspace
     workspace.appendChild(newBlock);
     //set focus on new block
+    //add a delete button to new block with id
+    const newDeleteButton = document.createElement('button');
+    newDeleteButton.className = "del-but";
+    //add child Icon to button
+    const newDeleteIcon = document.createElement('i');
+    newDeleteIcon.className = "fa fa-trash";
+    newDeleteButton.appendChild(newDeleteIcon);
+    
+    newDeleteButton.onclick = () => {
+        const block = document.getElementById(id);
+        block.parentNode.removeChild(block);
+    }
+    newBlock.appendChild(newDeleteButton);
+
 
 }
+
 
 
 const uid = () => {

@@ -1,7 +1,5 @@
 .Comp-select-container {
-    position: fixed;
-    bottom: 65px;
-    right: 20px;
+    float: left;
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -10,19 +8,19 @@
   }
   
   .Select-window {
-    position: fixed;
-    bottom: 80px;
-    right: 65px;
+
     z-index: 9999;
-    width: 300px;
-    height: 400px;
-    background-color: #ddcccc;
+    width: 200px;
+    height: 150px;
+    background-color: #dea7f23a;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     transition: all 1s ease;
-    overflow-y: scroll;
+    /* make the element scrollable if there's overflow but hide scroll otherwise */
+    overflow-y: auto;
+    
   }
   
   .chat-header {
@@ -35,57 +33,33 @@
     justify-content: space-between;
   }
   
-  .chat-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  .chat-header button {
-    border: none;
-    background-color: transparent;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  
-  .chat-body {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 10px;
-  }
-  
-  .chat-input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-top: 1px solid #f1f1f1;
-  }
-  
-  .chat-input input[type="text"] {
-    flex-grow: 1;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    margin-right: 10px;
-  
-    border: 1px solid;
-  }
-  
-  .chat-input button {
-    border: none;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+
   
   
   .chat-icon{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #839183;
-    transition: all 1s ease;
+    background-color: #6c5be85a;
+    transition: all .6s ease;
+    margin: 5px;
+  }
+
+    .chat-icon:hover{
+        background-color: #6b5be8c4;
+    }
+    
+    /* when the button is pressed, rotate icon by 45 degrees  and remain rotated*/
+    .chat-icon-active{ 
+        transform: rotate(45deg);
+    }
+
+
+
+  .ComponentList-item-title-button{
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #e7baf0df;
+    background-color: #dca6e73e;
+    padding: 5px;
   }
