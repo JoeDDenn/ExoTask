@@ -9,6 +9,7 @@ const uid = () => {
 
 const initialBlock = { id: uid(), html: "<p>hello</p>", tag: "p" };
 
+
 const setCaretToEnd = (element) => {
   const range = document.createRange();
   const selection = window.getSelection();
@@ -18,6 +19,7 @@ const setCaretToEnd = (element) => {
   selection.addRange(range);
   element.focus();
 };
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -49,6 +51,7 @@ class Main extends React.Component {
       currentBlock.ref.nextElementSibling.focus();
     });
   }
+  
 
 
   deleteBlockHandler(currentBlock) {
@@ -58,7 +61,7 @@ class Main extends React.Component {
       const index = blocks.map((b) => b.id).indexOf(currentBlock.id);
       const updatedBlocks = [...blocks];
       updatedBlocks.splice(index, 1);
-      
+
       this.setState({ blocks: updatedBlocks }, () => {
         setCaretToEnd(previousBlock);
       });

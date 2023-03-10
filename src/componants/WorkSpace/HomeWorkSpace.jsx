@@ -16,7 +16,7 @@ const HomeWorkSpace = () => {
      <NavWorkSpcae/>
       <SideBar/>
      <Main/> 
-      <Chatbot/>
+     <Chatbot/>
     </AnimatedBackground>
     </div>
 
