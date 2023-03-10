@@ -4,6 +4,16 @@ import "./editableBlock.css";
 import SelectMenu from "../selectMenu/SelectMenu";
 import { getOffset } from 'caret-pos';
 
+
+const setCaretToEnd = (element) => {
+  const range = document.createRange();
+  const selection = window.getSelection();
+  range.selectNodeContents(element);
+  range.collapse(false);
+  selection.removeAllRanges();
+  selection.addRange(range);
+  element.focus();
+};
 class EditableBlock extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +38,7 @@ class EditableBlock extends React.Component {
       }
     };
   }
+  
   
       
     
