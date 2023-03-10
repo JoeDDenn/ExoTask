@@ -22,11 +22,13 @@ const allowedTags = [
     id: "paragraph",
     tag: "p",
     label: "Paragraph"
-  },
-  {
-    id: "task",
-    tag: "div",
-    label: "task"
+
+  },{
+    id: "image",
+    tag: "img",
+    label: "Image",
+    html: "<img src='https://picsum.photos/200/300' />"
+
   }
 ];
 
