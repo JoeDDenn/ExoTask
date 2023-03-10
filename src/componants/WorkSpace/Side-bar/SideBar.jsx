@@ -5,6 +5,7 @@ import NewProject from './Actions/NewProject'
 
 const SideBar = () => {
 
+
   const Username = localStorage.getItem('userName')? localStorage.getItem('userName') : 'Guest'
 
   return (

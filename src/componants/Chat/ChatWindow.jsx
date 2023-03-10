@@ -21,6 +21,8 @@ toggleWindow = () => {
   };
 
   handleMessageSend = () => {
+    //get username from local storage
+    const username = localStorage.getItem('username');
 
     this.setState({ isLoading: true });
     axios.post('http://localhost:8000/answer', {
@@ -31,11 +33,11 @@ toggleWindow = () => {
           messages: [
             ...prevState.messages,
             {
-              text: this.state.userInput,
+              text: username|| "User" + ": " + this.state.userInput,
               isUser: true
             },
             {
-              text: response.data.answer,
+              text: "ExoTask bot: " + response.data.answer,
               isUser: false
             }
           ],
@@ -60,19 +62,19 @@ handleInputChange = (event) => {
       <div className="chat-window">
         {isOpen && (
           <div className="chat-box">
-          <div className="message-list">
-              {messages.map((message, index) => (
-                <div key={index} className={message.isUser ? 'user-message' : 'bot-message'}>
-                  {message.text}
-                </div>
-              ))}
+            <div className="message-list">
+                {messages.map((message, index) => (
+                  <div key={index} className={message.isUser ? 'user-message' : 'bot-message'}>
+                    {message.text}
+                  </div>
+                ))}
+              </div>
             </div>
+        )}
             <div className="chat-input">
               <input type="text" value={userInput} onChange={this.handleInputChange} />
               <button onClick={this.handleMessageSend}>Send</button>
             </div>
-          </div>
-        )}
       </div>
     );
   }

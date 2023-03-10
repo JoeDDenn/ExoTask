@@ -1,6 +1,19 @@
 import './Hero.css'
 import heroimg from './heroimg.png'
 import { NavLink } from 'react-router-dom'
+import Lottie from 'react-lottie'
+import animationData from './pclottie.json'
+
+const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+    };
+
+
 const Hero = () => {
   return (
     <>
@@ -15,10 +28,14 @@ const Hero = () => {
               </div>
               </div>
               <div className='col-lg-6 col-md-6 col-sm-12'>
-                <img src={heroimg} alt='heroimg' className='heroimg'/>
+                  <Lottie 
+                  options={defaultOptions}
+                    height={550}
+                    width={550}
+                  />
+                </div>
               </div>
           </div>
-        </div>
 
         {/* creating about section */}
         

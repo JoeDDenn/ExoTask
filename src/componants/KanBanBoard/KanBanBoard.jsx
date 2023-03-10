@@ -18,7 +18,6 @@ export default class KanBanBoard extends Component {
 }
 }
 
-
 function AddTaskList()  {
     //add a react component to the workspace
     //find workspace
