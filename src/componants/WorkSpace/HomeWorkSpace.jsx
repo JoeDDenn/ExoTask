@@ -5,6 +5,7 @@ import NavWorkSpcae from './Nav/NavWorkSpcae'
 import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
+import AddComp from '../AddComp/AddComp'
 
 
 const HomeWorkSpace = () => {
@@ -15,8 +16,14 @@ const HomeWorkSpace = () => {
     <AnimatedBackground>
      <NavWorkSpcae/>
       <SideBar/>
-     <Main/> 
+     {/* <Main/>  */}
+     <div className='workspace container' id='workspace'>
+        <div className='Block' id="1">
+          <p className='paragraph' contentEditable='true'>Type here...</p>
+        </div>
+     </div>
      <Chatbot/>
+      <AddComp/>
     </AnimatedBackground>
     </div>
 

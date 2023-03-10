@@ -4,16 +4,15 @@ import './Chatbot.css';
 import ChatWindow from './ChatWindow';
 
 const Chatbot = () => {
-  const [showChat, setShowChat] = useState(true);
+  const [showChat, setShowChat] = useState(false);
 
   const handleChatClick = () => {
     setShowChat(!showChat);
-    console.log('Chatbot clicked');
   };
 
   return (
     <div className="chatbot-container">
-      <button className="chat-icon" onClick={handleChatClick}><i class="fa fa-robot"></i></button>
+      <button className="chat-icon" onClick={handleChatClick}><i className="fa fa-robot"></i></button>
       {showChat && <ChatWindow />}
     </div>
   );

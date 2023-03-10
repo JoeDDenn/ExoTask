@@ -19,7 +19,6 @@ class EditableBlock extends React.Component {
     super(props);
     // ...
     this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
-    console.log("onKeyUpHandler bound to component instance");
     this.openSelectMenuHandler = this.openSelectMenuHandler.bind(this);
     this.closeSelectMenuHandler = this.closeSelectMenuHandler.bind(this);
     this.tagSelectionHandler = this.tagSelectionHandler.bind(this);
@@ -38,10 +37,11 @@ class EditableBlock extends React.Component {
       }
     };
   }
-  
-      
-    
-      onChangeHandler(e) {
+
+  onChangeHandler(e) {
+    this.setState({ html: e.target.value });
+  }
+      onKeyUpHandler(e) {
         this.setState({ html: e.target.value });
       }
 
@@ -86,8 +86,6 @@ class EditableBlock extends React.Component {
           setCaretToEnd(this.contentEditable.current);
         });
       }
-  
-  
   
       onKeyDownHandler(e) {
       if (e.key === "/") {
@@ -134,12 +132,7 @@ class EditableBlock extends React.Component {
           onChange={this.onChangeHandler}
           onKeyDown={this.onKeyDownHandler}
         />
-        
-        
         </>
-        
-
-      
       );
     }
   }
