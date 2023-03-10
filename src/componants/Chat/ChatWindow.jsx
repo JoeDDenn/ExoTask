@@ -14,8 +14,7 @@ class ChatWindow extends React.Component {
       error: null
     };
   }
-
-  toggleWindow = () => {
+toggleWindow = () => {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
     }));
@@ -48,10 +47,9 @@ class ChatWindow extends React.Component {
       .catch(error => {
         this.setState({ error, isLoading: false });
       });
-    
-  };
 
-  handleInputChange = (event) => {
+  };
+handleInputChange = (event) => {
     this.setState({ userInput: event.target.value });
   };
 
