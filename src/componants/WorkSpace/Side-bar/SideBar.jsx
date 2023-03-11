@@ -80,7 +80,7 @@ const SideBar = () => {
             </div>
             <div className="info">
               <a href="#" className="d-block">
-                {username}
+                {Username}
               </a>
             </div>
           </div>
