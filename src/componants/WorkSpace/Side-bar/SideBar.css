@@ -12,3 +12,42 @@
   background-color: rgb(226, 124, 204) !important;
 }
 
+
+
+.cust-li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cust-li > div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cust-li > div:hover {
+  background-color: #bb7ab8;
+}
+
+.cust-li i {
+  margin-right: 5px;
+}
+
+.cust-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.cust-ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cust-ul li:hover {
+  background-color: #bb7ab8;
+}
+
