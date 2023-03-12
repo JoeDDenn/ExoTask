@@ -12,6 +12,11 @@
     max-height: 300px;
 }
 
+.workspace video{
+    max-width: 300px;
+    max-height: 300px;
+}
+
 .Block{
     display: flex;
     z-index: 1;

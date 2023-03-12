@@ -12,7 +12,7 @@ const NewProject = () => {
     };
 
   return (
-    <div className='btn btn-sidebar newProj-btn'>
+    <div className='btn form-control-sidebar btn-sidebar newProj-btn'>
         <span className="newProj-btn-text">New Project</span>
         <button className="newProj-btn" onClick={handleSelectClick}>
           <i className="fas fa-plus fa-fw newProj-btn-icon" />
