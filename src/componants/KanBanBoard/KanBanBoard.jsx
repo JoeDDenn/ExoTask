@@ -35,15 +35,19 @@ export default class KanBanBoard extends Component {
 
     render() {
         return (
-            <div id='KanBan' className='KanBan'>
+            <div id='KanBan' className='KanBan Board'>
                 <div className='KanBan-Header'>
-                    <h1>Header</h1>
+                    <h2>My Board</h2>
                 </div>
                 {/* Button to create a TaskList component */}
                 
                 {/* Render all the TaskList components stored in the state */}
-                {this.state.taskLists}
-                <button className='KanBan-AddTaskList' onClick={this.AddTaskList}>Add Task List</button>
+                <div className=''>
+                    <div className='tasklistContainer'> 
+                        {this.state.taskLists}
+                    </div>
+                </div>
+                <button className='KanBan-AddTaskList' onClick={this.AddTaskList}> <i className='fa fa-plus'></i></button>
 
             </div>
         )

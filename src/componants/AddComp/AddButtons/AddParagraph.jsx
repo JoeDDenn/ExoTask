@@ -56,7 +56,6 @@ function AddBlock(className, id) {
     }
     newBlock.appendChild(newDeleteButton);
 
-
 }
 
 

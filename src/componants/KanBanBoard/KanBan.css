@@ -1,25 +1,55 @@
 
 .KanBan-AddTaskList{
-/* make it in the bottom right corner of div */
-position: absolute;
-bottom: 0;
-right: 0;
-
+    /* make it in the bottom right corner of div */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    margin: 15px;
+    background-color: #f2f2f2;
 }
 .Block {
-    position: relative;
     padding: 10px 10px 12px 10px;
     margin-bottom: 0 !important;
     border: 1px solid #a586a672;
-   border-radius: 5px;
-   box-shadow: 0 0 5px #a586a672;
-
+    border-radius: 5px;
+    box-shadow: 0 0 5px #a586a672;
+    
 }
 .Block p {
-
-  margin-top: 0 !important;
-margin-bottom: 0 !important;
-   padding: 10px;
+    
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 10px;
     font-size: 20px;
+    
+}
 
+.Board{
+    width: 100%;
+    position: relative;
+    min-height: 250px;
+    background-color: rgba(233, 185, 248, 0.6);
+}
+
+.KanBan-Header{
+    height: 50px;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tasklistContainer{
+    min-height: 200px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.task-list{
+    min-width: 200px;
+    margin: 15px;
 }
