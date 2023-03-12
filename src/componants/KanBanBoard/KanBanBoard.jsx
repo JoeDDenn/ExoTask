@@ -1,6 +1,6 @@
 import { getElementById } from 'domutils'
 import React, { Component, useState } from 'react'
-import TaskList from '../TaskList/TaskList'
+import TaskList from './TaskList/TaskList'
 import  './KanBan.css'
 
 

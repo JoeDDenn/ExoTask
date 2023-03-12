@@ -50,6 +50,21 @@
 }
 
 .task-list{
-    min-width: 200px;
+    border: 2px #a586a672 solid;
+    padding: 10px;
+    min-width: 270px;
     margin: 15px;
+    background-color: #e1b7e372;
+}
+.AddCard{
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color: #9d86a65d;
+    border: 1px solid #a82c7a;
+}
+
+.buttonColored{
+    color: #a53997e7 !important;
 }
