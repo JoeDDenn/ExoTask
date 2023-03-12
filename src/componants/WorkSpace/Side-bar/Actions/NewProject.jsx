@@ -1,15 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
-
+import ProjectCreator from './ProjectCreator'
 import './Actions.css'
 
 const NewProject = () => {
+
+    const [showSelect, setshowSelect] = useState(false);
+  
+    const handleSelectClick = () => {
+      setshowSelect(!showSelect);
+    };
+
   return (
-    <div>
-        <NavLink className="btn btn-sidebar newProj-btn" to="/CreateProjForum">
-            <span className="newProj-btn-text">New Project</span>
+    <div className='btn btn-sidebar newProj-btn'>
+        <span className="newProj-btn-text">New Project</span>
+        <button className="newProj-btn" onClick={handleSelectClick}>
           <i className="fas fa-plus fa-fw newProj-btn-icon" />
-        </NavLink>
+        </button>
+          {showSelect && <ProjectCreator />}
   </div>
   )
 }
