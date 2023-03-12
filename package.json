@@ -15,6 +15,7 @@
     "html-react-parser": "^3.0.12",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-contenteditable": "^3.3.6",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
