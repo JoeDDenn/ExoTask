@@ -6,6 +6,7 @@ import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
 import AddComp from '../AddComp/AddComp'
 import KanBanBoard from '../KanBanBoard/KanBanBoard'
+import Popup from '../Popup/Popup'
 
 
 
@@ -20,7 +21,6 @@ const HomeWorkSpace = () => {
      <NavWorkSpcae/>
       <SideBar/>
      {/* <Main/>  */}
-
     
     <div className='container'>
     <AddComp/>
