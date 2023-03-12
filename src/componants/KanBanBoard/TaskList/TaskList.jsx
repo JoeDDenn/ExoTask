@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import Card from '../Card/Card';
 
 const TaskList = () => {
-  const [cards, setCards] = useState([]); // Array of cards to store in the state
-  const [newCardText, setNewCardText] = useState(''); // Text of the new card to add
+  const [cards, setCards] = useState([]);
+  const [newCardText, setNewCardText] = useState('');
 
-  // Function to handle adding a new card to the state
   const addCard = () => {
-    const updatedCards = [...cards, newCardText]; // Create a new array of cards with the new card appended
-    setCards(updatedCards); // Update the state with the new array of cards
-    setNewCardText(''); // Clear the input field
+    const newCard = { id: Date.now(), text: newCardText };
+    const updatedCards = [...cards, newCard];
+    setCards(updatedCards);
+    setNewCardText('');
   };
 
-  // Function to handle deleting a card from the state
   const cardDelete = (cardId) => {
-    const updatedCards = cards.filter((card, index) => index !== cardId); // Create a new array of cards with the specified card removed
-    setCards(updatedCards); // Update the state with the new array of cards
+    const updatedCards = cards.filter((card) => card.id !== cardId);
+    setCards(updatedCards);
   };
 
-  // Function to handle updating the input field with the new card text
   const handleNewCardTextChange = (event) => {
     setNewCardText(event.target.value);
   };
@@ -28,9 +26,13 @@ const TaskList = () => {
       <div className="task-list-header">
         <h4 contentEditable>New List</h4>
       </div>
-      {/* Use the Card component instead of the div */}
-      {cards.map((card, index) => (
-        <Card key={index} id={index} text={card} onDeleteCard={() => cardDelete(index)} />
+      {cards.map((card) => (
+        <Card
+          key={card.id}
+          id={card.id}
+          text={card.text}
+          onDeleteCard={() => cardDelete(card.id)}
+        />
       ))}
       <div className="add-card">
         <input type="text" placeholder="Add a card..." value={newCardText} onChange={handleNewCardTextChange} />

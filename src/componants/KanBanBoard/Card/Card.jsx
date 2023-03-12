@@ -10,7 +10,7 @@ const Card = ({ text, id, onDeleteCard }) => {
   };
 
   return (
-    <div className="TaskCard" draggable id={id}>
+    <div className="TaskCard"  id={id}>
       <div className="card-header">
         <h4 contentEditable>{text}</h4>
       </div>
@@ -19,7 +19,6 @@ const Card = ({ text, id, onDeleteCard }) => {
       </div>
       {/* add a checkbox to card*/}
       <div className="card-footer">
-        <p className='assigned'>assigned to {(localStorage.getItem("user"))? localStorage.getItem("user") : "You"}</p>
         <input type="checkbox" className="checkbox" />
         {/* button to delete card */}
         <button className="deleteCard" onClick={handleDeleteCard}>
