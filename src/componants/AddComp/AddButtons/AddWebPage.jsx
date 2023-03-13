@@ -1,28 +1,26 @@
 import React from 'react'
 
-class AddParagraph extends React.Component {
+const AddWebPage = () => {
 
-    addNewBlock = (className) => {
+    const addNewBlock = (className) => {
         const newBlockId = uid();
         AddBlock(className, newBlockId);
     }
 
-
-    render() {
-        return (
+  return (
+    <div>
+        <div className="ComponentList-item-title">
             <div className="ComponentList-item-title">
-                <div className="ComponentList-item-title">
-                    <button className="ComponentList-item-title-button" onClick={() => this.addNewBlock("WSParagraph")}>
-                        Paragraph
-                    </button>
-                </div>
+                <button className="ComponentList-item-title-button" onClick={() => addNewBlock("WSFrame")}>
+                    Link
+                </button>
             </div>
-        )
-    }
+        </div>
+    </div>
+  )
 }
 
-export default AddParagraph
-
+export default AddWebPage
 
 
 function AddBlock(className, id) {
@@ -32,13 +30,14 @@ function AddBlock(className, id) {
     const newBlock = document.createElement('div');
     newBlock.className = "Block";
     newBlock.id = id;
-    //add a paragraph to new block
-    const newParagraph = document.createElement('p');
-    newParagraph.innerHTML = 'Type here...';
-    newParagraph.contentEditable = true;
-    newParagraph.className = className;
-    newBlock.appendChild(newParagraph);
-
+   //embed iframe in new block
+    const newIframe = document.createElement('iframe');
+    newIframe.className = className;
+    // ask user for url
+    const url = prompt("Please enter the URL of the page you want to embed", "https://www.w3schools.com");
+    //set src of iframe to url
+    newIframe.src = url;
+    newBlock.appendChild(newIframe);
     //add new block to workspace
     workspace.appendChild(newBlock);
     //set focus on new block
@@ -49,14 +48,8 @@ function AddBlock(className, id) {
     const newDeleteIcon = document.createElement('i');
     newDeleteIcon.className = "fa fa-trash";
     newDeleteButton.appendChild(newDeleteIcon);
-    newDeleteButton.onclick = () => {
-        const block = document.getElementById(id);
-        block.parentNode.removeChild(block);
-    }
-    newBlock.appendChild(newDeleteButton);
+
 }
-
-
 
 const uid = () => {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);

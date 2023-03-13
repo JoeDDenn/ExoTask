@@ -8,13 +8,13 @@
 }
 
 .workspace img{
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 .workspace video{
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 .Block{
@@ -35,4 +35,9 @@
     border-radius: 5px;
     border: 1px solid #caa5d1cd;
     width: 40px;
+}
+
+.WSFrame{
+    width: 600px;
+    height: 400px;
 }
