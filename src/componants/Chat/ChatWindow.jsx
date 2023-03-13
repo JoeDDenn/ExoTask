@@ -42,7 +42,7 @@ toggleWindow = () => {
           messages: [
             ...prevState.messages,
             {
-              text: "ExoTask bot: " + response.data.answer,
+              text: "ExoBot: " + response.data.answer,
               isUser: false
             }
           ],
