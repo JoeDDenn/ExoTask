@@ -25,6 +25,15 @@ toggleWindow = () => {
     const username = localStorage.getItem('username');
 
     this.setState({ isLoading: true });
+    this.setState(prevState => ({
+      messages: [
+        ...prevState.messages,
+        {
+          text: username|| "User" + ": " + this.state.userInput,
+          isUser: true
+        }],
+        userInput: '',
+        }));
     axios.post('http://localhost:8000/answer', {
         question: JSON.stringify(this.state.userInput)
       })
@@ -33,15 +42,10 @@ toggleWindow = () => {
           messages: [
             ...prevState.messages,
             {
-              text: username|| "User" + ": " + this.state.userInput,
-              isUser: true
-            },
-            {
               text: "ExoTask bot: " + response.data.answer,
               isUser: false
             }
           ],
-          userInput: '',
           isLoading: false
         }));
 
