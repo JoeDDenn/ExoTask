@@ -4,14 +4,71 @@ import NavWorkSpcae from './Nav/NavWorkSpcae'
 import './HomeWorkSpace.css'
 import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
-import AddComp from '../AddComp/AddComp'
+import AddCompList from '../AddComp/AddCompList'
 import KanBanBoard from '../KanBanBoard/KanBanBoard'
 import AddBlock from './AddBlock'
 import { useEffect } from 'react'
 
 
 
-const board = {
+
+
+const buildBlocks = (blocklist) => {
+  for (let i = 0; i < blocklist.length; i++) {
+    AddBlock(blocklist[i].type, blocklist[i], blocklist[i].classname)
+  }
+}
+
+const HomeWorkSpace = () => {
+
+  if(localStorage.getItem('token') === null)
+     window.location.replace('/login')
+
+  else{
+    return (
+      <div className='wrapper'>
+      <AnimatedBackground>
+       <NavWorkSpcae/>
+        <SideBar/>
+       {/* <Main/>  */}
+      <div className='container'>
+      <AddCompList/>
+      <Workspace/>
+      </div>
+       <Chatbot/>
+      </AnimatedBackground>
+      </div>
+    )
+  }
+}
+
+
+export default HomeWorkSpace
+
+
+
+
+const Workspace = () => {
+
+  const [blocks, setBlocks] = React.useState(BlocksfromBackEnd.BlocksList)
+  console.log(blocks)
+  
+  useEffect(() => {
+    buildBlocks(blocks)
+  }, []);
+
+
+  return (
+    <div className='workspace container' id='workspace'>
+      <div className='Block' id="1">
+        <KanBanBoard state={boardFromBackEnd} />
+      </div>
+    </div>
+  )
+}
+
+
+const boardFromBackEnd = {
   id: 'board-1',
   title: 'My board',
   taskLists : [
@@ -60,9 +117,9 @@ const board = {
   ]
 }
 
-const Blocks = {
+const BlocksfromBackEnd = {
   wsID : '1',
-  Blocks : [
+  BlocksList : [
     {
       id: 'block-1',
       type: 'paragraph',
@@ -101,41 +158,3 @@ const Blocks = {
     },
   ]
 }
-
-
-const buildBlocks = (blocklist) => {
-  for (let i = 0; i < blocklist.length; i++) {
-    AddBlock(blocklist[i].type, blocklist[i], blocklist[i].classname)
-  }
-}
-
-const HomeWorkSpace = () => {
-  useEffect(() => {
-    buildBlocks(Blocks.Blocks)
-  }, []);
-
-  if(localStorage.getItem('token') === null) window.location.replace('/login')
-  else{
-    return (
-      <div className='wrapper'>
-      <AnimatedBackground>
-       <NavWorkSpcae/>
-        <SideBar/>
-       {/* <Main/>  */}
-      <div className='container'>
-      <AddComp/>
-       <div className='workspace container' id='workspace'>
-          <div className='Block' id="1">
-            <KanBanBoard state={board} />
-          </div>
-       </div>
-      </div>
-       <Chatbot/>
-      </AnimatedBackground>
-      </div>
-    )
-  }
-}
-
-
-export default HomeWorkSpace

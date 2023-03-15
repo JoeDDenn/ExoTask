@@ -3,7 +3,7 @@ import './AddComp.css';
 import SelectMenuWindow from './SelectMenu';
 
 
-const AddComp = () => {
+const AddCompList = () => {
   const [showSelect, setshowSelect] = useState(false);
 
   const handleSelectClick = () => {
@@ -27,4 +27,4 @@ const AddComp = () => {
   );
 };
 
-export default AddComp;
+export default AddCompList;

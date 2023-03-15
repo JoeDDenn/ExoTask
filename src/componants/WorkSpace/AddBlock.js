@@ -5,8 +5,6 @@ function AddBlock(type, block, className) {
 
     //find workspace
     const workspace = document.getElementById('workspace');
-
-    
     //create new block
     const newBlock = document.createElement('div');
     newBlock.className = "Block";
@@ -62,5 +60,7 @@ function AddBlock(type, block, className) {
     }
     newBlock.appendChild(newDeleteButton);
 }
+
+
 export default AddBlock;
 
