@@ -56,7 +56,7 @@ const Workspace = (props) => {
 
   return (
     <div className="container bbbb">
-      <KanBanBoard state={boardFromBackEnd} />
+      <KanBanBoard boardFromBackEnd={boardFromBackEnd} />
       <div className="container" id="workspace">
         <div className="Block" id="1">
         </div>
@@ -82,7 +82,7 @@ const boardFromBackEnd = {
     {
       id: 'taskList-1',
       title: 'To do',
-      tasks: [
+      cards: [
         {
           id: 'task-1',
           title: 'Learn React',
@@ -100,7 +100,7 @@ const boardFromBackEnd = {
     {
       id: 'taskList-2',
       title: 'In progress',
-      tasks: [
+      cards: [
         {
           id: 'task-3',
           title: 'Learn Webpack',
@@ -112,7 +112,7 @@ const boardFromBackEnd = {
     {
       id: 'taskList-3',
       title: 'Done',
-      tasks: [
+      cards: [
         {
           id: 'task-4',
           title: 'Learn Node.js',
