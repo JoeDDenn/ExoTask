@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import AddBlock from '../../WorkSpace/AddBlock';
 
-const Addimg = () => {
+const Addvideo = () => {
 
   const addMediaBlock = () => {
     const block = {
-      type: 'image',
+      type: 'video',
       className: 'WSMedia',
       data: {
         file: {
@@ -19,10 +19,10 @@ const Addimg = () => {
   return (
     <div className="ComponentList-item-title">
       <button className="ComponentList-item-title-button" onClick={addMediaBlock}>
-        Add image
+        Add video 
       </button>
     </div>
   );
 };
 
-export default Addimg;
+export default Addvideo;

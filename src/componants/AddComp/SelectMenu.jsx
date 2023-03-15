@@ -3,6 +3,7 @@ import AddHeading from './AddButtons/AddHeading';
 import AddParagraph from './AddButtons/AddParagraph';
 import Addimg from './AddButtons/AddImg';
 import AddWebPage from './AddButtons/AddWebPage';
+import Addvideo from './AddButtons/Addvideo';
 import './AddComp.css';
 
 // create a window with a menu list of components to add to the workspace
@@ -37,6 +38,7 @@ class SelectMenuWindow extends React.Component {
               <AddHeading/>
               <AddParagraph />
               <Addimg />
+              <Addvideo />
               <AddWebPage/>
             </div>
           </div>

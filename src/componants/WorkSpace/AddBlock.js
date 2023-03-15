@@ -46,9 +46,36 @@ function AddBlock(type, block, className) {
             else{
                 newImage.src = block.data.file.url;
             }   
+
             newImage.className = className;
             newBlock.appendChild(newImage);
             break;
+        case 'video':
+            //add a video to new block
+            const newVideo = document.createElement('video');
+            newVideo.controls = true;
+            if(block.data.file.url === ""){
+                //ask user for url
+                const fileSelect = document.createElement('input');
+                fileSelect.type = 'file';
+                fileSelect.accept = 'video/*';
+                fileSelect.click();
+                fileSelect.onchange = () => {
+                    const file = fileSelect.files[0];
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => {
+                        newVideo.src = reader.result;
+                    };
+                };
+            }
+
+            else{
+                newVideo.src = block.data.file.url;
+            }
+            newVideo.className = className;
+            newBlock.appendChild(newVideo);
+            break;      
         case 'webpage':
             const newIframe = document.createElement('iframe');
             newIframe.className = className;
