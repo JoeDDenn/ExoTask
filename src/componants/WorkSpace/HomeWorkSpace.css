@@ -7,14 +7,18 @@
     padding: 5px;
 }
 
-.workspace img{
-    max-width: 600px;
-    max-height: 400px;
+.bbbb{
+    margin-right: 50px;
+    margin-top: 20px;
+    max-width: 70%;
+    border: 1px solid #f1f1f1;
+    background-color: rgba(92, 46, 46, 0.29);
+    padding: 5px;
 }
 
-.workspace video{
-    max-width: 600px;
-    max-height: 400px;
+.workspace img, .workspace video .WSImage{
+    width: 600px !important;
+    height: 400px   !important;
 }
 
 .Block{

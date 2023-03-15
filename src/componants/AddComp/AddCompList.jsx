@@ -3,7 +3,7 @@ import './AddComp.css';
 import SelectMenuWindow from './SelectMenu';
 
 
-const AddCompList = () => {
+const AddCompList = (props) => {
   const [showSelect, setshowSelect] = useState(false);
 
   const handleSelectClick = () => {
@@ -19,10 +19,11 @@ const AddCompList = () => {
     
   };
 
+
   return (
     <div className="Comp-select-container">
       <button className="chat-icon" onClick={handleSelectClick}><i className="fa fa-plus"></i></button>
-      {showSelect && <SelectMenuWindow />}
+      {showSelect && <SelectMenuWindow/>}
     </div>
   );
 };

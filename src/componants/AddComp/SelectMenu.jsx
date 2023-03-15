@@ -24,15 +24,17 @@ class SelectMenuWindow extends React.Component {
     }));
   };
 
+  
   render() {
     const { isOpen, isLoading } = this.state;
-
+    
+    
     return (
       <div className="Select-window">
         {isOpen && (
           <div className="ComponentList">
             <div className="ComponentList-item">
-              <AddHeading />
+              <AddHeading/>
               <AddParagraph />
               <Addimg />
               <AddWebPage/>

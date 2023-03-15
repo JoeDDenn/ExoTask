@@ -28,7 +28,24 @@ function AddBlock(type, block, className) {
         case 'image':
             //add a image to new block
             const newImage = document.createElement('img');
-            newImage.src = block.data.file.url;
+            if(block.data.file.url === ""){
+                //ask user for url
+                const fileSelect = document.createElement('input');
+                fileSelect.type = 'file';
+                fileSelect.accept = 'image/*,video/*';
+                fileSelect.click();
+                fileSelect.onchange = () => {
+                  const file = fileSelect.files[0];
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onload = () => {
+                    newImage.src = reader.result;
+                    };
+                };
+            }
+            else{
+                newImage.src = block.data.file.url;
+            }   
             newImage.className = className;
             newBlock.appendChild(newImage);
             break;

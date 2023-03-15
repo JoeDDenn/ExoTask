@@ -11,20 +11,20 @@ import { useEffect } from 'react'
 
 
 
-
-
-const buildBlocks = (blocklist) => {
-  for (let i = 0; i < blocklist.length; i++) {
-    AddBlock(blocklist[i].type, blocklist[i], blocklist[i].classname)
-  }
-}
-
 const HomeWorkSpace = () => {
+
+  const [blocks, setBlocks] = React.useState(BlocksfromBackEnd.BlocksList);
+
+  //append block to blocks list
+  const appendBlock = (block) => {
+    setBlocks([...blocks, block]);
+    console.log(blocks);
+  }
 
   if(localStorage.getItem('token') === null)
      window.location.replace('/login')
-
-  else{
+     
+     else{
     return (
       <div className='wrapper'>
       <AnimatedBackground>
@@ -33,7 +33,7 @@ const HomeWorkSpace = () => {
        {/* <Main/>  */}
       <div className='container'>
       <AddCompList/>
-      <Workspace/>
+      <Workspace blocklist={blocks} />
       </div>
        <Chatbot/>
       </AnimatedBackground>
@@ -46,27 +46,34 @@ const HomeWorkSpace = () => {
 export default HomeWorkSpace
 
 
+const Workspace = (props) => {
+  const [blocks, setBlocks] = React.useState(props.blocklist);
+  console.log(blocks);
 
-
-const Workspace = () => {
-
-  const [blocks, setBlocks] = React.useState(BlocksfromBackEnd.BlocksList)
-  console.log(blocks)
-  
   useEffect(() => {
-    buildBlocks(blocks)
+    buildBlocks(blocks);
   }, []);
 
-
   return (
-    <div className='workspace container' id='workspace'>
-      <div className='Block' id="1">
-        <KanBanBoard state={boardFromBackEnd} />
+    <div className="container bbbb">
+      <KanBanBoard state={boardFromBackEnd} />
+      <div className="container" id="workspace">
+        <div className="Block" id="1">
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
+const buildBlocks = (blocklist) => {
+  //clear workspace
+  const workspace = document.getElementById('workspace');
+  workspace.innerHTML = '';
+  //add blocks to workspace
+  for (let i = 0; i < blocklist.length; i++) {
+    AddBlock(blocklist[i].type, blocklist[i], blocklist[i].classname)
+  }
+}
 
 const boardFromBackEnd = {
   id: 'board-1',
@@ -146,14 +153,6 @@ const BlocksfromBackEnd = {
           url: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
         },
         caption: 'This is an image',
-      }
-    },
-    {
-      id: 'block-4',
-      type: 'webpage',
-      classname : 'WSFrame',
-      data: {
-        url: 'https://www.youtube.com/embed/Vqa9NMzF3wc',
       }
     },
   ]
