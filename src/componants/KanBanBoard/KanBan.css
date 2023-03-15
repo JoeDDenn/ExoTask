@@ -8,7 +8,7 @@
     width: 30px;
     height: 30px;
     margin: 15px;
-    background-color: #f2f2f2;
+    background-color: #8f7dcf;
 }
 .Block {
     padding: 10px 10px 12px 10px;
@@ -31,7 +31,7 @@
     width: 100%;
     position: relative;
     min-height: 250px;
-    background-color: rgba(233, 185, 248, 0.6);
+    background-color: rgba(143, 101, 156, 0.6);
 }
 
 .KanBan-Header{
@@ -54,7 +54,7 @@
     padding: 10px;
     min-width: 270px;
     margin: 15px;
-    background-color: #e1b7e372;
+    background-color: #9e6fa172;
 }
 .AddCard{
     border-radius: 20px;
@@ -64,7 +64,14 @@
     background-color: #9d86a65d;
     border: 1px solid #a82c7a;
 }
+.add-card input{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #fad6f48c;
+    border: 1px solid #d791be;
+}
 
 .buttonColored{
-    color: #a53997e7 !important;
+    color: #573051e7 !important;
 }

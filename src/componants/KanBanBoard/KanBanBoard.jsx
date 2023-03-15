@@ -44,23 +44,23 @@ export default class KanBanBoard extends Component {
         console.log("this is a board title"+boardtitle);
         return (
             <DragDropContext onDragEnd={result => console.log(result)}>
-            <div id='KanBan' className='KanBan Board'>
+            <div id='KanBan' className='KanBan Board '>
                 <div className='KanBan-Header'>
                     <h2>{boardtitle}</h2>
                 </div>
                 {/* Button to create a TaskList component */}
                 
                 {/* Render all the TaskList components stored in the state */}
-                <div className="board-body">
-                {taskLists.map((list) => (
-      <TaskList
-        key={list.id}
-        id={list.id}
-        title={list.title}
-        cards={list.cards}
-      />
-    ))}
-      </div>
+                <div className="board-body tasklistContainer">
+                    {taskLists.map((list) => (
+                    <TaskList
+                        key={list.id}
+                        id={list.id}
+                        title={list.title}
+                        cards={list.cards}
+                    />
+                    ))}
+                </div>
                 <button className='KanBan-AddTaskList' onClick={this.AddTaskList}> <i className='fa fa-plus'></i></button>
             </div>
             </DragDropContext>

@@ -1,8 +1,9 @@
 .TaskCard{
-    background-color: rgba(212, 196, 227, 0.608);
+    background-color: rgba(177, 152, 201, 0.608);
     border-radius: 5px;
     min-width: 200px;
     min-height: 100px;
+    margin: 5px;
 }
 
 
