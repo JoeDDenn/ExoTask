@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Card from '../Card/Card';
 import { v4 as uuid } from 'uuid';
-
-const TaskList = () => {
-  const [cards, setCards] = useState([]);
+const TaskList = (props) => {
+const title = props.title;
+  const [cards, setCards] = useState(props.cards);
   const [newCardText, setNewCardText] = useState('');
 
   const addCard = () => {
@@ -31,13 +31,14 @@ const TaskList = () => {
           ref = {provided.innerRef}
           >
           <div className="task-list-header">
-            <h4 contentEditable>New List</h4>
+            <h4 contentEditable>{title? title:"New List" }</h4>
           </div>
           {cards.map((card) => (
             <Card
               key={card.id}
+              title={card.title}
               id={card.id}
-              text={card.text}
+              description={card.description}
               onDeleteCard={() => cardDelete(card.id)}
               index={card.index}
             />

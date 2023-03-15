@@ -3,7 +3,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import './Card.css';
 import axios from 'axios';
 
-const Card = ({ text, id, onDeleteCard, index }) => {
+const Card = ({ description, id, onDeleteCard, index, title}) => {
 
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
@@ -78,10 +78,10 @@ const Card = ({ text, id, onDeleteCard, index }) => {
             ref={provided.innerRef}
           >
             <div className="card-header">
-              <h4 contentEditable>{text}</h4>
+              <h4 contentEditable>{title}</h4>
             </div>
             <div className="card-body">
-              <p contentEditable className="cardText">{input}</p>
+              <p contentEditable className="cardText">{description}</p>
             </div>
             {provided.placeholder}
             <div className="card-footer">

@@ -10,10 +10,13 @@ export default class KanBanBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taskLists: [] // An array to store the TaskList components
+            boardtitle: boardFromBackEnd.title,
+          taskLists: boardFromBackEnd.taskLists // Set the initial state with the task lists from boardFromBackEnd
         };
-    }
-
+      }
+ KanBanBoard = () => {
+    const [board, setTaskLists] = useState(boardFromBackEnd);
+}
     // Function to add a new TaskList component to the state
     addTaskList = () => {
         const taskLists = this.state.taskLists;
@@ -36,20 +39,28 @@ export default class KanBanBoard extends Component {
       
 
     render() {
+        const { taskLists } = this.state;
+        const { boardtitle } = this.state;
+        console.log("this is a board title"+boardtitle);
         return (
             <DragDropContext onDragEnd={result => console.log(result)}>
             <div id='KanBan' className='KanBan Board'>
                 <div className='KanBan-Header'>
-                    <h2>My Board</h2>
+                    <h2>{boardtitle}</h2>
                 </div>
                 {/* Button to create a TaskList component */}
                 
                 {/* Render all the TaskList components stored in the state */}
-                <div className=''>
-                    <div className='tasklistContainer'> 
-                        {this.state.taskLists}
-                    </div>
-                </div>
+                <div className="board-body">
+                {taskLists.map((list) => (
+      <TaskList
+        key={list.id}
+        id={list.id}
+        title={list.title}
+        cards={list.cards}
+      />
+    ))}
+      </div>
                 <button className='KanBan-AddTaskList' onClick={this.AddTaskList}> <i className='fa fa-plus'></i></button>
             </div>
             </DragDropContext>
@@ -57,3 +68,53 @@ export default class KanBanBoard extends Component {
     }
 }
 
+
+
+const boardFromBackEnd = {
+    id: 'board-1',
+    title: 'My board',
+    taskLists : [
+      {
+        id: 'taskList-1',
+        title: 'To do',
+        cards: [
+          {
+            id: 'task-1',
+            title: 'Learn React',
+            description: 'Learn how to use React to build web applications',
+            status: 'todo'
+          },
+          {
+            id: 'task-2',
+            title: 'Learn Redux',
+            description: 'Learn how to use Redux to manage the state of web applications',
+            status: 'todo'
+          }
+        ]
+      },
+      {
+        id: 'taskList-2',
+        title: 'In progress',
+        cards: [
+          {
+            id: 'task-3',
+            title: 'Learn Webpack',
+            description: 'Learn how to use Webpack to bundle web applications',
+            status: 'in-progress'
+          }
+        ]
+      },
+      {
+        id: 'taskList-3',
+        title: 'Done',
+        cards: [
+          {
+            id: 'task-4',
+            title: 'Learn Node.js',
+            description: 'Learn how to use Node.js to build web servers',
+            status: 'done'
+          }
+        ]
+      }
+    ]
+  }
