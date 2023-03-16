@@ -4,17 +4,16 @@ import { json, Link } from 'react-router-dom'
 import NewProject from './Actions/NewProject'
 
 
-const projectList = []
-let project = localStorage.getItem('projectList')
-for (let i = 0; i < project.length; i++) {
-  let proj = {
-    name: project[i].name,
-    id: project[i].id,
-  }
-  projectList.push(proj)
-}
+let projectList = []
 
-console.log(projectList)
+for(let i = 0; i < localStorage.getItem('projectListLength'); i++)
+{
+  let project = {
+    id: localStorage.getItem('projectList'+i+'id'),
+    name: localStorage.getItem('projectList'+i+'name'),
+  }
+  projectList.push(project)
+}
 
 const ProjectItem = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false)
