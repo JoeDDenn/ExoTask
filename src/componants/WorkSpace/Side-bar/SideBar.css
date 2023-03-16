@@ -1,6 +1,6 @@
 .main-sidebar{
-    background-color: rgba(125, 45, 84, 0.2) !important;
-    background: rgb(255, 255, 255);
+    background-color: rgba(127, 58, 93, 0.485) !important;
+    /* background: rgb(255, 255, 255); */
 }
 
 .brand-image{
@@ -25,6 +25,7 @@
   align-items: center;
   padding: 10px;
   cursor: pointer;
+  color: var(--textColor) !important;
 }
 
 .cust-li > div:hover {
@@ -33,6 +34,7 @@
 
 .cust-li i {
   margin-right: 5px;
+  color: var(--textColor) !important;
 }
 
 .cust-ul {
@@ -43,6 +45,7 @@
 }
 
 .cust-ul li {
+  color: var(--textColor) !important;
   padding: 10px;
   cursor: pointer;
 }
@@ -51,3 +54,7 @@
   background-color: #bb7ab8;
 }
 
+/* define some color css variables */
+:root{
+  --textColor : #a58997;
+}

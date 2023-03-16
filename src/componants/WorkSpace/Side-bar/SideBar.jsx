@@ -1,38 +1,20 @@
 import React, { useState } from 'react'
 import './SideBar.css'
-import { Link } from 'react-router-dom'
+import { json, Link } from 'react-router-dom'
 import NewProject from './Actions/NewProject'
 
-const projectList = [
-  {
-    id: 1,
-    name: 'Project 1',
-    workspaces: [
-      {
-        id: 1,
-        name: 'Workspace 1',
-      },
-      {
-        id: 2,
-        name: 'Workspace 2',
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'Project 2',
-    workspaces: [
-      {
-        id: 1,
-        name: 'Workspace 1',
-      },
-      {
-        id: 2,
-        name: 'Workspace 2',
-      },
-    ],
-  },
-]
+
+const projectList = []
+let project = localStorage.getItem('projectList')
+for (let i = 0; i < project.length; i++) {
+  let proj = {
+    name: project[i].name,
+    id: project[i].id,
+  }
+  projectList.push(proj)
+}
+
+console.log(projectList)
 
 const ProjectItem = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -45,14 +27,17 @@ const ProjectItem = ({ project }) => {
     <>
       <li className='cust-li'>
         <div onClick={handleToggle}>
-          {project.workspaces.length > 0 && <i className={`fas fa-caret-${isOpen ? 'down' : 'right'}`} />}
+          {project.workspaces!=null && <i className={`fas fa-caret-${isOpen ? 'down' : 'right'}`} />}
           {project.name}
         </div>
         {isOpen && (
           <ul className='cust-ul'>
-            {project.workspaces.map((workspace) => (
-              <li key={workspace.id}>{workspace.name}</li>
-            ))}
+            {
+               project.workspaces.map((workspace) => (
+                <li key={workspace.id}>{workspace.name}</li>
+                )
+              )
+            }
           </ul>
         )}
       </li>

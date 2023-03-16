@@ -41,7 +41,6 @@ export default class KanBanBoard extends Component {
     render() {
         const { taskLists } = this.state;
         const { boardtitle } = this.state;
-        console.log("this is a board title"+boardtitle);
         return (
             <DragDropContext onDragEnd={result => console.log(result)}>
             <div id='KanBan' className='KanBan Board '>

@@ -38,6 +38,20 @@ class Login extends React.Component {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userName', response.data.userNameOrEmail);
 
+      let projectList = []
+
+      for (let i = 0; i < response.data.projectName.length; i++) {
+        //parse the project object from the response
+        let project = {
+          name: response.data.projectName[i].name,
+          id : response.data.projectName[i].id,
+        }
+        //push the project object to the projectList array
+        projectList.push(project)
+      }
+
+      localStorage.setItem('projectList', JSON.stringify(projectList));
+
       console.log(response.data.token)
       window.location.href = '/workspace';
 

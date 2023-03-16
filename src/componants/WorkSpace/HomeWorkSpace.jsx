@@ -18,7 +18,6 @@ const HomeWorkSpace = () => {
   //append block to blocks list
   const appendBlock = (block) => {
     setBlocks([...blocks, block]);
-    console.log(blocks);
   }
 
   if(localStorage.getItem('token') === null)
@@ -48,8 +47,6 @@ export default HomeWorkSpace
 
 const Workspace = (props) => {
   const [blocks, setBlocks] = React.useState(props.blocklist);
-  console.log(blocks);
-
   useEffect(() => {
     buildBlocks(blocks);
   }, []);
