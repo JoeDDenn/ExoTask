@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import './Card.css';
 import axios from 'axios';
+import { v4 as uuid } from 'uuid';
 
 const Card = ({ description, id, onDeleteCard, index, title}) => {
 
@@ -9,13 +10,19 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
   const [response, setResponse] = useState('');
   const [error, setError] = useState(null);
 
+  const textid = uuid();
+
   const handleDeleteCard = () => {
     onDeleteCard(id);
   };
 
   const handleHelp = () => {
-    const cardText = document.getElementsByClassName('cardText')[0].innerHTML;
-    const taskdesc = "i am working on  " + cardText + " , can you suggest some resources to help with this, please format the answer as a list of links with line breaks between each link";
+    //get div containing the card
+    const cardText = document.getElementById(textid).innerHTML;
+    //get the card body of the card
+    
+
+    const taskdesc = "i'm working on " + cardText + " ,suggest five resources to help with this, place a <div> at the start of the message with class of 'messageHeader' followed by a numbered list of <div>, each with links in an <a> tag with the class 'messageText' and describe each link briefly in a <p>";
     axios.post('http://localhost:8000/answer', {
         question: JSON.stringify(taskdesc)
       })
@@ -23,7 +30,11 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
         setResponse(response.data.answer);
         let message = document.getElementsByClassName('message-text')[0];
         const cardBody = document.getElementsByClassName('card-body')[0];
-  
+        //if message div exists, remove it
+        if (message) {
+          message.remove();
+        }
+        //create message div
         if (!message) {
           message = document.createElement('div');
           message.className = 'message-text';
@@ -38,8 +49,8 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
           messageWrapper.className = 'message';
           cardBody.appendChild(messageWrapper);
         }
-  
-        messageWrapper.innerHTML = `<button class="close">X</button>`;
+        
+        messageWrapper.innerHTML = `<button class="close messageClose"> X </button>`;
         messageWrapper.appendChild(message);
   
         const close = document.getElementsByClassName('close')[0];
@@ -68,7 +79,6 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
 
   return (
     <div>
-      <div className="message"></div>
 
       <Draggable draggableId={id} index={index}>
         {(provided) => (
@@ -81,7 +91,7 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
               <h4 contentEditable>{title}</h4>
             </div>
             <div className="card-body">
-              <p contentEditable className="cardText">{description}</p>
+              <p contentEditable className="cardText" id={textid} >{description}</p>
             </div>
             {provided.placeholder}
             <div className="card-footer">

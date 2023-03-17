@@ -4,11 +4,16 @@ import Card from '../Card/Card';
 import { v4 as uuid } from 'uuid';
 const TaskList = (props) => {
 const title = props.title;
-  const [cards, setCards] = useState(props.cards);
-  const [newCardText, setNewCardText] = useState('');
+
+const [cards, setCards] = useState(props.cards? props.cards : []);
+
+
+const [newCardText, setNewCardText] = useState('');
+
+
 
   const addCard = () => {
-    const newCard = { id: uuid(), text: newCardText, index: cards.length };
+    const newCard = { id: uuid(), title: newCardText, index: cards.length };
     const updatedCards = [...cards, newCard];
     setCards(updatedCards);
     setNewCardText('');
@@ -23,6 +28,7 @@ const title = props.title;
     setNewCardText(event.target.value);
   };
 
+
   return (
     <Droppable droppableId="task-list">
      {(provided) => (
@@ -33,8 +39,10 @@ const title = props.title;
           <div className="task-list-header">
             <h4 contentEditable>{title? title:"New List" }</h4>
           </div>
-          {cards.map((card) => (
-            <Card
+
+          {cards.length > 0 ? (
+            cards.map((card, index) => (
+              <Card
               key={card.id}
               title={card.title}
               id={card.id}
@@ -42,7 +50,16 @@ const title = props.title;
               onDeleteCard={() => cardDelete(card.id)}
               index={card.index}
             />
-          ))}
+
+            ))
+          ) : (
+            <>
+              
+            </>
+          )}
+
+
+
           {provided.placeholder}
           <div className="add-card">
             <input type="text" placeholder="Add a card..." value={newCardText} onChange={handleNewCardTextChange} />

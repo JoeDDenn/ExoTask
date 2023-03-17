@@ -55,18 +55,89 @@
 }
 
 .message{
-    background-color: rgba(254, 211, 255, 0.575);
+    /* gradient background color */
+    background-image: linear-gradient(230deg, #d36fdea7 30%, #396c83d3 80%);
     border-radius: 5px;
+    box-shadow: #291389;
     padding: 15px;
     position: absolute;
     top: -32px;
     right: -450px;
     min-height: 300px;
     max-width: 400px;
-    border: 1px solid #5916c5;
+    border: 1.2px solid #22147dce;
     font-size: large;
+}
+.message div{
+    border: 1 px solid #291389;
+    background-color: #af70d226;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .message-text{
-    color: #291389 !important;
+    color: #120a5d !important;
+    font-weight: bold;
 }
+
+.messageText{
+    color: #120a5d !important;
+    font-weight: bold;
+}
+
+.message-text a{
+    color: #282abd !important;
+    font-weight: bold;
+}
+
+.message-text a:hover{
+    color: #3235c2 !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.message-text p{
+    animation : typing 3s steps(30, end);
+}
+
+
+.messageText a{
+    color: #282abd !important;
+    font-weight: bold;
+}
+
+.messageText a:hover{
+    color: #3235c2 !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.messageText p{
+    animation : typing 3s steps(30, end);
+}
+
+.messageClose{
+    position: absolute;
+    background-color:#443dcc !important;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    transition: opacity .15s ease-in-out;
+}
+
+/* .messageText a{
+    animation : typing 3s steps(30, end);    
+} */
+
+/* animate the message text to appear in sequence like a typewriter */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+    from {overflow: hidden;}
+    to {overflow: visible;}
+}
+
+

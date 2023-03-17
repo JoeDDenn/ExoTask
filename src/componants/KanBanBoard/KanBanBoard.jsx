@@ -68,52 +68,63 @@ export default class KanBanBoard extends Component {
 }
 
 
-
 const boardFromBackEnd = {
-    id: 'board-1',
-    title: 'My board',
-    taskLists : [
-      {
-        id: 'taskList-1',
-        title: 'To do',
-        cards: [
-          {
-            id: 'task-1',
-            title: 'Learn React',
-            description: 'Learn how to use React to build web applications',
-            status: 'todo'
-          },
-          {
-            id: 'task-2',
-            title: 'Learn Redux',
-            description: 'Learn how to use Redux to manage the state of web applications',
-            status: 'todo'
-          }
-        ]
-      },
-      {
-        id: 'taskList-2',
-        title: 'In progress',
-        cards: [
-          {
-            id: 'task-3',
-            title: 'Learn Webpack',
-            description: 'Learn how to use Webpack to bundle web applications',
-            status: 'in-progress'
-          }
-        ]
-      },
-      {
-        id: 'taskList-3',
-        title: 'Done',
-        cards: [
-          {
-            id: 'task-4',
-            title: 'Learn Node.js',
-            description: 'Learn how to use Node.js to build web servers',
-            status: 'done'
-          }
-        ]
-      }
-    ]
-  }
+  id: 'board-1',
+  title: 'My board',
+  taskLists : [
+    {
+      id: 'taskList-1',
+      title: 'To do',
+      cards: [
+        {
+          id: 'task-1',
+          title: 'Learn React',
+          description: 'Learn how to use React to build web applications',
+          status: 'todo'
+        },
+        {
+          id: 'task-2',
+          title: 'Learn Redux',
+          description: 'Learn how to use Redux to manage the state of web applications',
+          status: 'todo'
+        }
+      ]
+    },
+    {
+      id: 'taskList-2',
+      title: 'In progress',
+      cards: [
+        {
+          id: 'task-3',
+          title: 'Learn Webpack',
+          description: 'Learn how to use Webpack to bundle web applications',
+          status: 'in-progress'
+        }
+      ]
+    },
+    {
+      id: 'taskList-3',
+      title: 'Done',
+      cards: [
+        {
+          id: 'task-4',
+          title: 'Learn Node.js',
+          description: 'Learn how to use Node.js to build web servers',
+          status: 'done'
+        }
+      ]
+    },
+    {
+      id: 'taskList-4',
+      title: 'planning',
+      cards: [
+        {
+          id: 'task-5',
+          title: 'Work on chat feature',
+          description: 'Work on chat feature for the web application',
+          status: 'Planning'
+        }
+      ]
+    }
+  ]
+}

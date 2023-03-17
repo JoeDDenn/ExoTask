@@ -117,6 +117,18 @@ const boardFromBackEnd = {
           status: 'done'
         }
       ]
+    },
+    {
+      id: 'taskList-4',
+      title: 'planning',
+      cards: [
+        {
+          id: 'task-5',
+          title: 'Work on chat feature',
+          description: 'Work on chat feature for the web application',
+          status: 'Planning'
+        }
+      ]
     }
   ]
 }
