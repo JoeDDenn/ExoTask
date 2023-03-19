@@ -3,18 +3,28 @@ import './SideBar.css'
 import { json, Link } from 'react-router-dom'
 import NewProject from './Actions/NewProject'
 import NewWorkspace from './Actions/NewWorkspace'
+import axios from 'axios'
 
 
 let projectList = []
-
-for(let i = 0; i < localStorage.getItem('projectListLength'); i++)
-{
-  let project = {
-    id: localStorage.getItem('projectList'+i+'id'),
-    name: localStorage.getItem('projectList'+i+'name'),
+//get project list from backend 
+const reqq = async () => {
+  try {
+    const response = await axios.get('https://localhost:7042/GetProjcts',
+      {
+        headers: {
+          authorization : "Bearer " + localStorage.getItem('token')
+        }
+      }
+    );
+    projectList = response.data;
+    console.log(projectList)
+  } catch (error) {
+    console.log(error);
   }
-  projectList.push(project)
 }
+
+reqq()
 
 const ProjectItem = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +43,7 @@ const ProjectItem = ({ project }) => {
         {isOpen && (
           <ul className='cust-ul'>
             {
-               project.workspaces.map((workspace) => (
+               project.workSpacseRes2.map((workspace) => (
                 <li key={workspace.id}>{workspace.name}</li>
                 )
               )

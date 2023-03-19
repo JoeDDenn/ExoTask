@@ -13,7 +13,7 @@ const [newCardText, setNewCardText] = useState('');
 
 
   const addCard = () => {
-    const newCard = { id: uuid(), title: newCardText, index: cards.length };
+    const newCard = { id: uuid(), title: newCardText, index: cards.length , status: TaskList.title};
     const updatedCards = [...cards, newCard];
     setCards(updatedCards);
     setNewCardText('');
@@ -43,6 +43,7 @@ const [newCardText, setNewCardText] = useState('');
           {cards.length > 0 ? (
             cards.map((card, index) => (
               <Card
+              status={card.status}
               key={card.id}
               title={card.title}
               id={card.id}

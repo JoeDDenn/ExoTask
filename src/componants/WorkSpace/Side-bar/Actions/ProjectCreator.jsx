@@ -36,21 +36,6 @@ class ProjectCreator extends React.Component {
                     'Authorization': token, 
                 }
             });
-            console.log(response)
-            try{
-                const desc = document.getElementById('ProjectDescription').value;
-
-                const response = await axios.post('http://localhost:8000/recommeded' , {
-                    desc: JSON.stringify(desc)
-                  },
-                )
-
-                this.state.message = true;
-                this.state.response = response.data.recommeded;
-
-            }catch{
-                console.log("a7a")
-            }
         
             } catch (error) {
                 console.log(error)

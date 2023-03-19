@@ -7,41 +7,55 @@ import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
 
-//get task list from backend
-const token = "Bearer " + localStorage.getItem('token')
-const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + 1, {
-    headers: {
-      authorization: token
-    }
-  });
-  const AllTasks = response.data.taskDtos;
-  //get each unique status in response
-  const uniqueStatus = [...new Set(AllTasks.map(item => item.status))];
-  //place each task in its status task list
-  const boardFromBackEnd = {
-    title: "Kanban Board",
-    taskLists: []
-  };
-  uniqueStatus.forEach(status => {
-    const taskList = {
-      id: uuid(),
-      title: status,
-      cards: []
-    };
-    AllTasks.forEach(task => {
-      if (task.status === status) {
-        taskList.cards.push({
-          id: task.id,
-          title: task.title,
-          description: task.descrpiton,
-          status: task.status,
-        });
+let boardFromBackEnd = [];
+
+if(localStorage.getItem('token') === null){
+  // window.location.replace('/login')
+}
+else{
+  try{
+
+    //get task list from backend
+    const token = "Bearer " + localStorage.getItem('token')
+    const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + 1, {
+      headers: {
+        authorization: token
       }
     });
-    boardFromBackEnd.taskLists.push(taskList);
-  });
-  console.log(boardFromBackEnd);
 
+  
+    const AllTasks = response.data.taskDtos;
+    //get each unique status in response
+    const uniqueStatus = [...new Set(AllTasks.map(item => item.status))];
+    //place each task in its status task list
+    boardFromBackEnd = {
+      title: "Kanban Board",
+      taskLists: []
+    };
+    uniqueStatus.forEach(status => {
+      const taskList = {
+        id: uuid(),
+        title: status,
+        cards: []
+      };
+      AllTasks.forEach(task => {
+        if (task.status === status) {
+          taskList.cards.push({
+            id: task.id,
+            title: task.title,
+            description: task.descrpiton,
+            status: task.status,
+          });
+        }
+      });
+      boardFromBackEnd.taskLists.push(taskList);
+    });  
+  }
+
+  catch(error){
+    console.log(error)
+  }
+}
 
 export default class KanBanBoard extends Component {
     constructor(props) {
