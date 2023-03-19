@@ -29,7 +29,7 @@
 }
 
 .cust-li > div:hover {
-  background-color: #bb7ab8;
+  background-color: #733c70;
 }
 
 .cust-li i {
@@ -51,10 +51,10 @@
 }
 
 .cust-ul li:hover {
-  background-color: #bb7ab8;
+  background-color: #733c70;
 }
 
 /* define some color css variables */
 :root{
-  --textColor : #a58997;
+  --textColor : #ccabbb;
 }

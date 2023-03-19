@@ -3,8 +3,13 @@ import { Draggable } from 'react-beautiful-dnd';
 import './Card.css';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
+import FormData from 'form-data';
 
-const Card = ({ description, id, onDeleteCard, index, title}) => {
+
+const Card = ({ description, id, onDeleteCard, index, title, status}) => {
+
+  const descid = "cardId" + id + "desc cardText";
+  const titleid = "cardId" + id + "title";
 
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
@@ -14,6 +19,95 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
 
   const handleDeleteCard = () => {
     onDeleteCard(id);
+  };
+
+  const handleSave = () => {
+    console.log('save');
+    const cardText = description
+    const cardTitle = title
+    const cardId = id;
+    const cardStatus = status;
+    const cardIndex = index;
+
+    //get all in workspace
+    const workspace = async (id) => {
+      const token = localStorage.getItem('token');
+      const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=1', {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      }
+      )
+      const tasklist = response.data.taskDtos;
+      //if task exists, update it
+      const task = tasklist.find(task => task.id === id);
+      console.log(task);
+      if (task) {
+        const cardTitle = document.getElementById(titleid).innerHTML;
+        const cardText = document.getElementById(textid).innerHTML;
+        console.log(cardTitle);
+        console.log(cardText);
+
+        let data = new FormData();
+        data.append('WorkSpasceID', 1);
+        data.append('Name', cardTitle? cardTitle: 'untitled');
+        data.append('Descrpiton', cardText? cardText: 'no description');
+        data.append('statues', cardStatus? cardStatus: 'todo');
+        data.append('taskID', cardId);
+
+        let config = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: 'https://localhost:7042/UpdateTask',
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+          },
+          data : data
+        };
+        
+
+        axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      //if task doesn't exist, create it
+      if (!task) {
+        const cardTitle = document.getElementById(titleid).innerHTML;
+        const cardText = document.getElementById(textid).innerHTML;
+        console.log(cardTitle);
+        console.log(cardText);
+
+        let data = new FormData();
+        data.append('WorkSpasceID', 1);
+        data.append('Name', cardTitle? cardTitle: 'untitled');
+        data.append('Descrpiton', cardText? cardText: 'no description');
+        data.append('statues', cardStatus? cardStatus: 'todo');
+
+        let config = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: 'https://localhost:7042/CreateTask',
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+          },
+          data : data
+        };
+        
+
+        axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
+    workspace(cardId);
   };
 
   const handleHelp = () => {
@@ -88,14 +182,17 @@ const Card = ({ description, id, onDeleteCard, index, title}) => {
             ref={provided.innerRef}
           >
             <div className="card-header">
-              <h4 contentEditable>{title}</h4>
+              <h4 contentEditable id={titleid}>{title}</h4>
             </div>
             <div className="card-body">
               <p contentEditable className="cardText" id={textid} >{description}</p>
             </div>
             {provided.placeholder}
             <div className="card-footer">
-              <input type="checkbox" className="checkbox" />
+              <button className="Save" onClick={handleSave}>
+                <i className='fa fa-save'></i>
+              </button>
+
               <button className="help" onClick={handleHelp}>
                 <i className='fa fa-question'></i>
               </button>
