@@ -37,7 +37,7 @@ const ProjectItem = ({ project }) => {
     <>
       <li className='cust-li'>
         <div onClick={handleToggle}>
-          {project.workspaces!=null && <i className={`fas fa-caret-${isOpen ? 'down' : 'right'}`} />}
+          {project.workSpacseRes2.length > 0 && <i className={`fas fa-caret-${isOpen ? 'down' : 'right'}`} />}
           {project.name}
         </div>
         {isOpen && (

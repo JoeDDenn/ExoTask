@@ -43,24 +43,34 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
       const task = tasklist.find(task => task.id === id);
       console.log(task);
       if (task) {
-        axios.post('https://localhost:7042/UpdateTask', {
-          taskID: id,
-          WorkSpasceID: 1, //hardcoded for now
-          Name: cardTitle,
-          Descrpiton: cardText,
-          status: cardStatus? cardStatus: 'todo',
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token
-            }
-            })
+        const cardTitle = document.getElementById(titleid).innerHTML;
+        const cardText = document.getElementById(textid).innerHTML;
+        console.log(cardTitle);
+        console.log(cardText);
 
-          .then(response => {
-            console.log(response);
+        let data = new FormData();
+        data.append('WorkSpasceID', 1);
+        data.append('Name', cardTitle? cardTitle: 'untitled');
+        data.append('Descrpiton', cardText? cardText: 'no description');
+        data.append('statues', cardStatus? cardStatus: 'todo');
+        data.append('taskID', cardId);
+
+        let config = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: 'https://localhost:7042/UpdateTask',
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+          },
+          data : data
+        };
+        
+
+        axios.request(config)
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
           })
-          .catch(error => {
-            setError(error);
+          .catch((error) => {
             console.log(error);
           });
       }
