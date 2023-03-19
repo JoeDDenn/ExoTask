@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './SideBar.css'
 import { json, Link } from 'react-router-dom'
 import NewProject from './Actions/NewProject'
+import NewWorkspace from './Actions/NewWorkspace'
 
 
 let projectList = []
@@ -86,6 +87,7 @@ const SideBar = () => {
             </div>
 
             <NewProject />
+            <NewWorkspace/>
 
             <nav className="mt-2">
               <ul>

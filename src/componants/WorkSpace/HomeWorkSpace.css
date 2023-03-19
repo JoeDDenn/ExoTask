@@ -21,6 +21,11 @@
     height: 400px   !important;
 }
 
+.WSImage{
+    width: 600px !important;
+    height: 400px   !important;
+}
+
 .Block{
     display: flex;
     z-index: 1;

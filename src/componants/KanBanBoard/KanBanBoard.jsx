@@ -4,6 +4,43 @@ import TaskList from './TaskList/TaskList'
 import  './KanBan.css'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
+import axios from 'axios';
+
+
+//get task list from backend
+const token = "Bearer " + localStorage.getItem('token')
+const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + 1, {
+    headers: {
+      authorization: token
+    }
+  });
+  const AllTasks = response.data.taskDtos;
+  //get each unique status in response
+  const uniqueStatus = [...new Set(AllTasks.map(item => item.status))];
+  //place each task in its status task list
+  const boardFromBackEnd = {
+    title: "Kanban Board",
+    taskLists: []
+  };
+  uniqueStatus.forEach(status => {
+    const taskList = {
+      id: uuid(),
+      title: status,
+      cards: []
+    };
+    AllTasks.forEach(task => {
+      if (task.status === status) {
+        taskList.cards.push({
+          id: task.id,
+          title: task.title,
+          description: task.descrpiton,
+          status: task.status,
+        });
+      }
+    });
+    boardFromBackEnd.taskLists.push(taskList);
+  });
+  console.log(boardFromBackEnd);
 
 
 export default class KanBanBoard extends Component {
@@ -11,11 +48,11 @@ export default class KanBanBoard extends Component {
         super(props);
         this.state = {
             boardtitle: boardFromBackEnd.title,
-          taskLists: boardFromBackEnd.taskLists // Set the initial state with the task lists from boardFromBackEnd
+            taskLists: boardFromBackEnd.taskLists // Set the initial state with the task lists from boardFromBackEnd
         };
       }
  KanBanBoard = () => {
-    const [board, setTaskLists] = useState(boardFromBackEnd);
+    const [board, setTaskLists] = boardFromBackEnd;
 }
     // Function to add a new TaskList component to the state
     addTaskList = () => {
@@ -68,63 +105,3 @@ export default class KanBanBoard extends Component {
 }
 
 
-const boardFromBackEnd = {
-  id: 'board-1',
-  title: 'My board',
-  taskLists : [
-    {
-      id: 'taskList-1',
-      title: 'To do',
-      cards: [
-        {
-          id: 'task-1',
-          title: 'Learn React',
-          description: 'Learn how to use React to build web applications',
-          status: 'todo'
-        },
-        {
-          id: 'task-2',
-          title: 'Learn Redux',
-          description: 'Learn how to use Redux to manage the state of web applications',
-          status: 'todo'
-        }
-      ]
-    },
-    {
-      id: 'taskList-2',
-      title: 'In progress',
-      cards: [
-        {
-          id: 'task-3',
-          title: 'Learn Webpack',
-          description: 'Learn how to use Webpack to bundle web applications',
-          status: 'in-progress'
-        }
-      ]
-    },
-    {
-      id: 'taskList-3',
-      title: 'Done',
-      cards: [
-        {
-          id: 'task-4',
-          title: 'Learn Node.js',
-          description: 'Learn how to use Node.js to build web servers',
-          status: 'done'
-        }
-      ]
-    },
-    {
-      id: 'taskList-4',
-      title: 'planning',
-      cards: [
-        {
-          id: 'task-5',
-          title: 'Work on chat feature',
-          description: 'Work on chat feature for the web application',
-          status: 'Planning'
-        }
-      ]
-    }
-  ]
-}

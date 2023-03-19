@@ -5,7 +5,7 @@ import FormData from 'form-data';
 
 //create a window with a menu list of components to add to the workspace
 
-class ProjectCreator extends React.Component {
+class WorkspaceCreator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,32 +25,17 @@ class ProjectCreator extends React.Component {
         this.setState({ [name]: value });
     }
       
-    CreateP = async e => {
-        const projectName = document.getElementById('ProjectName').value;
-        const projectDesc = document.getElementById('ProjectDescription').value;
+    CreateWS = async e => {
+        const WorkspaceName = document.getElementById('WorkspaceName').value;
         //send the form data to the server
         const token = 'Bearer ' + localStorage.getItem('token');
         try {
-            const response = await axios.post('https://localhost:7042/CreateProject?Name=' + projectName+ '&Descrpiton=' + projectDesc,  null, {
+            const response = await axios.post('https://localhost:7042/CreateWorkSpace?WorkSpaceName=' + WorkspaceName+ '&projectID=1' ,  null, {
                 headers: {
                     'Authorization': token, 
                 }
             });
             console.log(response)
-            try{
-                const desc = document.getElementById('ProjectDescription').value;
-
-                const response = await axios.post('http://localhost:8000/recommeded' , {
-                    desc: JSON.stringify(desc)
-                  },
-                )
-
-                this.state.message = true;
-                this.state.response = response.data.recommeded;
-
-            }catch{
-                console.log("a7a")
-            }
         
             } catch (error) {
                 console.log(error)
@@ -72,14 +57,15 @@ class ProjectCreator extends React.Component {
           <div className="Select-window NewProjectWindow">
             {isOpen && (
                 <div className="NewProjForm">
-                    <input type="text" name="ProjectName" id='ProjectName' placeholder="Project Name"/>
-                    <input type="text" name="ProjectDescription" id='ProjectDescription' placeholder="Project Description"/>
-
-                    <button onClick={this.CreateP} className="btn btn-primary">Create Project</button>
+                    <input type="text" name="WorkspaceName" id='WorkspaceName' placeholder="Workspace Name"/>
+                    <div>
+                        <br/>
+                        <button onClick={this.CreateWS} className="btn btn-primary">Create Workspace</button>
+                    </div>
                 </div>
             )}
           </div>
         );
     }}
 
-export default ProjectCreator;
+export default WorkspaceCreator;

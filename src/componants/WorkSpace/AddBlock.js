@@ -1,5 +1,6 @@
 
 import { v4 as uuid } from 'uuid';
+import { decode } from 'base64-arraybuffer';
 
 function AddBlock(type, block, className) {
 
@@ -11,24 +12,26 @@ function AddBlock(type, block, className) {
     const id = newBlock.id = uuid();
     switch (type) {
         case 'paragraph':
+        case 'Paragraph':
             //add a paragraph to new block
             const newParagraph = document.createElement('p');
-            newParagraph.innerHTML = block.data.text;
+            newParagraph.innerHTML = block.text;
             newParagraph.contentEditable = true;
             newParagraph.className = className;
             newBlock.appendChild(newParagraph);
             break;
         case 'heading':
             const newHeading = document.createElement('h1');
-            newHeading.innerHTML = block.data.text;
+            newHeading.innerHTML = block.text;
             newHeading.contentEditable = true;
             newHeading.className = className;
             newBlock.appendChild(newHeading);
             break;
         case 'image':
+        case 'Image':
             //add a image to new block
             const newImage = document.createElement('img');
-            if(block.data.file.url === ""){
+            if(block.phote === ""){
                 //ask user for url
                 const fileSelect = document.createElement('input');
                 fileSelect.type = 'file';
@@ -44,10 +47,16 @@ function AddBlock(type, block, className) {
                 };
             }
             else{
-                newImage.src = block.data.file.url;
+                //turn a byte array to an image
+                const imageBytes = block.phote;
+                const arrayBuffer = decode(imageBytes);
+                const blob = new Blob([arrayBuffer], {type: 'image/jpeg'});
+                const urlCreator = window.URL || window.webkitURL;
+                const imageUrl = urlCreator.createObjectURL(blob);
+                newImage.src = imageUrl;
             }   
 
-            newImage.className = className;
+            newImage.className = className + " WSImage";
             newBlock.appendChild(newImage);
             break;
         case 'video':
