@@ -18,6 +18,32 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
   const textid = uuid();
 
   const handleDeleteCard = () => {
+
+    const token = localStorage.getItem('token');
+    const cardId = id;
+    const WorkSpasceID = 1; //hardcoded for now
+    const data = new FormData();
+    data.append('WorkSpasceID', WorkSpasceID);
+    data.append('TaskID', cardId);
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://localhost:7042/Remove',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+      data: data
+    };
+
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     onDeleteCard(id);
   };
 

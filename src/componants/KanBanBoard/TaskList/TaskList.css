@@ -3,3 +3,19 @@
     background-color: rgb(165, 103, 165);
 }
 
+.task-list-header{
+    background-color: rgba(70, 31, 70, 0.068);
+    border: none;
+    border-radius: 5px;
+    color: rgb(34, 8, 107) !important;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.TaskListTitle{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: rgb(34, 8, 107) !important;
+    font-size: 30px;
+    padding: 5px;
+}

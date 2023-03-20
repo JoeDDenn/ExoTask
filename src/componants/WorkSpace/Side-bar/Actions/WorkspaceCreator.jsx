@@ -19,6 +19,9 @@ class WorkspaceCreator extends React.Component {
       }
 
 
+
+
+
       
     handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -52,6 +55,7 @@ class WorkspaceCreator extends React.Component {
     
       render() {
           const {isOpen ,isLoading } = this.state;
+
           
         return (
           <div className="Select-window NewProjectWindow">
@@ -69,3 +73,7 @@ class WorkspaceCreator extends React.Component {
     }}
 
 export default WorkspaceCreator;
+
+
+
+

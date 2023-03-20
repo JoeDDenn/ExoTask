@@ -35,7 +35,7 @@
 }
 
 .WSParagraph{
-    min-width: 90%;
+    min-width: 80%;
 }
 
 .del-but{
@@ -44,6 +44,12 @@
     border-radius: 5px;
     border: 1px solid #caa5d1cd;
     width: 40px;
+    min-width: 30px;
+}
+
+.del-but:hover{
+    background-color: #9e77a6cd;
+    transition: ease-in-out 0.3s;
 }
 
 .WSFrame{

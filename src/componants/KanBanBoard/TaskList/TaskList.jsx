@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Card from '../Card/Card';
 import { v4 as uuid } from 'uuid';
+import './TaskList.css';
+
 const TaskList = (props) => {
 const [title, setTitle] = useState(props.title? props.title : "New List");
 
@@ -39,7 +41,7 @@ const handleTitlechange = (event) => {
           ref = {provided.innerRef}
           >
           <div className="task-list-header">
-            <input onChange={handleTitlechange} value={title? title:"New List" }></input>
+            <input className='TaskListTitle' onChange={handleTitlechange} value={title? title:"New List" }></input>
           </div>
 
           {cards.length > 0 ? (

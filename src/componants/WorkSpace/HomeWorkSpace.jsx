@@ -6,10 +6,8 @@ import AnimatedBackground from './bg/AnimatedBackground '
 import Chatbot from '../Chat/ChatBot'
 import AddCompList from '../AddComp/AddCompList'
 import KanBanBoard from '../KanBanBoard/KanBanBoard'
-
 import { useEffect } from 'react'
 import axios from 'axios'
-
 
 
 const HomeWorkSpace = () => {
@@ -266,10 +264,42 @@ function AddBlock(type, block, className) {
     newDeleteButton.appendChild(newDeleteIcon);
     newDeleteButton.onclick = () => {
         const block = document.getElementById(id);
+
         block.parentNode.removeChild(block);
     }
     newBlock.appendChild(newDeleteButton);
+
+    //add a edit button to new block with id
+    const newEditButton = document.createElement('button');
+    newEditButton.className = "edit-but del-but";
+    //add child Icon to button
+    const newEditIcon = document.createElement('i');
+    newEditIcon.className = "fa fa-edit";
+    newEditButton.appendChild(newEditIcon);
+    newEditButton.onclick = () => {
+        const block = document.getElementById(id);
+        block.contentEditable = true;
+        block.focus();
+    }
+    newBlock.appendChild(newEditButton);
+
+    //add a save button to new block with id
+    const newSaveButton = document.createElement('button');
+    newSaveButton.className = "save-but del-but";
+    //add child Icon to button
+    const newSaveIcon = document.createElement('i');
+    newSaveIcon.className = "fa fa-save";
+    newSaveButton.appendChild(newSaveIcon);
+    newSaveButton.onclick = () => {
+
+        const block = document.getElementById(id);
+        block.contentEditable = false;
+    }
+    newBlock.appendChild(newSaveButton);
+
 }
 
 
 
+//todo : add a save button to new block with id
+//todo : add a edit button to new block with id
