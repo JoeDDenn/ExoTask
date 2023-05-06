@@ -39,7 +39,7 @@
     padding: 3.5rem
 }
 .herobtn{
-    background-color: #e887d9;
+    background-color: #1a5e79;
     color: #000;
     border: 1px solid #52284b;
     padding: 10px 20px;
@@ -52,6 +52,11 @@
     cursor: pointer;
 }
 
+.herobtn:hover{
+    background-color: #144e63;
+    transition: all 0.3s ease-in-out;
+}
+
 
 
 /* @media (min-width: 1400px){
@@ -59,4 +64,3 @@
         max-width: 1320px;
 }
 } */
-

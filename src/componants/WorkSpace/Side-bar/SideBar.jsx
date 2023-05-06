@@ -17,14 +17,22 @@ const reqq = async () => {
         }
       }
     );
+
     projectList = response.data;
-    console.log(projectList)
+    console.log((projectList));
   } catch (error) {
     console.log(error);
   }
 }
 
 reqq()
+
+
+const changeWS = (e) => {
+  //when clicked on workspace change the workspace id in local storage
+  localStorage.setItem('defwsid', e.target.id);
+  window.location.replace('/workspace')
+}
 
 const ProjectItem = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,7 +52,9 @@ const ProjectItem = ({ project }) => {
           <ul className='cust-ul'>
             {
                project.workSpacseRes2.map((workspace) => (
-                <li key={workspace.id}>{workspace.name}</li>
+                <li key={workspace.workSpacseId} id={workspace.workSpacseId} onClick={changeWS}>
+                  {workspace.workSpacseName}
+                </li>
                 )
               )
             }

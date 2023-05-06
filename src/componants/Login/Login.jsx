@@ -38,20 +38,23 @@ class Login extends React.Component {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userName', response.data.userNameOrEmail);
 
-      localStorage.setItem('projectListLength', response.data.projectName.length);
+      // localStorage.setItem('projectListLength', response.data.projectName.length);
 
-      for (let i = 0; i < response.data.projectName.length; i++) {
-        //push the project object to the projectList array
-        localStorage.setItem('projectList'+i+'name', response.data.projectName[i].name);
-        localStorage.setItem('projectList'+i+'id', response.data.projectName[i].id );
-      }
+      // for (let i = 0; i < response.data.projectName.length; i++) {
+      //   //push the project object to the projectList array
+      //   localStorage.setItem('projectList'+i+'name', response.data.projectName[i].name);
+      //   localStorage.setItem('projectList'+i+'id', response.data.projectName[i].id );
+      // }
+
+      //get default workspace id
+      localStorage.setItem('defwsid', response.data.project[0].workSpacseRes2[0].workSpacseId);
 
 
       window.location.href = '/workspace';
 
       // Handle successful login response
     } catch (error) {
-      this.setState({ error: error.response.data.title });
+      console.log('error');
     }
   }
 
@@ -61,7 +64,6 @@ class Login extends React.Component {
       window.location.href = '/workspace';
     }else{
 
-      
       return (
         <>
       <Nav/>
@@ -75,12 +77,14 @@ class Login extends React.Component {
                     {this.state.error && <div>{this.state.error}</div>}
                  <div className='form-group form-group-login'>
                     <label className='label-login'>Email address</label>
-                    <input type="email" className='form-control form-control-login' placeholder='Enter email' name="email" value={this.state.email} onChange={this.handleInputChange} />
+                    <input type="text" className='form-control form-control-login' placeholder='Enter email' name="email" value={this.state.email} onChange={this.handleInputChange} />
                  </div>
                  <div className='form-group form-group-login'>
                     <label className='label-login'>Password</label>
                     <input type="password" className='form-control form-control-login'  placeholder='Password' name="password" value={this.state.password} onChange={this.handleInputChange} />
                  </div>
+                 
+                  
                  <button type="submit" className=' btn btn-login btn-primary text-black'>Login</button>  
                    <div className='box-footer-login'> 
                      <p className='text-center'>Don't have an account? <a href='/signup'>Signup</a></p>

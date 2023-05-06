@@ -1,8 +1,7 @@
-import { getElementById } from 'domutils'
-import React, { Component, useState } from 'react'
+
+import React, { Component} from 'react'
 import TaskList from './TaskList/TaskList'
 import  './KanBan.css'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
@@ -17,14 +16,15 @@ else{
 
     //get task list from backend
     const token = "Bearer " + localStorage.getItem('token')
-    const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + 1, {
+    const defwsid = localStorage.getItem('defwsid')
+    const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
       headers: {
         authorization: token
       }
     });
 
   
-    const AllTasks = response.data.taskDtos;
+    const AllTasks = response.data.taskDtos? response.data.taskDtos : [];
     //get each unique status in response
     const uniqueStatus = [...new Set(AllTasks.map(item => item.status))];
     //place each task in its status task list
@@ -93,7 +93,6 @@ export default class KanBanBoard extends Component {
         const { taskLists } = this.state;
         const { boardtitle } = this.state;
         return (
-            <DragDropContext onDragEnd={result => console.log(result)}>
             <div id='KanBan' className='KanBan Board '>
                 <div className='KanBan-Header'>
                     <h2>{boardtitle}</h2>
@@ -113,7 +112,6 @@ export default class KanBanBoard extends Component {
                 </div>
                 <button className='KanBan-AddTaskList' onClick={this.AddTaskList}> <i className='fa fa-plus'></i></button>
             </div>
-            </DragDropContext>
         )
     }
 }

@@ -105,7 +105,8 @@ if(localStorage.getItem('token') === null){
 else{
   try{
     const token = "Bearer " + localStorage.getItem('token')
-    const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + 1, {
+    const defwsid = localStorage.getItem('defwsid')
+    const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
       headers: {
         authorization: token
       }
@@ -116,41 +117,6 @@ else{
     console.log(err)
   }
 }
-
-// const BlocksfromBackEnd = {
-//   wsID : '1',
-//   BlocksList : [
-//     {
-//       id: 'block-1',
-//       type: 'paragraph',
-//       classname : 'WSParagraph',
-//       data: {
-//         text: 'Hey. This is a simple text block'
-//       }
-//     },
-//     {
-//       id: 'block-2',
-//       type: 'heading',
-//       classname : 'WSHeading',
-//       data: {
-//         text: 'This is a header',
-//         level: 2
-//       }
-//     },
-//     {
-//       id: 'block-3',
-//       type: 'image',
-//       classname : 'image',
-//       data: {
-//         file: {
-//           url: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
-//         },
-//         caption: 'This is an image',
-//       }
-//     },
-//   ]
-// }
-
 
 
 
@@ -292,6 +258,26 @@ function AddBlock(type, block, className) {
     newSaveButton.appendChild(newSaveIcon);
     newSaveButton.onclick = () => {
 
+      //add block in back end
+      const token = 'Bearer ' + localStorage.getItem('token');
+      const url = 'https://localhost:7042/CreateBlokList'
+      const data = {
+        Type : type,
+        ClassName: className,
+        Text: block.text,
+        WorkSpacecsId : 5,
+      }
+      axios.post(url, data, {
+        headers: {
+          'Authorization': token
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
         const block = document.getElementById(id);
         block.contentEditable = false;
     }

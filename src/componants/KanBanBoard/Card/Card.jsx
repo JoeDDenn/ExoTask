@@ -21,7 +21,8 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
 
     const token = localStorage.getItem('token');
     const cardId = id;
-    const WorkSpasceID = 1; //hardcoded for now
+    const defwsid = localStorage.getItem('defwsid')
+    const WorkSpasceID = defwsid; //hardcoded for now
     const data = new FormData();
     data.append('WorkSpasceID', WorkSpasceID);
     data.append('TaskID', cardId);
@@ -58,7 +59,8 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
     //get all in workspace
     const workspace = async (id) => {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=1', {
+      const defwsid = localStorage.getItem('defwsid')
+      const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
         headers: {
           authorization: 'Bearer ' + token
         }
@@ -75,7 +77,8 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
         console.log(cardText);
 
         let data = new FormData();
-        data.append('WorkSpasceID', 1);
+        const defwsid = localStorage.getItem('defwsid')
+        data.append('WorkSpasceID', defwsid);
         data.append('Name', cardTitle? cardTitle: 'untitled');
         data.append('Descrpiton', cardText? cardText: 'no description');
         data.append('statues', cardStatus? cardStatus: 'todo');
@@ -107,8 +110,10 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
         console.log(cardTitle);
         console.log(cardText);
 
+
+        const defwsid = localStorage.getItem('defwsid')
         let data = new FormData();
-        data.append('WorkSpasceID', 1);
+        data.append('WorkSpasceID', defwsid);
         data.append('Name', cardTitle? cardTitle: 'untitled');
         data.append('Descrpiton', cardText? cardText: 'no description');
         data.append('statues', cardStatus? cardStatus: 'todo');
@@ -199,21 +204,13 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
 
   return (
     <div>
-
-      <Draggable draggableId={id} index={index}>
-        {(provided) => (
-          <div className="TaskCard" id={id}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-          >
+          <div className="TaskCard" id={id}>
             <div className="card-header">
               <h4 contentEditable id={titleid}>{title}</h4>
             </div>
             <div className="card-body">
               <p contentEditable className="cardText" id={textid} >{description}</p>
             </div>
-            {provided.placeholder}
             <div className="card-footer">
               <button className="Save" onClick={handleSave}>
                 <i className='fa fa-save'></i>
@@ -227,8 +224,6 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
               </button>
             </div>
           </div>
-        )}
-      </Draggable>
     </div>
   );
 };

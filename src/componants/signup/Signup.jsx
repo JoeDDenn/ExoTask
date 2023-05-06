@@ -24,12 +24,6 @@ class Signup extends React.Component
         event.preventDefault();
 
         try {
-            // if (this.state.password !== this.state.confirmPassword)
-            // {
-            //     this.setState({ error: 'Password does not match' });
-            // }
-            // else
-            // {
             const data = new formdata();
             data.append('username', this.state.name);
             data.append('email', this.state.email);
@@ -47,7 +41,15 @@ class Signup extends React.Component
             localStorage.setItem('userName', response.data.userName);
             localStorage.setItem('email', response.data.email);
 
-            console.log(response.data.token)
+
+            // create a default project and workspace for the user
+
+            const data2 = new formdata();
+            data2.append('Name', 'My Project');
+
+            //get default workspace id
+            localStorage.setItem('defwsid', response.data.project[0].workSpacseRes2[0].workSpacseId);
+
             window.location.href = '/workspace';
 
             // Handle successful register response

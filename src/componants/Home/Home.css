@@ -5,7 +5,8 @@
 }
 
 .home{
-    background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);
+    /* background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%); */
+    background : #0A4D68
     
 }
 .spinner {

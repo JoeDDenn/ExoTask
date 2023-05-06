@@ -151,6 +151,17 @@
     transition: opacity .15s ease-in-out;
 }
 
+.cardText{
+    border: none;
+    background-color: transparent;
+}
+
+.cardText:focus{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
 /* .messageText a{
     animation : typing 3s steps(30, end);    
 } */

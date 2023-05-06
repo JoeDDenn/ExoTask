@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuid } from 'uuid';
 
 
 const block = {
@@ -137,8 +138,60 @@ function AddBlock(type, block, className) {
     newDeleteButton.appendChild(newDeleteIcon);
     newDeleteButton.onclick = () => {
         const block = document.getElementById(id);
+
         block.parentNode.removeChild(block);
     }
     newBlock.appendChild(newDeleteButton);
+
+    //add a edit button to new block with id
+    const newEditButton = document.createElement('button');
+    newEditButton.className = "edit-but del-but";
+    //add child Icon to button
+    const newEditIcon = document.createElement('i');
+    newEditIcon.className = "fa fa-edit";
+    newEditButton.appendChild(newEditIcon);
+    newEditButton.onclick = () => {
+        const block = document.getElementById(id);
+        block.contentEditable = true;
+        block.focus();
+    }
+    newBlock.appendChild(newEditButton);
+
+    //add a save button to new block with id
+    const newSaveButton = document.createElement('button');
+    newSaveButton.className = "save-but del-but";
+    //add child Icon to button
+    const newSaveIcon = document.createElement('i');
+    newSaveIcon.className = "fa fa-save";
+    newSaveButton.appendChild(newSaveIcon);
+    newSaveButton.onclick = () => {
+
+      //add block in back end
+      const token = 'Bearer ' + localStorage.getItem('token');
+      const url = 'https://localhost:7042/CreateBlokList'
+      const data = {
+        Type : type,
+        ClassName: className,
+        Text: block.text,
+        WorkSpacecsId : 5,
+      }
+      axios.post(url, data, {
+        headers: {
+          'Authorization': token
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+
+        const block = document.getElementById(id);
+        block.contentEditable = false;
+    }
+    newBlock.appendChild(newSaveButton);
+
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Droppable } from 'react-beautiful-dnd';
 import Card from '../Card/Card';
 import { v4 as uuid } from 'uuid';
 import './TaskList.css';
@@ -34,11 +33,9 @@ const handleTitlechange = (event) => {
 
 
   return (
-    <Droppable droppableId="task-list">
-     {(provided) => (
+
+
         <div className="task-list"
-          {...provided.droppableProps}
-          ref = {provided.innerRef}
           >
           <div className="task-list-header">
             <input className='TaskListTitle' onChange={handleTitlechange} value={title? title:"New List" }></input>
@@ -65,16 +62,14 @@ const handleTitlechange = (event) => {
 
 
 
-          {provided.placeholder}
+
           <div className="add-card">
             <input type="text" placeholder="Add a card..." value={newCardText} onChange={handleNewCardTextChange} />
             <button onClick={addCard} className="AddCard"><i className='fa fa-plus buttonColored'></i></button>
           </div>
         </div>
         )}
-    </Droppable>
-  );
-};
+
 
 export default TaskList;
 

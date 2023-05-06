@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const block = {
     type: 'heading',
     className: 'WSHeading',
