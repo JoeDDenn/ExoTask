@@ -14,9 +14,7 @@ const reqq = async () => {
         authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
-
     projectList = response.data;
-    console.log(projectList);
   } catch (error) {
     console.log(error);
   }
@@ -30,15 +28,17 @@ const changeWS = (e) => {
   window.location.replace("/workspace");
 };
 
-const ProjectItem = ({ project }, props) => {
+const ProjectItem = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const id = props.id;
+  const id = project.id;
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleProjectRedirect = () => {
     localStorage.setItem("defprojid", id);
+    console.log(id);
     window.location.replace("/project");
   };
 
@@ -131,11 +131,7 @@ const SideBar = () => {
             <nav className="mt-2">
               <ul>
                 {projectList.map((project) => (
-                  <ProjectItem
-                    key={project.id}
-                    id={project.id}
-                    project={project}
-                  />
+                  <ProjectItem key={project.id} project={project} />
                 ))}
               </ul>
             </nav>
