@@ -39,9 +39,9 @@
     padding: 3.5rem
 }
 .herobtn{
-    background-color: #1a5e79;
+    background-color: #2F4562;
     color: #000;
-    border: 1px solid #52284b;
+    border: 1px solid #6288c5;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -53,7 +53,8 @@
 }
 
 .herobtn:hover{
-    background-color: #144e63;
+    background-color: #1c314c21;
+    border: 1px solid #6288c582;
     transition: all 0.3s ease-in-out;
 }
 

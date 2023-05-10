@@ -1,3 +1,8 @@
+body{
+    background-color: #081B33;
+}
+
+
 .pMain h3 {
     color: #555c71!important;
   }
@@ -11,7 +16,7 @@
   }
 
 .Pmain{
-    background : #ffffff;
+    background : #081B33;
 }
 .styleCard{
     background-color: rgb(226, 209, 209);

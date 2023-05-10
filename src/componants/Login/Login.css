@@ -14,7 +14,6 @@
 .cover{
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/BackGround.png');
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -24,15 +23,13 @@
 }
 .loginLayer{
     position: relative;
-    background-color: rgba(255, 255, 255, 0.3);
-
 }
 
 .container .box-login{
     margin: 2rem 3rem 0 3rem !important;
     width: 20rem;
     height: 30rem;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color:  #2c425f;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding: 20px;
@@ -56,7 +53,7 @@
     margin: 0.7rem;
     font-size: 18px;
     font-weight: 600;
-    color: #2d1e5a;
+    color:  #767D92;
 }
 .form-control-login{
 
@@ -74,7 +71,7 @@
     margin: 1.9rem 0 0.9rem 0;
     width: 100%;
     height: 50px;
-    background-color: #442959;
+    background-color: #31396e;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -83,7 +80,7 @@
     cursor: pointer;
 }
 .btn-login:hover{
-    background-color: #5d4074;
+    background-color: #283065;
     transition: 0.5s;
 }
 .box-footer-login{
@@ -96,12 +93,12 @@
 }
 .box-footer-login a{
     text-decoration: none;
-    color: rgb(110, 42, 141) !important;
+    color: #5462c8 !important;
     font-size: 16px;
     font-weight: 500;
 }
 .box-footer-login a:hover{
-    color: rgb(217, 118, 226);
+    color: #7e97e2;
 }
 
 

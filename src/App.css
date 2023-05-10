@@ -47,6 +47,12 @@
   color: #888;
 }  */
 
+/* change all text color  */
+
+body {
+  color: #767D92 !important;
+}
+
 
 ::-webkit-scrollbar {   width: 10px;   height: 10px; }   
 ::-webkit-scrollbar-thumb {   background: linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);   border-radius: 5px; }   

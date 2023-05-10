@@ -1,5 +1,5 @@
 .TaskCard{
-    background-color: rgba(177, 152, 201, 0.608);
+    background-color:  #416089aa;
     border-radius: 5px;
     min-width: 200px;
     min-height: 100px;
@@ -27,7 +27,7 @@
     height: 25px;
     opacity: .5;
     transition: opacity .15s ease-in-out;
-    color: #000 !important;
+    color:  #767D92 !important;
     margin: 5px;
     float: right;
 }
@@ -46,7 +46,7 @@
     height: 25px;
     opacity: .5;
     transition: opacity .15s ease-in-out;
-    color: #000 !important;
+    color: #767D92 !important;
     margin: 5px;
 
 }
@@ -73,13 +73,13 @@
 }
 
 .assigned{
-    color: #ab8686 !important;
+    color:  #767D92 !important;
     font-size: medium !important;
 }
 
 .message{
     /* gradient background color */
-    background-image: linear-gradient(230deg, #d36fdea7 30%, #396c83d3 80%);
+    background-image: linear-gradient(230deg, #847eeda7 30%, #396c83d3 80%);
     border-radius: 5px;
     box-shadow: #291389;
     padding: 15px;
@@ -99,12 +99,12 @@
 }
 
 .message-text{
-    color: #120a5d !important;
+    color:  #767D92 !important;
     font-weight: bold;
 }
 
 .messageText{
-    color: #120a5d !important;
+    color:  #767D92 !important;
     font-weight: bold;
 }
 

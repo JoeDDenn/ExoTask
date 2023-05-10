@@ -1,29 +1,50 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './NavWorkSpcae.css';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./NavWorkSpcae.css";
+import axios from "axios";
 
 const NavWorkSpcae = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const addUser = async (event) => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append('UserNameOrEail', searchValue);
-      const response = await axios.post('https://localhost:7042/api/User/Search', formData);
-      
+      formData.append("UserNameOrEail", searchValue);
+      const response = await axios.post(
+        "https://localhost:7042/api/User/Search",
+        formData
+      );
+
       console.log(response.data);
+
+      if (response.data.userName != null) {
+        const token = "Bearer " + localStorage.getItem("token");
+        const response2 = await axios.post(
+          "https://localhost:7042/api/ProjectJoinRequestSer/InvatieUser",
+          {
+            projectid: 15,
+            userId: response.data.userId,
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        console.log(response2.data);
+        // window.location.reload();
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
   const LogOut = () => {
-    if (localStorage.getItem('token') != null) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userName');
-      window.location.href = '/';
+    if (localStorage.getItem("token") != null) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userName");
+      window.location.href = "/";
     }
   };
 
@@ -36,7 +57,12 @@ const NavWorkSpcae = () => {
       <nav className="main-header nav-workspace navbar navbar-expand navbar-white navbar-light">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" data-widget="pushmenu" href="#" role="button">
+            <a
+              className="nav-link"
+              data-widget="pushmenu"
+              href="#"
+              role="button"
+            >
               <i className="fas fa-bars"></i>
             </a>
           </li>
@@ -49,7 +75,12 @@ const NavWorkSpcae = () => {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" data-widget="navbar-search" href="#" role="button">
+            <a
+              className="nav-link"
+              data-widget="navbar-search"
+              href="#"
+              role="button"
+            >
               <i className="fas fa-plus"></i>
             </a>
 
@@ -66,9 +97,13 @@ const NavWorkSpcae = () => {
                   />
                   <div className="input-group-append">
                     <button className="btn btn-navbar" type="submit">
-                      <i className="fas fa-search"></i>
+                      <i className="fas fa-plus"></i>
                     </button>
-                    <button className="btn btn-navbar" type="button" data-widget="navbar-search">
+                    <button
+                      className="btn btn-navbar"
+                      type="button"
+                      data-widget="navbar-search"
+                    >
                       <i className="fas fa-times"></i>
                     </button>
                   </div>
@@ -98,21 +133,38 @@ const NavWorkSpcae = () => {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" data-widget="fullscreen" href="#" role="button">
+            <a
+              className="nav-link"
+              data-widget="fullscreen"
+              href="#"
+              role="button"
+            >
               <i className="fas fa-expand-arrows-alt"></i>
-                        </a>
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+            <a
+              className="nav-link"
+              data-widget="control-sidebar"
+              data-slide="true"
+              href="#"
+              role="button"
+            >
               <i className="fas fa-th-large"></i>
             </a>
           </li>
 
           <li className="nav-item">
-    <a onClick={LogOut} className="nav-link" data-widget="control-sidebar" data-slide="true" role="button">
-      <i className="fas fa-sign-out-alt"></i>
-    </a>
-  </li>
+            <a
+              onClick={LogOut}
+              className="nav-link"
+              data-widget="control-sidebar"
+              data-slide="true"
+              role="button"
+            >
+              <i className="fas fa-sign-out-alt"></i>
+            </a>
+          </li>
         </ul>
       </nav>
     </>

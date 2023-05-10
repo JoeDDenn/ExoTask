@@ -1,21 +1,21 @@
 .TaskList{
     overflow-x: auto;
-    background-color: rgb(165, 103, 165);
+    background-color:  #2F4562;
 }
 
 .task-list-header{
-    background-color: rgba(70, 31, 70, 0.068);
+    background-color:  #3a5476a0;
     border: none;
     border-radius: 5px;
-    color: rgb(34, 8, 107) !important;
+    color:  #767D92 !important;
     font-size: 30px;
     margin: 5px;
 }
 
 .TaskListTitle{
-    background-color: rgba(255, 255, 255, 0);
+    background-color:  #3d5b8393;
     border: none;
-    color: rgb(34, 8, 107) !important;
+    color:  #767D92 !important;
     font-size: 30px;
     padding: 5px;
 }

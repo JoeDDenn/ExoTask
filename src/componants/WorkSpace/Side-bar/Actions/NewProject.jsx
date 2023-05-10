@@ -1,25 +1,29 @@
-import React, {useState} from 'react'
-import { NavLink } from 'react-router-dom'
-import ProjectCreator from './ProjectCreator'
-import './Actions.css'
+import React, { useState } from "react";
+import "./Actions.css";
 
 const NewProject = () => {
-
-    const [showSelect, setshowSelect] = useState(false);
-  
-    const handleSelectClick = () => {
-      setshowSelect(!showSelect);
-    };
+  const handleAddProject = () => {};
 
   return (
-    <div className='btn form-control-sidebar btn-sidebar newProj-btn'>
-        <span className="newProj-btn-text">New Project</span>
-        <button className="newProj-btn" onClick={handleSelectClick}>
-          <i className="fas fa-plus fa-fw newProj-btn-icon" />
+    <div className="">
+      <div className="ProjectAddText">
+        <div className="ProjectsText">
+          <p className="">Projects</p>
+        </div>
+        <button
+          className="ProjectAdd"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-bs-whatever="AddProject"
+          onClick={handleAddProject}
+        >
+          <div className="addProjicon">
+            <i className="fas fa-plus" />
+          </div>
         </button>
-          {showSelect && <ProjectCreator />}
-  </div>
-  )
-}
+      </div>
+    </div>
+  );
+};
 
-export default NewProject
+export default NewProject;

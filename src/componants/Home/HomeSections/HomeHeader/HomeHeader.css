@@ -5,11 +5,10 @@
     font-family: 'Neuton', serif;
     font-weight: 400;
 }
-body{
+/* body{
     background-color: #081B33;
-}
+} */
 .homenavbar{
-    background-color: rgba(218, 138, 204, 0.2);
     border: rgba(36, 21, 70, 0.2);
     box-shadow: inset 0 0 2px 0 rgba(39, 5, 100, 0.2);
     border-radius: 0.5rem;
@@ -27,12 +26,12 @@ body{
 .getStarted{
     font-weight: 700;
     font: 'Neuton', sans-serif;
-    border: 1px solid #724e95;
+    border: 1px solid #4e6e95;
     border-radius: 5px;
     text-decoration: none;
     font-size: 1.2rem;  
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    background-color: #9165bd;
+    background-color: #273d5a;
     color: #000;
 }

@@ -1,5 +1,5 @@
 .main-sidebar{
-    background-color: rgba(127, 58, 93, 0.485) !important;
+    background-color: #5066804e !important;
     /* background: rgb(255, 255, 255); */
 }
 
@@ -9,7 +9,7 @@
 
 }
 .brand-link{
-  background-color: rgb(133, 62, 120) !important;
+  background-color: #1d284b !important;
 }
 
 
@@ -56,5 +56,20 @@
 
 /* define some color css variables */
 :root{
-  --textColor : #ccabbb;
+  --textColor :  #767D92;
+}
+
+
+.projectPageRedirect{
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(8, 6, 46, 0.428);
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  right: 25px;
+}
+
+.projectPageRedirect:hover{
+  background-color: rgba(8, 6, 46, 0.428);
+  color: white;
 }

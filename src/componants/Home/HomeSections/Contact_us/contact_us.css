@@ -9,7 +9,6 @@
     padding: 50px 0;
 }
 .custom_contact{
-    
     width: 100%;
     height: 100%;
     display: flex;
@@ -28,7 +27,7 @@
 .btn-contact_uss{
     background-color:rgba(82, 40, 75, 0.2); 
     color: #fff;
-    border: 1px salmon solid;
+    border: 1px rgb(111, 150, 209) solid;
     transition: all 0.5s ease;
     padding: 10px 20px;
     border-radius: 5px;
@@ -36,13 +35,13 @@
     cursor: pointer;
 }
 .btn-contact_uss:hover{
-    background-color: rgb(163, 131, 131);
+    border: 1px rgb(111, 150, 209) solid;
     color: #fff;
 }
 .form-contact input{
     width: 100%;
     height: 50px;
-    border: 1px salmon solid;
+    border: 1px rgb(111, 150, 209) solid;
     border-radius: 5px;
     padding: 0 10px;
     margin: 10px 0;
@@ -50,8 +49,16 @@
 .form-contact textarea{
     width: 100%;
     height: 100px;
-    border: 1px salmon solid;
+    border: 1px rgb(111, 150, 209) solid;
     border-radius: 5px;
     padding: 0 10px;
     margin: 10px 0;
+}
+
+.homeForm{
+    background-color: #393e4e;
+}
+
+.homeForm:focus{
+    background-color: #3c4769;
 }

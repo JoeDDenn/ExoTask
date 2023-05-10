@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700;800&display=swap');
 
 *{
-    color: #241546 !important;
+    color:  #767D92 !important;
     font-family: 'Neuton', serif;
     font-weight: 400;
 }
 .navbar{
-    background : linear-gradient(270deg, #805EBF 0%, #FF8DED 100%);
+    background : linear-gradient(270deg, #081B33 0%, #2F4562 100%);
     border-radius: 0 !important;
     
     }

@@ -1,5 +1,4 @@
 .animated-background {
-    background-image: url('../../../assets/bg1.png');
     background-size: cover;
     position: fixed;
     width: 100%;
