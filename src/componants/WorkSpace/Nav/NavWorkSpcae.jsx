@@ -12,6 +12,7 @@ const NavWorkSpcae = () => {
       const formData = new FormData();
       formData.append('UserNameOrEail', searchValue);
       const response = await axios.post('https://localhost:7042/api/User/Search', formData);
+      
       console.log(response.data);
     } catch (error) {
       console.error(error);

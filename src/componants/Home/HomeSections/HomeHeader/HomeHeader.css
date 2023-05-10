@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700;800&display=swap');
 
 *{
-    color: #241546 !important;
+    
     font-family: 'Neuton', serif;
     font-weight: 400;
+}
+body{
+    background-color: #081B33;
 }
 .homenavbar{
     background-color: rgba(218, 138, 204, 0.2);

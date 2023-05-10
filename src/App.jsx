@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login,Signup, Home,HomeWorkSpace,CreateProjForum} from "./componants/index";
+import { Login,Signup, Home,HomeWorkSpace,ProjectPage} from "./componants/index";
 import "./App.css";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
     <Route path="/signup" exact element={<Signup/>} />
     <Route path="/login" exact element={<Login/>} />
     <Route path="/WorkSpace" exact element={<HomeWorkSpace/>} />
-    <Route path="/CreateProjForum" exact element={<CreateProjForum/>} />
+    <Route path="/ProjectPage" exact element={<ProjectPage/>} />
     </Routes>
     </BrowserRouter>
   )

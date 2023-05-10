@@ -1,0 +1,42 @@
+.pMain h3 {
+    color: #555c71!important;
+  }
+  
+  .pMain h2 {
+    color: #838daa !important;
+  }
+  
+  .pMain p {
+    color:#364369 !important;
+  }
+
+.Pmain{
+    background : #ffffff;
+}
+.styleCard{
+    background-color: rgb(226, 209, 209);
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+    transition: 0.5s;
+
+    
+    
+}
+.styleCard:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.styleCard h5 {
+    color: #767D92 !important;
+}
+.iconUser {
+    color: #767D92 !important;
+}
+.Pcard{
+    min-height: fit-content;
+    
+}
