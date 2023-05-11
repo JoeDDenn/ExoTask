@@ -2,3 +2,51 @@
     background-color: #50668069 !important;
     background: #081B33;
 }
+
+.notifItem{
+    background-color: #123b71ea !important;
+    border: 1px solid #0f2a4dcb !important;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.dropdown-menu{
+    background-color: #365d8f71 !important;
+    min-width: max-content;
+}
+
+.notifAccept{
+    background-color: #156312cb !important;
+    border: 1px solid #102d07cb !important;
+    padding: 10px;
+    border-radius: 10px;
+    color: #090a45 !important;
+}
+
+.notifReject{
+    background-color: #631212cb !important;
+    border: 1px solid #310909cb !important;
+    padding: 10px;
+    border-radius: 10px;
+    color: #0c0d3f !important;
+}
+
+.notifText{
+    color: #9ea5bc !important;
+    font-weight: 700;
+    border: 1px solid #0f2a4dcb !important;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.notifSpan{
+    color: #6097c7 !important;
+    font-weight: 800;
+    font-size: large;
+    padding-left: 5px;
+}
+
+.notifHeader{
+    background-color: #1c406fef !important;
+}

@@ -40,22 +40,26 @@ const NavWorkSpcae = () => {
     }
   };
   useEffect(() => {
-    setJoinRequests(getAllRequests());
-    
+    getAllRequst();
+    console.log("useEffect");
   }, []);
-  const getAllRequests = async () => {
+
+  const getAllRequst = async () => {
     try {
       const token = "Bearer " + localStorage.getItem("token");
       const response = await axios.get(
         "https://localhost:7042/api/ProjectJoinRequestSer/GetAllRequst",
         { headers: { Authorization: token } }
       );
-      
-      return response.data;
+
+      const jrlist = JSON.parse(JSON.stringify(response.data));
+      setJoinRequests(jrlist);
+      console.log("requests are  " + jrlist);
     } catch (error) {
-      console.error(error);
+      setJoinRequests([]);
     }
   };
+
   const LogOut = () => {
     if (localStorage.getItem("token") != null) {
       localStorage.removeItem("token");
@@ -69,7 +73,6 @@ const NavWorkSpcae = () => {
   };
 
   return (
-    
     <>
       <nav className="main-header nav-workspace navbar navbar-expand navbar-white navbar-light">
         <ul className="navbar-nav">
@@ -136,29 +139,48 @@ const NavWorkSpcae = () => {
             </a>
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               {/* Dropdown menu content */}
-              
             </div>
           </li>
 
-          <li className="nav-item dropdown" >
+          <li className="nav-item dropdown">
             <a className="nav-link" data-toggle="dropdown" href="#">
               <i className="far fa-bell"></i>
-              <span className="badge badge-warning navbar-badge">15</span>
+              <span className="badge badge-warning navbar-badge">
+                {joinRequests.length}
+              </span>
             </a>
-            <button className="dropdown-menu dropdown-menu-lg dropdown-menu-right"  >
-              {joinRequests.map((item) => (
-              <div className="dropdown-item">
-                {/* Message Start */}
-                <div className="notf">
-                <p>you have been invited to project {item.name}</p>
+            <div className="dropdown-menu p-3 dropdown-menu-lg dropdown-menu-right">
+              {/* Dropdown menu content */}
+              <div className="notifHeader">
+                <p className="notifText">
+                  You have {joinRequests.length} requests
+                </p>
+              </div>
+              {/* display items in joinrequests if they exist, otherwise an empty div */}
+              {joinRequests.length > 0 ? (
+                joinRequests.map((item) => (
+                  <div className="dropdown-item notifItem">
+                    {/* Message Start */}
+                    <div className="notf">
+                      <p className="notifText">
+                        you have been invited to project
+                        <span className="notifSpan">{item.name}</span>
+                      </p>
+                    </div>
+                    <button className="btn-small notifAccept m-2">
+                      Accept
+                    </button>
+                    <button className="btn-small notifReject m-2">
+                      Reject
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <p>no requests</p>
                 </div>
-                <button className="btn btn-success">Accept</button>
-                <button className="btn btn-danger">Reject</button>
-                </div>
-              ))}
-
-              
-            </button>
+              )}
+            </div>
           </li>
 
           <li className="nav-item">
