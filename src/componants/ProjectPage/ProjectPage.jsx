@@ -9,30 +9,21 @@ const ProjectPage = () => {
   const [workspaces, setWorkspaces] = useState([]);
 
   useEffect(() => {
-    const request = async () => {
-      try {
-        const id = localStorage.getItem("defprojid");
-
-        const response = await axios.get(
-          "https://localhost:7042/GetProjct?projectID=" + id,
-
-          {
-            headers: {
-              authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        );
-
-        if (response.data && response.data.workSpaceforProject) {
-          setWorkspaces(response.data.workSpaceforProject);
-        }
-        console.log(response.data.workSpaceforProject);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    request();
+    const projectId = localStorage.getItem("defprojid");
+    const token = localStorage.getItem("token");
+  
+    axios
+      .get(`https://localhost:7042/GetProjct?projectID=${projectId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setWorkspaces(response.data[0].workSpasceforProject);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []); // empty dependency array
 
   return (

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavWorkSpcae.css";
 import axios from "axios";
 
 const NavWorkSpcae = () => {
   const [searchValue, setSearchValue] = useState("");
-
+  const [joinRequests, setJoinRequests] = useState([]);
   const addUser = async (event) => {
     event.preventDefault();
     try {
@@ -23,7 +23,7 @@ const NavWorkSpcae = () => {
         const response2 = await axios.post(
           "https://localhost:7042/api/ProjectJoinRequestSer/InvatieUser",
           {
-            projectid: 15,
+            projectid: localStorage.getItem("defprojid"),
             userId: response.data.userId,
           },
           {
@@ -39,7 +39,23 @@ const NavWorkSpcae = () => {
       console.error(error);
     }
   };
-
+  useEffect(() => {
+    setJoinRequests(getAllRequests());
+    
+  }, []);
+  const getAllRequests = async () => {
+    try {
+      const token = "Bearer " + localStorage.getItem("token");
+      const response = await axios.get(
+        "https://localhost:7042/api/ProjectJoinRequestSer/GetAllRequst",
+        { headers: { Authorization: token } }
+      );
+      
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const LogOut = () => {
     if (localStorage.getItem("token") != null) {
       localStorage.removeItem("token");
@@ -53,6 +69,7 @@ const NavWorkSpcae = () => {
   };
 
   return (
+    
     <>
       <nav className="main-header nav-workspace navbar navbar-expand navbar-white navbar-light">
         <ul className="navbar-nav">
@@ -119,17 +136,29 @@ const NavWorkSpcae = () => {
             </a>
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               {/* Dropdown menu content */}
+              
             </div>
           </li>
 
-          <li className="nav-item dropdown">
+          <li className="nav-item dropdown" >
             <a className="nav-link" data-toggle="dropdown" href="#">
               <i className="far fa-bell"></i>
               <span className="badge badge-warning navbar-badge">15</span>
             </a>
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              {/* Dropdown menu content */}
-            </div>
+            <button className="dropdown-menu dropdown-menu-lg dropdown-menu-right"  >
+              {joinRequests.map((item) => (
+              <div className="dropdown-item">
+                {/* Message Start */}
+                <div className="notf">
+                <p>you have been invited to project {item.name}</p>
+                </div>
+                <button className="btn btn-success">Accept</button>
+                <button className="btn btn-danger">Reject</button>
+                </div>
+              ))}
+
+              
+            </button>
           </li>
 
           <li className="nav-item">
