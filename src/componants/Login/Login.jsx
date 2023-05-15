@@ -32,7 +32,20 @@ class Login extends React.Component {
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
-      });
+      }).catch((error) => { 
+        Swal.fire({
+          icon: 'error',
+          
+          text: error.response.data[0],
+          
+        })
+       });
+
+      
+
+
+       
+
       
 
       localStorage.setItem('token', response.data.token);

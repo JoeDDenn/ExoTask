@@ -31,7 +31,29 @@ const NavWorkSpcae = () => {
               Authorization: token,
             },
           }
-        );
+
+        ).then((response) => { 
+          if(response.data==true){
+            Swal.fire({
+              icon: 'success',
+              text: 'User Invited Successfully',
+              
+            })
+          }
+
+
+         }).catch((error) => { 
+          Swal.fire({
+            icon: 'error',
+            
+            text: error.response.data[0],
+            
+          })
+
+
+
+         });
+
         console.log(response2.data);
         // window.location.reload();
       }
@@ -43,6 +65,8 @@ const NavWorkSpcae = () => {
     getAllRequst();
     console.log("useEffect");
   }, []);
+
+
 
   const getAllRequst = async () => {
     try {
@@ -71,6 +95,86 @@ const NavWorkSpcae = () => {
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
   };
+
+  const handleAccept = async (item) => {
+    try {
+      const token = "Bearer " + localStorage.getItem("token");
+      const response = await axios.post(
+        "https://localhost:7042/api/ProjectJoinRequestSer/AccpetIvite",
+        {
+          projectid: item.projectID,
+          
+        },
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+  
+      if (response.data === true) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Invite Accepted Successfully'
+        });
+        
+        // Perform any additional actions after successful acceptance
+        console.log(item.projectID)
+        // For example, you can refresh the join requests or perform other updates
+        getAllRequst();
+
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Failed to accept invite'
+      });
+      console.error(error);
+      
+    }
+  };
+  const handleDelete = async (item) => {
+    try {
+      const token = "Bearer " + localStorage.getItem("token");
+      const response = await axios.post(
+        "https://localhost:7042/api/ProjectJoinRequestSer/rejectRequset",
+        {
+          projectid: item.projectID,
+          
+        },
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+  
+      if (response.data === true) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Invite Rejected Successfully'
+        });
+        
+        // Perform any additional actions after successful acceptance
+        console.log(item.projectID)
+        // For example, you can refresh the join requests or perform other updates
+        getAllRequst();
+
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Failed to Rejecte invite'
+      });
+      console.error(error);
+      
+    }
+  };
+
+
+  
 
   return (
     <>
@@ -167,10 +271,10 @@ const NavWorkSpcae = () => {
                         <span className="notifSpan">{item.name}</span>
                       </p>
                     </div>
-                    <button className="btn-small notifAccept m-2">
+                    <button className="btn-small notifAccept m-2" onClick={()=>handleAccept(item)}>
                       Accept
                     </button>
-                    <button className="btn-small notifReject m-2">
+                    <button className="btn-small notifReject m-2" onClick={()=>handleDelete(item)}>
                       Reject
                     </button>
                   </div>

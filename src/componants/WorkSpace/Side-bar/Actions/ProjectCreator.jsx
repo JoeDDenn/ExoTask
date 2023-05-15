@@ -39,8 +39,18 @@ class ProjectCreator extends React.Component {
             Authorization: token,
           },
         }
-      );
-      window.location.reload();
+      ).then((response) => { 
+        if(response.data==true){
+          Swal.fire({
+            icon: 'success',
+            text: 'Project Created Successfully',
+            
+          }).then((result) => {
+            window.location.reload();
+          })
+        }
+       });
+      
     } catch (error) {
       console.log(error);
       this.setState({ error: error });

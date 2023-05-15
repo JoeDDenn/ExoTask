@@ -35,7 +35,7 @@ const handleTitlechange = (event) => {
   return (
 
 
-        <div className="task-list"
+        <div className="task-list "
           >
           <div className="task-list-header">
             <input className='TaskListTitle' onChange={handleTitlechange} value={title? title:"New List" }></input>

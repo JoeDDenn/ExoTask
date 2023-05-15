@@ -100,7 +100,7 @@ export default class KanBanBoard extends Component {
                 {/* Button to create a TaskList component */}
                 
                 {/* Render all the TaskList components stored in the state */}
-                <div className="board-body tasklistContainer">
+                <div className="board-body tasklistContainer ">
                     {taskLists.map((list) => (
                     <TaskList
                         key={list.id}

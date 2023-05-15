@@ -7,6 +7,7 @@ import axios from "axios";
 
 const ProjectPage = () => {
   const [workspaces, setWorkspaces] = useState([]);
+  
 
   useEffect(() => {
     const projectId = localStorage.getItem("defprojid");
@@ -47,7 +48,10 @@ const ProjectPage = () => {
             <div key={index} className="col-md-4 mb-4">
               <div className="card styleCard">
                 <div className="card-body Pcard">
-                  <h4>{workspace.workSpaceName}</h4>
+                
+                 
+                
+                  <h4>{workspace.workSpaceName}</h4> 
                   <hr />
                   <div className="row">
                     {workspace.userInWotkSpaces.map((user, index) => (
