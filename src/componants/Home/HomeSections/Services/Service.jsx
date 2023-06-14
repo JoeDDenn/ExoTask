@@ -11,8 +11,8 @@ const Service = () => {
                 <div className="service-icon">
                     <i className="flaticon-rocket"></i>
                 </div>
-                <h3 className='subtitle-service'>Web Development</h3>
-                <p className='desc-service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In hic assumenda explicabo expedita facere sit minus excepturi nihil eius aliquid cum repellat, ipsum, alias quibusdam cumque numquam? Aliquid, ipsa corrupti.Lorem ipsum, dolor sit amet consectetur adipisicing elit. In hic assumenda explicabo expedita facere sit minus excepturi nihil eius aliquid cum repellat, ipsum, alias quibusdam cumque numquam? Aliquid, ipsa corrupti.</p>
+                <h3 className='subtitle-service'>AI assisted decisions</h3>
+                <p className='desc-service'>Using state of the art AI to give the user decisions and aid with each task.</p>
             </div>
         </div>
         <div className="col-lg-4 col-md-6 col-sm-12">
@@ -20,8 +20,8 @@ const Service = () => {
                 <div className="service-icon">
                     <i className="flaticon-rocket"></i>
                 </div>
-                <h3 className='subtitle-service'>Web Development</h3>
-                <p className='desc-service'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In hic assumenda explicabo expedita facere sit minus excepturi nihil eius aliquid cum repellat, ipsum, alias quibusdam cumque numquam? Aliquid, ipsa corrupti.</p>
+                <h3 className='subtitle-service'>Communication</h3>
+                <p className='desc-service'>Giving the team the ability to communicate withing the workspace to improve Communication and increase productivity.</p>
             </div>
         </div>
         <div className="col-lg-4 col-md-6 col-sm-12">
@@ -29,8 +29,8 @@ const Service = () => {
                 <div className="service-icon">
                     <i className="flaticon-rocket"></i>
                 </div>
-                <h3 className='subtitle-service'>Web Development</h3>
-                <p className='desc-service'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum, dolor sit amet consectetur adipisicing elit. In hic assumenda explicabo expedita facere sit minus excepturi nihil eius aliquid cum repellat, ipsum, alias quibusdam cumque numquam? Aliquid, ipsa corrupti.</p>
+                <h3 className='subtitle-service'>Rich content</h3>
+                <p className='desc-service'>Allowing users to add rich content to create a modular and robus project doccumentation in real time.</p>
             </div>
         </div>
         </div>

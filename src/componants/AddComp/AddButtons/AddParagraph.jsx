@@ -5,23 +5,22 @@ import { v4 as uuid } from 'uuid';
 const block = {
     type: 'paragraph',
     className: 'WSParagraph',
-    data: {
-        text: 'Hey. This is a simple text block'
-    }
+
+    text: 'Hey. This is a simple text block'
+    
 }
 
+
 class AddParagraph extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  
 
     render() {
         return (
             <div className="ComponentList-item-title">
                 <div className="ComponentList-item-title">
-                    <button className="ComponentList-item-title-button" onClick={() => AddBlock(block.type, block, block.className)}>
-                        Paragraph
-                    </button>
+                <button className="ComponentList-item-title-button" onClick={() => AddBlock(block.type, block, block.className)}>
+                Paragraph
+                </button>
                 </div>
             </div>
         )
@@ -41,7 +40,7 @@ function AddBlock(type, block, className) {
     const id = newBlock.id = uuid();
     switch (type) {
         case 'paragraph':
-        case 'Paragraph':
+        
             //add a paragraph to new block
             const newParagraph = document.createElement('p');
             newParagraph.innerHTML = block.text;
@@ -57,7 +56,7 @@ function AddBlock(type, block, className) {
             newBlock.appendChild(newHeading);
             break;
         case 'image':
-        case 'Image':
+        
             //add a image to new block
             const newImage = document.createElement('img');
             if(block.phote === ""){
@@ -173,13 +172,14 @@ function AddBlock(type, block, className) {
         Type : type,
         ClassName: className,
         Text: block.text,
-        WorkSpacecsId : 5,
+        WorkSpacecsId : localStorage.getItem('workspaceId'),
       }
       axios.post(url, data, {
         headers: {
           'Authorization': token
         }
       })
+      
       .then(function (response) {
         console.log(response);
       })

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import FormData from "form-data";
+import Swal from "sweetalert2";
 
 //create a window with a menu list of components to add to the workspace
 

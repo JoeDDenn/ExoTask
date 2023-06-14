@@ -6,7 +6,9 @@ const block = {
     data: {
         text: 'Type here....'
     }
+    
 }
+
 class AddHeading extends React.Component {
 
     render() {
@@ -14,13 +16,15 @@ class AddHeading extends React.Component {
         return (
             <div className="ComponentList-item-title">
             <div className="ComponentList-item-title">
-            <button className="ComponentList-item-title-button" onClick={() => AddBlock('heading', block, "WSHeading")}>
+            <button className="ComponentList-item-title-button" onClick={() => AddBlock(block.type, block.data, block.className)}>
                 Heading
             </button>
             </div>
             </div>
         )
+        
     }
+    
 }
 
 export default AddHeading
@@ -39,7 +43,7 @@ function AddBlock(type, block, className) {
     newBlock.className = "Block";
     const id = newBlock.id = uuid();
     switch (type) {
-        case 'paragraph':
+        
         case 'Paragraph':
             //add a paragraph to new block
             const newParagraph = document.createElement('p');
@@ -55,7 +59,7 @@ function AddBlock(type, block, className) {
             newHeading.className = className;
             newBlock.appendChild(newHeading);
             break;
-        case 'image':
+        
         case 'Image':
             //add a image to new block
             const newImage = document.createElement('img');
@@ -140,5 +144,53 @@ function AddBlock(type, block, className) {
         block.parentNode.removeChild(block);
     }
     newBlock.appendChild(newDeleteButton);
+    const newEditButton = document.createElement('button');
+    newEditButton.className = "edit-but del-but";
+    //add child Icon to button
+    const newEditIcon = document.createElement('i');
+    newEditIcon.className = "fa fa-edit";
+    newEditButton.appendChild(newEditIcon);
+    newEditButton.onclick = () => {
+        const block = document.getElementById(id);
+        block.contentEditable = true;
+        block.focus();
+    }
+    newBlock.appendChild(newEditButton);
+
+    //add a save button to new block with id
+    const newSaveButton = document.createElement('button');
+    newSaveButton.className = "save-but del-but";
+    //add child Icon to button
+    const newSaveIcon = document.createElement('i');
+    newSaveIcon.className = "fa fa-save";
+    newSaveButton.appendChild(newSaveIcon);
+    newSaveButton.onclick = () => {
+
+      //add block in back end
+      const token = 'Bearer ' + localStorage.getItem('token');
+      const url = 'https://localhost:7042/CreateBlokList'
+      const data = {
+        Type : type,
+        ClassName: className,
+        Text: block.text,
+        WorkSpacecsId : localStorage.getItem('workspaceId'),
+      }
+      axios.post(url, data, {
+        headers: {
+          'Authorization': token
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+
+        const block = document.getElementById(id);
+        block.contentEditable = false;
+    }
+    newBlock.appendChild(newSaveButton);
 }
 

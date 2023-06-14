@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "./Actions.css";
 
 const NewProject = () => {
-  const handleAddProject = () => {};
+  const handleAddProject = () => {
+    
+  };
 
   return (
     <div className="">

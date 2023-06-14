@@ -19,14 +19,13 @@ body{
     background : #081B33;
 }
 .styleCard{
-    background-color: rgb(226, 209, 209);
+    background-color: rgb(209, 212, 226);
     width: 100%;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
     transition: 0.5s;
-
     
     
 }
@@ -36,12 +35,38 @@ body{
 }
 
 .styleCard h5 {
-    color: #767D92 !important;
+    color: #4b4f5c !important;
+}
+.styleCard h4 {
+    color: #4b4f5c !important;
 }
 .iconUser {
-    color: #767D92 !important;
+    color: #595f74 !important;
 }
 .Pcard{
     min-height: fit-content;
     
+}
+
+.verticalLine{
+    border-bottom: 1px solid #9498a6;
+    height: 100%;
+    margin: 0px 10px;
+}
+
+.workspaceSect{
+    display: flex;
+}
+
+.addWS{
+    /* move to the right */
+    margin-left: auto;
+    border: 1px solid #8e9daf;
+    border-radius: 15px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
+
+.addWS:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
