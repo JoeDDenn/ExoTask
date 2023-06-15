@@ -13,6 +13,8 @@ const ProjectPage = () => {
     const [workspaces, setWorkspaces] = useState([]);
     const [projectname, setProjectname] = useState("");
     const [projectdesc, setProjectdesc] = useState("");
+   
+
 
     useEffect(() => {
         const projectId = localStorage.getItem("defprojid");
@@ -29,7 +31,10 @@ const ProjectPage = () => {
         }).catch((error) => {
             console.error(error);
         });
+        
     }, []); // empty dependency array
+
+   
 
     return (<div className="Pmain wrapper">
         <NavWorkSpcae/>
@@ -68,8 +73,13 @@ const ProjectPage = () => {
                             <div className="card styleCard">
                                 <div className="card-body Pcard">
                                     <h4>{
-                                        workspace.workSpaceName
-                                    }</h4>
+                                        workspace.workSpaceName 
+                                    }
+                                    <select>
+                                    <option  >Volvo</option>
+                                    
+                                    </select>
+                                    </h4>
                                     <hr/>
                                     <div className="row">
                                         {
