@@ -3,7 +3,7 @@ import './Login.css';
 import { Nav } from "../index";
 import axios from 'axios'
 import formdata from 'form-data'
-
+import Swal from 'sweetalert2'
 
 
 class Login extends React.Component {
