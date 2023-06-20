@@ -77,6 +77,7 @@ const Workspace = (props) => {
       <h2>
         Workspace Documentation
       </h2>
+      <RichEditor />
       </div>
       <div className="container" id="workspace">
         <div className="Block" id="1">
