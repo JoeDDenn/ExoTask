@@ -21,9 +21,9 @@ const AddCompList = (props) => {
 
 
   return (
-    <div className="Comp-select-container">
-      <button className="chat-icon" onClick={handleSelectClick}><i className="fa fa-plus"></i></button>
+    <div className="Comp-select-container me-3">
       {showSelect && <SelectMenuWindow/>}
+      <button className="chat-icon" onClick={handleSelectClick}><i className="fa fa-plus"></i></button>
     </div>
   );
 };

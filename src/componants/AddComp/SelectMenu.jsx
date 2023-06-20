@@ -31,7 +31,7 @@ class SelectMenuWindow extends React.Component {
     
     
     return (
-      <div className="Select-window">
+        <div className="cSelect-window">
         {isOpen && (
           <div className="ComponentList">
             <div className="ComponentList-item">

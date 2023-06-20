@@ -54,8 +54,6 @@ const NavWorkSpcae = () => {
 
          });
 
-        console.log(response2.data);
-        // window.location.reload();
       }
     } catch (error) {
       console.error(error);
@@ -63,7 +61,6 @@ const NavWorkSpcae = () => {
   };
   useEffect(() => {
     getAllRequst();
-    console.log("useEffect");
   }, []);
 
 

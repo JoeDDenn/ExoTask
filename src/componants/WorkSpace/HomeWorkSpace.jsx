@@ -8,6 +8,7 @@ import AddCompList from "../AddComp/AddCompList";
 import KanBanBoard from "../KanBanBoard/KanBanBoard";
 import { useEffect } from "react";
 import axios from "axios";
+import RichEditor from "../RichEditor/RichEditor";
 
 const HomeWorkSpace = () => {
   const [blocks, setBlocks] = React.useState(BlocksfromBackEnd);
@@ -48,8 +49,10 @@ const HomeWorkSpace = () => {
           <SideBar />
           {/* <Main/>  */}
           <div className="container">
-            <AddCompList />
+          <div className="container">
             <Workspace blocklist={blocks} />
+          </div>
+            <AddCompList />
           </div>
           <Chatbot />
         </AnimatedBackground>
@@ -70,8 +73,14 @@ const Workspace = (props) => {
   return (
     <div className="container bbbb">
       <KanBanBoard />
+      <div className="container">
+      <h2>
+        Workspace Documentation
+      </h2>
+      </div>
       <div className="container" id="workspace">
-        <div className="Block" id="1"></div>
+        <div className="Block" id="1">
+        </div>
       </div>
     </div>
   );

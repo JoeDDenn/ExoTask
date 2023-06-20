@@ -1,10 +1,7 @@
 .Comp-select-container {
-    float: left;
     z-index: 9999;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+    justify-content: end;
   }
   
   .Select-window {
@@ -12,58 +9,66 @@
     z-index: 9999;
     width: 200px;
     height: 150px;
-    background-color: #dea7f23a;
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+    border: 1px solid #130a24df;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     transition: all 1s ease;
-    /* make the element scrollable if there's overflow but hide scroll otherwise */
-    overflow-y: auto;
-    
+    /* make the element scrollable if there's overflow but hide scroll otherwise */    
   }
   
-  .chat-header {
-    background-color: #f1f1f1;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .WSMedia{
-    width: 550px;
-    height: 400px;
-  }
-  
+.chat-header {
+  background-color: #b7cfec;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.WSMedia{
+  width: 550px;
+  height: 400px;
+}
 
-  
-  
-  .chat-icon{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #6c5be85a;
-    transition: all .6s ease;
-    margin: 5px;
-  }
+.chat-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6c5be85a;
+  transition: all .6s ease;
+  margin: 5px;
+}
 
-    .chat-icon:hover{
-        background-color: #6b5be8c4;
-    }
-    
-    /* when the button is pressed, rotate icon by 45 degrees  and remain rotated*/
-    .chat-icon-active{ 
-        transform: rotate(45deg);
-    }
+.chat-icon:hover{
+    background-color: #6b5be8c4;
+}
+
+/* when the button is pressed, rotate icon by 45 degrees  and remain rotated*/
+.chat-icon-active{ 
+    transform: rotate(45deg);
+}
 
 
 
   .ComponentList-item-title-button{
     margin: 5px;
-    border-radius: 5px;
-    border: 1px solid #e7baf0df;
-    background-color: #dca6e73e;
+    border-radius: 7px;
+    border: 1px solid #8e83c6df;
+    background-color: #7871c23e;
     padding: 5px;
+  }
+
+  .addCompWind{
+    z-index: 9999;
+    display: flex;
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    overflow: auto;
+    background-color: #191844df;
+    border-radius: 10px;
+    border: 1px solid #130a24df;
   }

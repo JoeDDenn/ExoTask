@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid';
 const block = {
     type: 'paragraph',
     className: 'WSParagraph',
-
     text: 'Hey. This is a simple text block'
     
 }
