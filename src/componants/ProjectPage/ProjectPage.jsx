@@ -20,7 +20,7 @@ const ProjectPage = () => {
         setProjectId(localStorage.getItem("defprojid"));
         setWsId(localStorage.getItem("defwsid"));
         const token = localStorage.getItem("token");
-
+        
         axios.get(`https://localhost:7042/GetProjct?projectID=${projectId}`, {
             headers: {
                 authorization: `Bearer ${token}`

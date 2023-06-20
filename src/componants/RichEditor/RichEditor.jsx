@@ -35,7 +35,9 @@ class RichEditor extends Component {
                 history: { inDropdown: true },
             }}
           onContentStateChange={this.onContentStateChange}
+        
         />
+        
       );
     }
 }
