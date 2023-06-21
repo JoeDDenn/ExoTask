@@ -21,40 +21,43 @@ toggleWindow = () => {
   };
 
   handleMessageSend = () => {
-    //get username from local storage
+    // Get username from local storage
     const username = localStorage.getItem('username');
-
+  
     this.setState({ isLoading: true });
     this.setState(prevState => ({
       messages: [
         ...prevState.messages,
         {
-          text: username|| "User" + ": " + this.state.userInput,
-          isUser: true
-        }],
-        userInput: '',
-        }));
-    axios.post('http://localhost:8000/answer', {
-        question: JSON.stringify(this.state.userInput)
+          text: username || 'User' + ': ' + this.state.userInput,
+          isUser: true,
+        },
+      ],
+      userInput: '',
+    }));
+  
+    axios
+      .post('http://localhost:8000/answer', {
+        question: this.state.userInput,
       })
       .then(response => {
         this.setState(prevState => ({
           messages: [
             ...prevState.messages,
             {
-              text: "ExoBot: " + response.data.answer,
-              isUser: false
-            }
+              text: 'ExoBot: ' + response.data.answer,
+              isUser: false,
+            },
           ],
-          isLoading: false
+          isLoading: false,
         }));
-
       })
       .catch(error => {
         this.setState({ error, isLoading: false });
+        console.log('Error from chatbot:', error);
       });
-
   };
+  
 handleInputChange = (event) => {
     this.setState({ userInput: event.target.value });
   };
