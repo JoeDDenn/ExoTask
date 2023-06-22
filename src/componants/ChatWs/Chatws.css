@@ -1,0 +1,22 @@
+.chatws-container{
+    position: fixed;
+  bottom: 70px;
+  right: 25px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+    
+}
+.chatws-icon{
+    width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6c5be85a ;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

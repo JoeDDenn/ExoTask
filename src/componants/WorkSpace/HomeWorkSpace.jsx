@@ -9,6 +9,7 @@ import KanBanBoard from "../KanBanBoard/KanBanBoard";
 import { useEffect } from "react";
 import axios from "axios";
 import RichEditor from "../RichEditor/RichEditor";
+import Chatws from "../ChatWs/Chatws";
 
 const HomeWorkSpace = () => {
   const [blocks, setBlocks] = React.useState(BlocksfromBackEnd);
@@ -54,6 +55,7 @@ const HomeWorkSpace = () => {
           </div>
             <AddCompList />
           </div>
+          <Chatws/>
           <Chatbot />
         </AnimatedBackground>
       </div>
