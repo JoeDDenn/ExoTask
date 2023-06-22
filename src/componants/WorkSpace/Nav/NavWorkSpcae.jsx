@@ -74,6 +74,7 @@ const NavWorkSpcae = () => {
       );
 
       const jrlist = JSON.parse(JSON.stringify(response.data));
+      
       setJoinRequests(jrlist);
       console.log("requests are  " + jrlist);
     } catch (error) {
@@ -92,6 +93,7 @@ const NavWorkSpcae = () => {
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
   };
+  
 
   const handleAccept = async (item) => {
     try {

@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSmile} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
+
 function Message() {
     const [message , setMessage] = React.useState([]);
 
@@ -22,9 +23,18 @@ function Message() {
     };
 
     React.useEffect(() => {
+        let interval;
+     
+        // Fetch all existing messages on first render.
         handleGetMessages();
-        
-    },[])
+     
+        // Set up an interval timer fetching new messages every few seconds.
+        interval = setInterval(async () => { 
+          handleGetMessages(); 
+        }, [1000]); 
+     
+        return () => clearInterval(interval);
+     }, []);
 
   return (
     <div className="chat-box">
