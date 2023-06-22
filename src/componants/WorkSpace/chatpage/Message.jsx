@@ -52,7 +52,7 @@ function UserMessage(props) {
                 {props.sender} : {props.message}
             </p>
             <div className="check">
-                <span>4:00 PM</span>
+                <span>{props.timestamp}</span>
 
             </div>
         </div>
@@ -69,7 +69,7 @@ function OtherMessage(props) {
                 {props.sender} : {props.message}
             </p>
             <div className="check">
-                <span>4:00 PM</span>
+                <span>{props.timestamp}</span>
             </div>
         </div>
         <div className="sp"></div>
