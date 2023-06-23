@@ -1,146 +1,84 @@
-import React, { Component } from 'react';
-import { convertFromRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { useState } from "react";
-import { storage } from './FBStore';
+import React, { useState, useEffect } from "react";
+import { convertFromRaw, EditorState, convertToRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import axios from "axios";
+
+// Firebase imports
+import { storage } from "./FBStore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
-
-const handleEditorChange = (content) => {
-  const wsid = localStorage.getItem('defwsid'); 
-  
-  //turn json into a file to upload
-  const file = new File([content], `${wsid}Doc.json`, {
-    type: "application/json",
-  });
-  
-  if (!file) return;
-
-  const storageRef = ref(storage, `files/${wsid}/${wsid}Doc.json`);
-  const uploadTask = uploadBytesResumable(storageRef, file);
-  uploadTask.on("state_changed",
-  (snapshot) => {
-  },
-  (error) => {
-    alert(error);
-  },
-);
-}
-
-const loadDoc = () => {
-  const wsid = localStorage.getItem('defwsid');
-  const storageRef = ref(storage, `files/${wsid}/${wsid}Doc.json`);
-  const req = {
-    method: 'GET',
-    mode: 'no-cors',
-  }
-  getDownloadURL(storageRef)
-  .then((url) => {
-    fetch(
-      {method: 'GET', mode: 'no-cors'}
-      ,url)
-    .then((res) => res.json())
-    .then((loadedContent) => {
-      content = loadedContent;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
-
-let test = loadDoc();
-let placeholder = {
-  "blocks": [
-    {
-      "key": "637gr",
-      "text": "This is a paragraph",
-      "type": "unstyled",
-      "depth": 0,
-      "inlineStyleRanges": [
-        {
-          "offset": 10,
-          "length": 9,
-          "style": "BOLD"
-        },
-        {
-          "offset": 10,
-          "length": 9,
-          "style": "ITALIC"
-        },
-        {
-          "offset": 10,
-          "length": 9,
-          "style": "UNDERLINE"
-        }
-      ],
-      "entityRanges": [],
-      "data": {}
-    },
-    {
-      "key": "9g3nc",
-      "text": " ",
-      "type": "atomic",
-      "depth": 0,
-      "inlineStyleRanges": [],
-      "entityRanges": [
-        {
-          "offset": 0,
-          "length": 1,
-          "key": 0
-        }
-      ],
-      "data": {}
-    },
-  ]
-  ,
-  "entityMap": {
-    "0": {
-      "type": "IMAGE",
-      "mutability": "IMMUTABLE",
-      "data": {
-        "src": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-      }
-    }
-  }
+const placeholder = {
+  // Your existing placeholder content here.
 };
 
-let content = test? test : placeholder;
+const handleEditorChange = (content) => {
+  const wsid = localStorage.getItem("defwsid");
 
-class RichEditor extends Component {
-    constructor(props) {
-        super(props);
-        let doc = loadDoc();
-        console.log("doc = "+doc);
-        const contentState = convertFromRaw(content);
-        this.state = {
-            contentState,
-        }
+  // Convert editor state back to raw JSON string before uploading.
+  const rawContentJSONString = JSON.stringify(content);
+
+  const file = new File([rawContentJSONString], `${wsid}Doc.json`, {
+    type: "application/json",
+  });
+
+  if (!file) return;
+
+  console.log(file);
+
+  const storageRef = ref(storage, `files/${wsid}/${wsid}Doc.json`);
+
+  uploadBytesResumable(storageRef, file).catch((error) => alert(error));
+};
+
+export default function RichEditor(props) {
+  const [content, setContent] = useState(EditorState.createEmpty());
+  const [hasFetchedInitialData, setHasFetchedInitialData] = useState(false);
+
+  const loadInitialData = async () => {
+    const wsid = localStorage.getItem("defwsid");
+    const storageRef = ref(storage, `files/${wsid}/${wsid}Doc.json`);
+
+    try {
+      const url = await getDownloadURL(storageRef);
+      const response = await fetch(url);
+      return response.json(); // Return data as a JSON object.
+    } catch (error) {
+      console.log("Error loading initial data:", error);
+      return placeholder; // Return default placeholder in case of an error.
     }
-    
-    onContentStateChange = (contentState) => {
-        this.setState({
-            contentState,
-      });
-      handleEditorChange(JSON.stringify(contentState));
-    };
-    
-    render() {
-      content = loadDoc();
-      return (
-        <div>
-          <Editor
-            wrapperClassName="demo-wrapper"
-            editorClassName="demo-editor"
-            onContentStateChange={this.onContentStateChange}
-          />
-        </div>
-      );
+  };
+
+  useEffect(() => {
+    loadInitialData().then((loadedData) => {
+      const newContent = convertFromRaw(loadedData);
+      const newEditorState = EditorState.push(content, newContent);
+      setContent(newEditorState);
+      setHasFetchedInitialData(true); // Set flag once initial data is fetched.
+    });
+  }, []);
+
+  const onContentStateChange = (raw_content) => {
+    const new_editor_state = EditorState.createWithContent(
+      convertFromRaw(raw_content)
+    );
+    setContent(new_editor_state);
+
+    if (hasFetchedInitialData) {
+      // Only save changes after fetching initial data.
+      handleEditorChange(raw_content);
     }
+  };
+
+  return (
+    <div>
+      <Editor
+        wrapperClassName="demo-wrapper"
+        editorClassName="demo-editor"
+        onContentStateChange={onContentStateChange}
+        editorState={content}
+        textAlignment="left" // Add this line.
+      />
+    </div>
+  );
 }
-
-export default RichEditor

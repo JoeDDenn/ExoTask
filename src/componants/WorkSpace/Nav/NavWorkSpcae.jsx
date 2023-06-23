@@ -20,40 +20,34 @@ const NavWorkSpcae = () => {
 
       if (response.data.userName != null) {
         const token = "Bearer " + localStorage.getItem("token");
-        const response2 = await axios.post(
-          "https://localhost:7042/api/ProjectJoinRequestSer/InvatieUser",
-          {
-            projectid: localStorage.getItem("defprojid"),
-            userId: response.data.userId,
-          },
-          {
-            headers: {
-              Authorization: token,
+        const response2 = await axios
+          .post(
+            "https://localhost:7042/api/ProjectJoinRequestSer/InvatieUser",
+            {
+              projectid: localStorage.getItem("defprojid"),
+              userId: response.data.userId,
             },
-          }
-
-        ).then((response) => { 
-          if(response.data==true){
-            Swal.fire({
-              icon: 'success',
-              text: 'User Invited Successfully',
-              
-            })
-          }
-
-
-         }).catch((error) => { 
-          Swal.fire({
-            icon: 'error',
-            
-            text: error.response.data[0],
-            
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          )
+          .then((response) => {
+            if (response.data == true) {
+              Swal.fire({
+                icon: "success",
+                text: "User Invited Successfully",
+              });
+            }
           })
+          .catch((error) => {
+            Swal.fire({
+              icon: "error",
 
-
-
-         });
-
+              text: error.response.data[0],
+            });
+          });
       }
     } catch (error) {
       console.error(error);
@@ -62,8 +56,6 @@ const NavWorkSpcae = () => {
   useEffect(() => {
     getAllRequst();
   }, []);
-
-
 
   const getAllRequst = async () => {
     try {
@@ -74,9 +66,8 @@ const NavWorkSpcae = () => {
       );
 
       const jrlist = JSON.parse(JSON.stringify(response.data));
-      
+
       setJoinRequests(jrlist);
-      console.log("requests are  " + jrlist);
     } catch (error) {
       setJoinRequests([]);
     }
@@ -93,7 +84,6 @@ const NavWorkSpcae = () => {
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
   };
-  
 
   const handleAccept = async (item) => {
     try {
@@ -102,35 +92,32 @@ const NavWorkSpcae = () => {
         "https://localhost:7042/api/ProjectJoinRequestSer/AccpetIvite",
         {
           projectid: item.projectID,
-          
         },
         {
           headers: {
             Authorization: token,
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
-  
+
       if (response.data === true) {
         Swal.fire({
-          icon: 'success',
-          text: 'Invite Accepted Successfully'
+          icon: "success",
+          text: "Invite Accepted Successfully",
         });
-        
+
         // Perform any additional actions after successful acceptance
-        console.log(item.projectID)
+        console.log(item.projectID);
         // For example, you can refresh the join requests or perform other updates
         getAllRequst();
-
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        text: 'Failed to accept invite'
+        icon: "error",
+        text: "Failed to accept invite",
       });
       console.error(error);
-      
     }
   };
   const handleDelete = async (item) => {
@@ -140,40 +127,34 @@ const NavWorkSpcae = () => {
         "https://localhost:7042/api/ProjectJoinRequestSer/rejectRequset",
         {
           projectid: item.projectID,
-          
         },
         {
           headers: {
             Authorization: token,
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
-  
+
       if (response.data === true) {
         Swal.fire({
-          icon: 'success',
-          text: 'Invite Rejected Successfully'
+          icon: "success",
+          text: "Invite Rejected Successfully",
         });
-        
+
         // Perform any additional actions after successful acceptance
-        console.log(item.projectID)
+        console.log(item.projectID);
         // For example, you can refresh the join requests or perform other updates
         getAllRequst();
-
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        text: 'Failed to Rejecte invite'
+        icon: "error",
+        text: "Failed to Rejecte invite",
       });
       console.error(error);
-      
     }
   };
-
-
-  
 
   return (
     <>
@@ -270,10 +251,16 @@ const NavWorkSpcae = () => {
                         <span className="notifSpan">{item.name}</span>
                       </p>
                     </div>
-                    <button className="btn-small notifAccept m-2" onClick={()=>handleAccept(item)}>
+                    <button
+                      className="btn-small notifAccept m-2"
+                      onClick={() => handleAccept(item)}
+                    >
                       Accept
                     </button>
-                    <button className="btn-small notifReject m-2" onClick={()=>handleDelete(item)}>
+                    <button
+                      className="btn-small notifReject m-2"
+                      onClick={() => handleDelete(item)}
+                    >
                       Reject
                     </button>
                   </div>
