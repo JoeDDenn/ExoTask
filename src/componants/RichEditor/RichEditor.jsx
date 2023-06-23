@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { convertFromRaw, EditorState, convertToRaw } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+import { Editor, link, image, embedded, emoji } from "react-draft-wysiwyg";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import axios from "axios";
 
@@ -29,6 +29,23 @@ const handleEditorChange = (content) => {
   const storageRef = ref(storage, `files/${wsid}/${wsid}Doc.json`);
 
   uploadBytesResumable(storageRef, file).catch((error) => alert(error));
+};
+
+const uploadImageCallBack = (file) => {
+  return new Promise(async (resolve, reject) => {
+    // Implement your own logic here using Firebase Storage or another service.
+    const wsid = localStorage.getItem("defwsid");
+    const storageRef = ref(storage, `images/${wsid}/${file.name}`);
+
+    try {
+      const snapshot = await uploadBytesResumable(storageRef, file);
+      const url = await getDownloadURL(snapshot.ref);
+      resolve({ data: { link: url } });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      reject(error);
+    }
+  });
 };
 
 export default function RichEditor(props) {
@@ -83,7 +100,7 @@ export default function RichEditor(props) {
       <Editor
         wrapperClassName="demo-wrapper"
         editorClassName="demo-editor"
-        onEditorStateChange={onEditorStateChange} // Change this line.
+        onEditorStateChange={onEditorStateChange}
         editorState={content}
       />
     </div>
