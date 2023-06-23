@@ -58,14 +58,22 @@ export default function RichEditor(props) {
     });
   }, []);
 
-  const onContentStateChange = (raw_content) => {
-    const new_editor_state = EditorState.createWithContent(
-      convertFromRaw(raw_content)
-    );
-    setContent(new_editor_state);
+  // const onContentStateChange = (editor_state) => {
+  //   setContent(editor_state);
+
+  //   if (hasFetchedInitialData) {
+  //     // Only save changes after fetching initial data.
+  //     const raw_content = convertToRaw(editor_state.getCurrentContent());
+  //     handleEditorChange(raw_content);
+  //   }
+  // };
+
+  const onEditorStateChange = (editor_state) => {
+    setContent(editor_state);
 
     if (hasFetchedInitialData) {
       // Only save changes after fetching initial data.
+      const raw_content = convertToRaw(editor_state.getCurrentContent());
       handleEditorChange(raw_content);
     }
   };
@@ -75,9 +83,8 @@ export default function RichEditor(props) {
       <Editor
         wrapperClassName="demo-wrapper"
         editorClassName="demo-editor"
-        onContentStateChange={onContentStateChange}
+        onEditorStateChange={onEditorStateChange} // Change this line.
         editorState={content}
-        textAlignment="left" // Add this line.
       />
     </div>
   );
