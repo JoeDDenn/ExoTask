@@ -31,7 +31,7 @@ class Signup extends React.Component
 
 
             //create a request to the backend using axios and send the data and headers
-            const response = await axios.post('https://localhost:7042/api/User/Register', data, {
+            const response = await axios.post('http://joeddenn-001-site1.itempurl.com/api/User/Register', data, {
                 headers: {
                     'Access-Control-Allow-Origin': '*'
                 }

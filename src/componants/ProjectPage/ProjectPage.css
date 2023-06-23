@@ -70,3 +70,34 @@ body{
     transform: scale(1.1);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
+.userSelect {
+    font-size: 16px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #2b365f;
+    margin-right: .5rem;
+    border: solid thin rgba(0,0,0,.25);
+  }
+  
+  /* Style for focused state */
+  .userSelect:focus {
+     outline:none; 
+     box-shadow: inset rgba(70,130,180,.5)0 -3px round ;
+  }
+  .userSelectorContainer {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .addUserButton {
+    background-color: #4b6a8a;
+    color: white;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size:14px; 
+  }
+  .addUserButton:hover {
+    background-color:#172741;  
+    transition: 0.5s;
+}

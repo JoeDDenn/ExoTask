@@ -15,13 +15,14 @@ const ProjectPage = () => {
     const [selectedUser, setSelectedUser] = useState("");
     const [projectId, setProjectId] = useState("");
     const [wsId, setWsId] = useState("");
+    
 
     useEffect(() => {
         setProjectId(localStorage.getItem("defprojid"));
         setWsId(localStorage.getItem("defwsid"));
         const token = localStorage.getItem("token");
         
-        axios.get(`https://localhost:7042/GetProjct?projectID=${projectId}`, {
+        axios.get(`http://joeddenn-001-site1.itempurl.com/GetProjct?projectId=${projectId}`, {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -40,7 +41,7 @@ const ProjectPage = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await axios.get(`https://localhost:7042/GetAllUsersNotInWorkspascce?WorkspasceID=${workspaceId}&projectId=${projectId}`, {
+            const response = await axios.get(`http://joeddenn-001-site1.itempurl.com/GetAllUsersNotInWorkspascce?WorkspasceID=${workspaceId}&projectId=${projectId}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
@@ -143,7 +144,7 @@ function UserSelector(props) {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await axios.get(`https://localhost:7042/GetAllUsersNotInWorkspascce?WorkspasceID=${workspaceId}&projectId=${projectId}`, {
+            const response = await axios.get(`http://joeddenn-001-site1.itempurl.com/GetAllUsersNotInWorkspascce?WorkspasceID=${workspaceId}&projectId=${projectId}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
@@ -157,10 +158,11 @@ function UserSelector(props) {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await axios.post(`https://localhost:7042/InviteUserInWorkSpasce2?projectid=${projectId}&userId=${selectedUser}&WorkSpacseId=${workspaceId}`, {
+            const response = await axios.post(`http://joeddenn-001-site1.itempurl.com/InviteUserInWorkSpasce2?projectid=${projectId}&userId=${selectedUser}&WorkSpacseId=${workspaceId}`, 
+            {
                 headers: {
-                    authorization: `Bearer ${token}`
-                }
+                  Authorization: "Bearer "+token,
+                },
             });
 
             window.location.reload();
@@ -176,12 +178,14 @@ function UserSelector(props) {
     };
 
     return (
-        <div>
+        <div className="userSelectorContainer">
 
             <select value={selectedUser}
                 onChange={
                     (e) => setSelectedUser(e.target.value)
-            }>
+            }
+            className="userSelect"
+            >
                 <option value="">Select User</option>
                 {
                 users.map((user) => (
@@ -196,7 +200,7 @@ function UserSelector(props) {
                     } </option>
                 ))
             } </select>
-            <button onClick={
+            <button className="ml-auto addUserButton" onClick={
                 () => inviteUserToWorkspace(projectId, id)
             }>
                 Add User

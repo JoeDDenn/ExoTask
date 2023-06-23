@@ -29,7 +29,7 @@ class ProjectCreator extends React.Component {
     const token = "Bearer " + localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "https://localhost:7042/CreateProject?Name=" +
+        "http://joeddenn-001-site1.itempurl.com/CreateProject?Name=" +
           projectName +
           "&Descrpiton=" +
           projectDesc,

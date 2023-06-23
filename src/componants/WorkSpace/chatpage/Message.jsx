@@ -12,7 +12,7 @@ function Message() {
         const token = localStorage.getItem('token');
         const workSpacseId = localStorage.getItem('defwsid');
 
-        const response = await axios.get(`https://localhost:7042/api/Message/GetMessage?WorkSpacseId=${workSpacseId}`,{
+        const response = await axios.get(`http://joeddenn-001-site1.itempurl.com/api/Message/GetMessage?WorkSpacseId=${workSpacseId}`,{
             headers: {
                 'authorization': `Bearer ${token}`,
             }

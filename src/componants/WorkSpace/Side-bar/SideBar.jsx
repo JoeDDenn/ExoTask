@@ -9,7 +9,7 @@ let projectList = [];
 //get project list from backend
 const reqq = async () => {
   try {
-    const response = await axios.get("https://localhost:7042/GetProjcts", {
+    const response = await axios.get("http://joeddenn-001-site1.itempurl.com/GetProjcts", {
       headers: {
         authorization: "Bearer " + localStorage.getItem("token"),
       },

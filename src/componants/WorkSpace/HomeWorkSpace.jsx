@@ -12,7 +12,7 @@ import RichEditor from "../RichEditor/RichEditor";
 import Chatws from "../ChatWs/Chatws";
 
 const HomeWorkSpace = () => {
-  const [blocks, setBlocks] = React.useState(BlocksfromBackEnd);
+  const [blocks, setBlocks] = React.useState([]);
 
   //append block to blocks list
   const appendBlock = (block) => {
@@ -31,9 +31,10 @@ const HomeWorkSpace = () => {
     //get user workspaces
     const getUserWorkspaces = async () => {
       try {
-        const response = await axios.get("https://localhost:7042/GetProjcts", {
+        const response = await axios.get("http://joeddenn-001-site1.itempurl.com/GetProjcts", {
           headers: {
             authorization: "Bearer " + localStorage.getItem("token"),
+            cors: "no-cors",
           },
         });
         const workspaces = response.data.workSpacseRes2;
@@ -108,7 +109,7 @@ if (localStorage.getItem("token") === null) {
     const token = "Bearer " + localStorage.getItem("token");
     const defwsid = localStorage.getItem("defwsid");
     const response = await axios.get(
-      "https://localhost:7042/GetALLinWorkspascce?WorkspasceID=" + defwsid,
+      "http://joeddenn-001-site1.itempurl.com/GetALLinWorkspascce2?WorkspasceID=" + defwsid,
       {
         headers: {
           authorization: token,
@@ -116,7 +117,7 @@ if (localStorage.getItem("token") === null) {
       }
     );
 
-    BlocksfromBackEnd = response.data.blokListDtos;
+    // BlocksfromBackEnd = response.data.blokListDtos;
   } catch (err) {
     console.log(err);
   }
@@ -258,7 +259,7 @@ function AddBlock(type, block, className) {
   newSaveButton.onclick = () => {
     //add block in back end
     const token = "Bearer " + localStorage.getItem("token");
-    const url = "https://localhost:7042/CreateBlokList";
+    const url = "http://joeddenn-001-site1.itempurl.com/CreateBlokList";
     const data = {
       Type: type,
       ClassName: className,

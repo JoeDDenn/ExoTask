@@ -30,7 +30,7 @@ class WorkspaceCreator extends React.Component {
     const token = "Bearer " + localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "https://localhost:7042/CreateWorkSpace?WorkSpaceName=" +
+        "http://joeddenn-001-site1.itempurl.com/CreateWorkSpace?WorkSpaceName=" +
           WorkSpaceName +
           "&projectID=" +
           projectID,

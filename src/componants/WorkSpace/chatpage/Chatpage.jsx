@@ -21,7 +21,7 @@ const Chatpage = () => {
         body.append('Content', messagesend);
         body.append('WorkspaceId', workSpacseId);
 
-        const response = await axios.post('https://localhost:7042/api/Message/SendMessage',body ,{
+        const response = await axios.post('http://joeddenn-001-site1.itempurl.com/api/Message/SendMessage',body ,{
             headers: {
                 'authorization': `Bearer ${token}`,
             }

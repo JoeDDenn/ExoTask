@@ -12,7 +12,7 @@ const NavWorkSpcae = () => {
       const formData = new FormData();
       formData.append("UserNameOrEail", searchValue);
       const response = await axios.post(
-        "https://localhost:7042/api/User/Search",
+        "http://joeddenn-001-site1.itempurl.com/api/User/Search",
         formData
       );
 
@@ -20,13 +20,12 @@ const NavWorkSpcae = () => {
 
       if (response.data.userName != null) {
         const token = "Bearer " + localStorage.getItem("token");
-        const response2 = await axios
-          .post(
-            "https://localhost:7042/api/ProjectJoinRequestSer/InvatieUser",
-            {
-              projectid: localStorage.getItem("defprojid"),
-              userId: response.data.userId,
-            },
+        const response2 = await axios.post(
+          "http://joeddenn-001-site1.itempurl.com/api/ProjectJoinRequestSer/InvatieUser",
+          {
+            projectid: localStorage.getItem("defprojid"),
+            userId: response.data.userId,
+          },
             {
               headers: {
                 Authorization: token,
@@ -61,7 +60,7 @@ const NavWorkSpcae = () => {
     try {
       const token = "Bearer " + localStorage.getItem("token");
       const response = await axios.get(
-        "https://localhost:7042/api/ProjectJoinRequestSer/GetAllRequst",
+        "http://joeddenn-001-site1.itempurl.com/api/ProjectJoinRequestSer/GetAllRequst",
         { headers: { Authorization: token } }
       );
 
@@ -89,7 +88,7 @@ const NavWorkSpcae = () => {
     try {
       const token = "Bearer " + localStorage.getItem("token");
       const response = await axios.post(
-        "https://localhost:7042/api/ProjectJoinRequestSer/AccpetIvite",
+        "http://joeddenn-001-site1.itempurl.com/api/ProjectJoinRequestSer/AccpetIvite",
         {
           projectid: item.projectID,
         },
@@ -124,7 +123,7 @@ const NavWorkSpcae = () => {
     try {
       const token = "Bearer " + localStorage.getItem("token");
       const response = await axios.post(
-        "https://localhost:7042/api/ProjectJoinRequestSer/rejectRequset",
+        "http://joeddenn-001-site1.itempurl.com/api/ProjectJoinRequestSer/rejectRequset",
         {
           projectid: item.projectID,
         },
@@ -216,15 +215,7 @@ const NavWorkSpcae = () => {
             </div>
           </li>
 
-          <li className="nav-item dropdown">
-            <a className="nav-link" data-toggle="dropdown" href="#">
-              <i className="far fa-comments"></i>
-              <span className="badge badge-danger navbar-badge">3</span>
-            </a>
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              {/* Dropdown menu content */}
-            </div>
-          </li>
+
 
           <li className="nav-item dropdown">
             <a className="nav-link" data-toggle="dropdown" href="#">
@@ -283,17 +274,7 @@ const NavWorkSpcae = () => {
               <i className="fas fa-expand-arrows-alt"></i>
             </a>
           </li>
-          <li className="nav-item">
-            <a
-              className="nav-link"
-              data-widget="control-sidebar"
-              data-slide="true"
-              href="#"
-              role="button"
-            >
-              <i className="fas fa-th-large"></i>
-            </a>
-          </li>
+
 
           <li className="nav-item">
             <a

@@ -30,7 +30,7 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'https://localhost:7042/Remove',
+      url: 'http://joeddenn-001-site1.itempurl.com/Remove',
       headers: {
         'Authorization': 'Bearer ' + token,
       },
@@ -60,7 +60,7 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
     const workspace = async (id) => {
       const token = localStorage.getItem('token');
       const defwsid = localStorage.getItem('defwsid')
-      const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
+      const response = await axios.get('http://joeddenn-001-site1.itempurl.com/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
         headers: {
           authorization: 'Bearer ' + token
         }
@@ -87,7 +87,7 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
         let config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: 'https://localhost:7042/UpdateTask',
+          url: 'http://joeddenn-001-site1.itempurl.com/UpdateTask',
           headers: { 
             'Authorization': 'Bearer ' + token,
           },
@@ -121,7 +121,7 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
         let config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: 'https://localhost:7042/CreateTask',
+          url: 'http://joeddenn-001-site1.itempurl.com/CreateTask',
           headers: { 
             'Authorization': 'Bearer ' + token,
           },
@@ -142,46 +142,51 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
   };
 
   const handleHelp = () => {
-    //get div containing the card
     const cardText = document.getElementById(textid).innerHTML;
-    //get the card body of the card
-    
-
-    const taskdesc = "i'm working on " + cardText + " ,suggest five resources to help with this, place a <div> at the start of the message with class of 'messageHeader' followed by a numbered list of <div>, each with links in an <a> tag with the class 'messageText' and describe each link briefly in a <p>";
-    axios.post('http://localhost:8000/answer', {
-        question: JSON.stringify(taskdesc)
-      })
+  
+    axios.post('http://localhost:8000/recommended', { desc: cardText })   
       .then(response => {
-        setResponse(response.data.answer);
-        let message = document.getElementsByClassName('message-text')[0];
-        const cardBody = document.getElementsByClassName('card-body')[0];
-        //if message div exists, remove it
-        if (message) {
-          message.remove();
-        }
-        //create message div
-        if (!message) {
-          message = document.createElement('div');
-          message.className = 'message-text';
-          cardBody.appendChild(message);
-        }
-  
-        message.innerHTML = response.data.answer;
-  
+        const recommendations = response.data.recommended;
+        console.log("Url:", recommendations.Url);
         let messageWrapper = document.getElementsByClassName('message')[0];
         if (!messageWrapper) {
           messageWrapper = document.createElement('div');
           messageWrapper.className = 'message';
-          cardBody.appendChild(messageWrapper);
+          document.getElementsByClassName('card-body')[0].appendChild(messageWrapper);
         }
+  
+        // Clear previous content
+        messageWrapper.innerHTML = '';
+  
+        // Add close button
+        const closeButtonHtml = `<button class="close messageClose"> X </button>`;
+          
+        if (recommendations && recommendations.Url) {
+          // Create a list for displaying recommended URLs
+          let urlListHtml =
+            '<div class="messageHeader">Recommended Resources:</div><ol>';
+  
+          const topRecommendations = Object.entries(recommendations).slice(0, 5);
+  
+          topRecommendations.forEach((url) => {
+            urlListHtml += `<li><a href="${url}" target="_blank" rel="noopener noreferrer" class='messageText'>${url}</a></li>`;
+          });
+  
+          urlListHtml += '</ol>';
+            
+          messageWrapper.innerHTML += closeButtonHtml + urlListHtml;
+          
+        } else {
+            // If no recommendation found
+            messageWrapper.innerHTML +=
+            `${closeButtonHtml}<p>No resources were found.</p>`;
+          }
         
-        messageWrapper.innerHTML = `<button class="close messageClose"> X </button>`;
-        messageWrapper.appendChild(message);
+          const closeBtnElem= document.querySelector('.close.messageClose');
+          if(closeBtnElem) {
+            closeBtnElem.addEventListener('click', closeMessage);
+          }
   
-        const close = document.getElementsByClassName('close')[0];
-        close.addEventListener('click', closeMessage);
-  
-        messageWrapper.style.display = 'block';
       })
       .catch(error => {
         setError(error);

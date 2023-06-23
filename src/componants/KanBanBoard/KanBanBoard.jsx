@@ -15,7 +15,7 @@ if (localStorage.getItem('token') === null) {
         // get task list from backend
         const token = "Bearer " + localStorage.getItem('token')
         const defwsid = localStorage.getItem('defwsid')
-        const response = await axios.get('https://localhost:7042/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
+        const response = await axios.get('http://joeddenn-001-site1.itempurl.com/GetALLinWorkspascce?WorkspasceID=' + defwsid, {
             headers: {
                 authorization: token
             }
