@@ -31,12 +31,15 @@ const HomeWorkSpace = () => {
     //get user workspaces
     const getUserWorkspaces = async () => {
       try {
-        const response = await axios.get("http://joeddenn-001-site1.itempurl.com/GetProjcts", {
-          headers: {
-            authorization: "Bearer " + localStorage.getItem("token"),
-            cors: "no-cors",
-          },
-        });
+        const response = await axios.get(
+          "http://joeddenn-001-site1.itempurl.com/GetProjcts",
+          {
+            headers: {
+              authorization: "Bearer " + localStorage.getItem("token"),
+              cors: "no-cors",
+            },
+          }
+        );
         const workspaces = response.data.workSpacseRes2;
       } catch (error) {
         console.log(error);
@@ -51,12 +54,11 @@ const HomeWorkSpace = () => {
           <SideBar />
           {/* <Main/>  */}
           <div className="container">
-          <div className="container">
-            <Workspace blocklist={blocks} />
+            <div className="container">
+              <Workspace blocklist={blocks} />
+            </div>
           </div>
-            <AddCompList />
-          </div>
-          <Chatws/>
+          <Chatws />
           <Chatbot />
         </AnimatedBackground>
       </div>
@@ -77,14 +79,11 @@ const Workspace = (props) => {
     <div className="container bbbb">
       <KanBanBoard />
       <div className="container">
-      <h2>
-        Workspace Documentation
-      </h2>
-      <RichEditor />
+        <h2>Workspace Documentation</h2>
+        <RichEditor />
       </div>
       <div className="container" id="workspace">
-        <div className="Block" id="1">
-        </div>
+        <div className="Block" id="1"></div>
       </div>
     </div>
   );
@@ -109,7 +108,8 @@ if (localStorage.getItem("token") === null) {
     const token = "Bearer " + localStorage.getItem("token");
     const defwsid = localStorage.getItem("defwsid");
     const response = await axios.get(
-      "http://joeddenn-001-site1.itempurl.com/GetALLinWorkspascce2?WorkspasceID=" + defwsid,
+      "http://joeddenn-001-site1.itempurl.com/GetALLinWorkspascce2?WorkspasceID=" +
+        defwsid,
       {
         headers: {
           authorization: token,

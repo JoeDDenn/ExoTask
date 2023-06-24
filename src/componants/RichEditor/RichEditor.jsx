@@ -9,7 +9,17 @@ import { storage } from "./FBStore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 const placeholder = {
-  // Your existing placeholder content here.
+  entityMap: {},
+  blocks: [
+    {
+      key: "initial",
+      text: "Start Documenting Your Work Here!",
+      type: "unstyled",
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+    },
+  ],
 };
 
 const handleEditorChange = (content) => {
@@ -62,6 +72,11 @@ export default function RichEditor(props) {
       return response.json(); // Return data as a JSON object.
     } catch (error) {
       console.log("Error loading initial data:", error);
+      if (error.code === "storage/object-not-found") {
+        // If file not found in storage, create and upload it with placeholder content before returning.
+        handleEditorChange(placeholder);
+        return placeholder;
+      }
       return placeholder; // Return default placeholder in case of an error.
     }
   };
@@ -74,16 +89,6 @@ export default function RichEditor(props) {
       setHasFetchedInitialData(true); // Set flag once initial data is fetched.
     });
   }, []);
-
-  // const onContentStateChange = (editor_state) => {
-  //   setContent(editor_state);
-
-  //   if (hasFetchedInitialData) {
-  //     // Only save changes after fetching initial data.
-  //     const raw_content = convertToRaw(editor_state.getCurrentContent());
-  //     handleEditorChange(raw_content);
-  //   }
-  // };
 
   const onEditorStateChange = (editor_state) => {
     setContent(editor_state);
@@ -102,6 +107,34 @@ export default function RichEditor(props) {
         editorClassName="demo-editor"
         onEditorStateChange={onEditorStateChange}
         editorState={content}
+        toolbar={{
+          link: { inDropdown: true },
+          image: {
+            urlEnabled: true,
+            uploadEnabled: true,
+            uploadCallback: uploadImageCallBack,
+            alignmentEnabled: false,
+            previewImage: true,
+            defaultSize: { width: "100%", height: "auto" },
+          },
+          embedded: {
+            defaultSize: {
+              height: "auto",
+              width: "100%",
+            },
+          },
+          emoji: {},
+          fontFamily: {
+            options: [
+              "Arial",
+              "Georgia",
+              "Impact",
+              "Tahoma",
+              "Times New Roman",
+            ],
+          },
+          fontSize: {},
+        }}
       />
     </div>
   );
