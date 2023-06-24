@@ -16,7 +16,7 @@
   z-index: 9999;
   width: 300px;
   height: 400px;
-  background-color: #f591d08f;
+  background-color: #91caf58f;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   display: flex;
@@ -65,7 +65,7 @@
   padding: 10px;
   font-size: 1rem;
   border-radius: 5px;
-  background-color: #d699d979;
+  background-color: #ffffff79;
   margin-right: 10px;
 
   border: 1px solid;

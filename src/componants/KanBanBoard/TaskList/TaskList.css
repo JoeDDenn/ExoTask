@@ -15,7 +15,7 @@
 .TaskListTitle{
     background-color:  #3d5b8393;
     border: none;
-    color:  #767D92 !important;
+    /* color:  #767D92 !important; */
     font-size: 30px;
     padding: 5px;
 }

@@ -2,9 +2,9 @@
 .chat {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	padding: 8px;
 	border-radius: 15px;
+	height: 100%;
 }
 .chat-header {
 	display: flex;
@@ -132,8 +132,15 @@
 	border-radius: 60px;
 	position: relative;
 	cursor: pointer;
+	bottom: -104px;
+	padding: 10px;
+	background-color: #f2f2f2;
 }
 .chat-footer textarea {
+	width: 100%;
+	padding: 8px;
+	border: none;
+	resize: none;
 	display: block;
 	flex: 1;
 	width: 100%;
@@ -180,9 +187,31 @@
 	background: #e7e6d811;
 	border-radius: 15px;
 	margin-top: 4px;
+	height: 100vh;
 }
 
 .chatBox{
 	max-height: 80%;
 	overflow-y: auto;
 }
+
+
+
+  
+  
+  
+  .chatBox {
+	flex: 1;
+	overflow-y: auto;
+  }
+  
+ 
+ 
+  
+  .btncustommm {
+	margin-left: 10px;
+	color: black;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 4px;
+  }

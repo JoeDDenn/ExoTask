@@ -4,6 +4,8 @@ import './Card.css';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import FormData from 'form-data';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+
 
 
 const Card = ({ description, id, onDeleteCard, index, title, status}) => {
@@ -14,6 +16,8 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
   const [error, setError] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [recommendedLinks, setRecommendedLinks] = useState([]);
 
   const textid = uuid();
 
@@ -144,51 +148,15 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
   const handleHelp = () => {
     const cardText = document.getElementById(textid).innerHTML;
   
-    axios.post('http://localhost:8000/recommended', { desc: cardText })   
-      .then(response => {
+    axios
+      .post('http://localhost:8000/recommended', { desc: cardText })
+      .then((response) => {
         const recommendations = response.data.recommended;
-        console.log("Url:", recommendations.Url);
-        let messageWrapper = document.getElementsByClassName('message')[0];
-        if (!messageWrapper) {
-          messageWrapper = document.createElement('div');
-          messageWrapper.className = 'message';
-          document.getElementsByClassName('card-body')[0].appendChild(messageWrapper);
-        }
-  
-        // Clear previous content
-        messageWrapper.innerHTML = '';
-  
-        // Add close button
-        const closeButtonHtml = `<button class="close messageClose"> X </button>`;
-          
-        if (recommendations && recommendations.Url) {
-          // Create a list for displaying recommended URLs
-          let urlListHtml =
-            '<div class="messageHeader">Recommended Resources:</div><ol>';
-  
-          const topRecommendations = Object.entries(recommendations).slice(0, 5);
-  
-          topRecommendations.forEach((url) => {
-            urlListHtml += `<li><a href="${url}" target="_blank" rel="noopener noreferrer" class='messageText'>${url}</a></li>`;
-          });
-  
-          urlListHtml += '</ol>';
-            
-          messageWrapper.innerHTML += closeButtonHtml + urlListHtml;
-          
-        } else {
-            // If no recommendation found
-            messageWrapper.innerHTML +=
-            `${closeButtonHtml}<p>No resources were found.</p>`;
-          }
-        
-          const closeBtnElem= document.querySelector('.close.messageClose');
-          if(closeBtnElem) {
-            closeBtnElem.addEventListener('click', closeMessage);
-          }
-  
+        console.log("Urls:", recommendations);
+        setRecommendedLinks(recommendations);
+        setModalOpen(true);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
         console.log(error);
       });
@@ -229,6 +197,25 @@ const Card = ({ description, id, onDeleteCard, index, title, status}) => {
               </button>
             </div>
           </div>
+          <Modal isOpen={modalOpen} toggle={() => setModalOpen(!modalOpen)}>
+      <ModalHeader toggle={() => setModalOpen(!modalOpen)}>Recommended Links</ModalHeader>
+      <ModalBody>
+        <ol>
+          {recommendedLinks.map((link, index) => (
+            <li key={index}>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="secondary" onClick={() => setModalOpen(!modalOpen)}>
+          Close
+        </Button>
+      </ModalFooter>
+    </Modal>
     </div>
   );
 };
